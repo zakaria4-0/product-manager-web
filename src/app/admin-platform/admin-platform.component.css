@@ -1,0 +1,18 @@
+table{
+    position:absolute;
+    top: 150px;
+    width: 1230px;
+    left: 120px;
+    border-radius: 5px;
+    margin: 25px ;
+    
+    
+}
+input#searchName{
+    position: absolute;
+    top: 135px;
+    left: 143px;
+}
+div#navbarNavDarkDropdown{
+    margin-left: 1200px;
+}        

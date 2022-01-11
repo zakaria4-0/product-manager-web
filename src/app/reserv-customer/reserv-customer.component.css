@@ -1,0 +1,27 @@
+
+
+form#main-form {
+    width: 800px;
+    min-height: 100px;
+    height: auto;
+    top: 600px;
+    border-radius: 5px;
+    margin: 2% auto;
+    padding: 2%;
+    background-color:  #4e75bd9c ;
+}
+h1#login{
+    text-align: center;
+}
+table{
+    border-radius: 5px;
+    margin: 2% auto;
+}
+select{
+    width: 330px;
+    height: 38px;
+}
+button#butsuccess{
+    height: 40px;
+    margin-top: 32px;
+}

@@ -1,0 +1,57 @@
+section#container1{
+position: absolute;
+width: 500px;
+height: 950px;
+left: 30px;
+top: 70px;
+
+border-radius: 5px;
+margin: 2% auto;
+background-color:  #4e75bd9c ;
+}
+section#main-container{
+position: absolute;
+width: 700px;
+height: 1000px;
+left: 600px;
+top: 90px;
+}
+h1#login{
+    text-align: center;
+}
+input{
+    width: 400px;
+}
+div#div1{
+    margin-left: 10%;
+}
+div#div2{
+    margin-left: 10%;
+}
+div#div3{
+    margin-left: 10%;
+}
+div#div4{
+    margin-left: 10%;
+}
+div#div5{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+button#but1{
+    width: 100px;
+    margin-left: 10%;
+}
+select{
+    width: 400px;
+    height: 35px;
+}
+table{
+    border-radius: 5px;
+    
+    width: 930px;
+    margin-left: -60px;
+}
+div#navbarNavDarkDropdown{
+    margin-left: 1200px;
+}        

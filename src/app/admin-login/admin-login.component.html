@@ -1,0 +1,61 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div>
+            Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+          </div>
+          <div class="dropdown mt-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+              Dropdown button
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <a class="nav-link active" aria-current="page" href="/main">Home</a>
+    <a class="nav-link active" aria-current="page" href="/ourProducts">Our products</a>
+    <a class="nav-link active" aria-current="page" href="/customerRegistration">Purchase</a>
+    <a class="nav-link active" aria-current="page" href="/customerLogin">Login</a>
+    <a class="nav-link active" aria-current="page" href="/adminLogin">Admin Login</a>
+  </div>
+  </nav>
+
+<form #loginform="ngForm" (ngSubmit)="loginAdmin()">
+    
+    <h1 id="login">Admin Login Account</h1>
+    <br>
+<small class="text-danger" > {{msg}} </small>
+   
+<div class="mb-3">
+<label for="exampleInputEmail1" class="form-label">Name</label>
+<input type="email" [(ngModel)]=adminLog.name class="form-control" name="Aname"  aria-describedby="emailHelp" placeholder="Name" required 
+#Aname="ngModel" [class.is-invalid]="Aname.invalid && Aname.touched">
+<small class="text-danger" [class.d-none]="Aname.valid || Aname.untouched">name is required</small>
+
+</div>
+<div class="mb-3">
+<label for="exampleInputPassword1" class="form-label">Password</label>
+<input type="password" [(ngModel)]=adminLog.password class="form-control" name="Apassword" placeholder="Password" required 
+#Apassword="ngModel" [class.is-invalid]="Apassword.invalid && Apassword.touched">
+<small class="text-danger" [class.d-none]="Apassword.valid || Apassword.untouched">password is required</small>
+</div>
+<div class="mb-3 form-check">
+<input type="checkbox" class="form-check-input" id="exampleCheck1">
+<label class="form-check-label" for="exampleCheck1">Check me out</label>
+</div>
+<button [disabled]="loginform.form.invalid" type="submit" class="btn btn-primary">Login</button>
+</form>
+
+

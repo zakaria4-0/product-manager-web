@@ -1,0 +1,16 @@
+
+form {
+    width: 500px;
+    min-height: 200px;
+    height: auto;
+    top: 600px;
+    border-radius: 5px;
+    margin: 2% auto;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    padding: 2%;
+    background-color:  #4e75bd9c ;
+}
+h1#login{
+    text-align: center;
+}
