@@ -8,6 +8,7 @@ import { CustomerLoginComponent } from './customer-login/customer-login.componen
 import { CustomerRegistrationComponent } from './customer-registration/customer-registration.component';
 import { MainComponent } from './main/main.component';
 import { OurProductsComponent } from './our-products/our-products.component';
+import { PromotionComponent } from './promotion/promotion.component';
 import { ReservCustomerLComponent } from './reserv-customer-l/reserv-customer-l.component';
 import { ReservCustomerComponent } from './reserv-customer/reserv-customer.component';
 import { StockProductComponent } from './stock-product/stock-product.component';
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path:"reservCustomer",component:ReservCustomerComponent},
   {path:"reservCustomerL",component:ReservCustomerLComponent},
   {path:"productStock",component:StockProductComponent},
-  {path:"ourProducts",component:OurProductsComponent}
+  {path:"ourProducts",component:OurProductsComponent},
+  {path:"promotion",component:PromotionComponent}
   
 ];
 

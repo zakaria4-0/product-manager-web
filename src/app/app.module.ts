@@ -17,6 +17,7 @@ import { AdminPlatformComponent } from './admin-platform/admin-platform.componen
 import { AdminControlPageComponent } from './admin-control-page/admin-control-page.component';
 import { StockProductComponent } from './stock-product/stock-product.component';
 import { OurProductsComponent } from './our-products/our-products.component';
+import { PromotionComponent } from './promotion/promotion.component';
 
 
 
@@ -35,6 +36,7 @@ import { OurProductsComponent } from './our-products/our-products.component';
     AdminControlPageComponent,
     StockProductComponent,
     OurProductsComponent,
+    PromotionComponent,
    
     
     

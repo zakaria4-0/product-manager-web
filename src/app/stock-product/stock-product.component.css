@@ -1,19 +1,19 @@
 section#container1{
-position: absolute;
+
 width: 500px;
-height: 950px;
-left: 30px;
-top: 70px;
+height: 1000px;
+margin-left: 10px;
+margin-top: 70px;
 
 border-radius: 5px;
-margin: 2% auto;
+
 background-color:  #4e75bd9c ;
 }
 section#main-container{
 position: absolute;
 width: 700px;
 height: 1000px;
-left: 600px;
+left: 580px;
 top: 90px;
 }
 h1#login{
@@ -39,7 +39,7 @@ div#div5{
     margin-right: 10%;
 }
 button#but1{
-    width: 100px;
+    
     margin-left: 10%;
 }
 select{
@@ -49,7 +49,7 @@ select{
 table{
     border-radius: 5px;
     
-    width: 930px;
+    width: 955px;
     margin-left: -60px;
 }
 div#navbarNavDarkDropdown{

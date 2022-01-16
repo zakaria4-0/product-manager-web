@@ -1,0 +1,50 @@
+<nav class="navbar navbar-dark  bg-dark fixed-top" >
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header">
+            <button type="button" class="btn-close text-reset" id="closebt" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+           <ul>
+             <li style="list-style-type: none;"><a class="canvas" href="/promotion"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gift-fill" viewBox="0 0 16 16">
+              <path d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zm6 4v7.5a1.5 1.5 0 0 1-1.5 1.5H9V7h6zM2.5 16A1.5 1.5 0 0 1 1 14.5V7h6v9H2.5z"/>
+            </svg> Promotions</a></li><br>
+            <li style="list-style-type: none;"><a class="canvas" href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+            </svg> PFQ</a></li>
+           </ul>
+          </div>
+        </div>
+      <a class="nav-link active" aria-current="page" href="/main">Home</a>
+      <a class="nav-link active" aria-current="page" href="/ourProducts">Products</a>
+      <a class="nav-link active" aria-current="page" href="/customerRegistration">Shop</a>
+      <a class="nav-link active" aria-current="page" href="/customerLogin">Account</a>
+      <a class="nav-link active" aria-current="page" href="/adminLogin">Admin account</a>
+    </div>
+    </nav>
+    <div class="container bootstrap snippets bootdey" style="margin-top: 100px;">
+        <div class="row" >
+            <div class="col-md-9" >
+                <div class="col-md-6 col-sm-6" *ngFor="let prom of promotion">
+                    <div class="store-item" >
+                        
+                        <div class="store-item-image">
+                            <a href="/customerLogin">
+                                <img src="{{prom.productImage}}" alt="" class="img-responsive" style="width: 500px; height: 200px;">
+                            </a>
+                        </div>
+                        <div class="store-item-info clearfix">
+                            <span class="store-item-price pull-right" style="color: darkgrey;"><del>{{prom.productPrice}}$</del></span><br>             
+                            <span class="store-item-price  pull-right" style="color: rgb(247, 33, 33);">{{prom.promotionPrice}}$</span>
+                            <a href="/customerLogin"><strong>{{prom.productName}}</strong></a><br>
+                            <small><i class="fa fa-shopping-cart text-muted"></i>
+                            <a href="/customerLogin" class="text-muted">Add to cart</a></small>
+                        </div>
+                    </div>
+                </div>     
+          </div>
+      </div>
+    </div>

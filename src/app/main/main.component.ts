@@ -12,6 +12,7 @@ export class MainComponent implements OnInit {
   public popular:Stock[]=[];
   public newest:Stock[];
   public bestselling:Stock[]=[];
+  
  
 
   constructor(private service:ProductManagerService) { }
@@ -44,7 +45,9 @@ export class MainComponent implements OnInit {
   public getStockByState(state:string){
     this.service.getStockByState(state).subscribe(
       (response:Stock[])  =>{
-        this.newest=response;
+        if(state="new"){
+          this.newest=response;}
+          
       },
       error =>{
         console.log("can't get stock by state")
@@ -90,12 +93,14 @@ export class MainComponent implements OnInit {
         h6.append(a1);
         const span=document.createElement('span');
         span.className="price sale";
-        span.innerHTML=this.popular[i].productPrice+"$";
+        const b=document.createElement('b');
+        b.innerHTML=this.popular[i].productPrice+"$";
+        span.append(b);
         span.style.color="rgb(221, 101, 32)";
         div4.append(span);
         
       }
-    }else{
+    }
     if(type=="newest"){
       container.innerHTML="";
       const h1=document.createElement('h1')
@@ -133,13 +138,15 @@ export class MainComponent implements OnInit {
         h6.append(a1);
         const span=document.createElement('span');
         span.className="price sale";
-        span.innerHTML=this.newest[i].productPrice+"$";
+        const b=document.createElement('b');
+        b.innerHTML=this.newest[i].productPrice+"$";
+        span.append(b);
         span.style.color="rgb(221, 101, 32)";
         div4.append(span);
         
         
       }
-    }else{
+    }
       if(type=="bestselling"){
         container.innerHTML="";
         const h1=document.createElement('h1')
@@ -177,14 +184,18 @@ export class MainComponent implements OnInit {
           h6.append(a1);
           const span=document.createElement('span');
           span.className="price sale";
-          span.innerHTML=this.bestselling[i].productPrice+"$";
+          const b=document.createElement('b');
+          b.innerHTML=this.bestselling[i].productPrice+"$";
+          span.append(b);
           span.style.color="rgb(221, 101, 32)";
           div4.append(span);
           
           
         }
       }
-    }}
+      
+      
+    
   }
   
 

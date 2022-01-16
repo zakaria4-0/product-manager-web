@@ -253,3 +253,19 @@ body{margin-top:20px;
     width: 200px;
     height: 600px;
   }
+  /** Shop: Thumbnails **/
+.shop-thumb-price_old {
+  text-decoration: line-through;
+}
+.shop-thumb-price_new {
+  color: red;
+}
+.store-item {
+  padding: 5px;
+  position: relative;
+  display: block;
+  margin-bottom: 30px;
+  border: 4px solid #eee;
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}

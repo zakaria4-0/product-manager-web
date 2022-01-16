@@ -4,6 +4,7 @@ export class Stock{
     productQuantity:number;
     productQuantityI:number;
     productPrice:number;
+    promotionPrice:number;
     productImage:string;
     description:string;
     category:string;

@@ -10,26 +10,28 @@ import { Stock } from '../stock';
 })
 export class StockProductComponent implements OnInit {
   public stock:Stock=new Stock();
-  public stock2:Stock=new Stock();
+  public stock2:Stock;
   public products:Stock[];
   public deletePro:Stock;
+  public updatePro:Stock=new Stock();
   public msg='';
+  public msg2='';
 
   constructor(private service:ProductManagerService) { }
 
   ngOnInit(): void {
     this.getStock()
   }
-  public addStock(name:NgModel){
+  public addStock(form:NgForm){
     this.service.postToStock(this.stock).subscribe(
       data =>{
         console.log("response received");
         this.getStock();
-        name.reset();
+        form.reset();
       },
       error =>{
         console.log("exception occured")
-        
+        this.msg2="Product already exists"
       }
     )
   }
@@ -45,13 +47,17 @@ export class StockProductComponent implements OnInit {
       }
     )
   }
+  public onSelectProduct(product:Stock):void{
+    this.updatePro=product;
 
-  public updateProduct(form:NgForm){
-    this.service.updateProduct(this.stock2).subscribe(
-      data =>{
-        console.log("response received")
+  }
+
+  public updateProduct():void{
+    this.service.updateProduct(this.updatePro).subscribe(
+      (Response:Stock) =>{
+        console.log(Response);
         this.getStock();
-        form.reset();
+        
       },
       error =>{
         console.log("exception occured")
@@ -107,6 +113,7 @@ export class StockProductComponent implements OnInit {
       }
     )
   }
+  
 
 
 }
