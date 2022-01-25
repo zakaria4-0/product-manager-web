@@ -108,7 +108,7 @@ export class StockProductComponent implements OnInit {
           a.click();
         console.log("pdf generated successfully")
       },
-      erro=>{
+      error=>{
         console.log("pdf failed to generate")
       }
     )

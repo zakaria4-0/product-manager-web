@@ -59,7 +59,7 @@ export class AdminControlPageComponent implements OnInit {
       prog_bar.style.width=a +"%";
       progress.append(prog_bar);
       const span=document.createElement('span')
-      span.innerHTML= a +"%";
+      span.innerHTML= a.toFixed(2) +"%";
       prog_bar.append(span);
       container.append(div)
 

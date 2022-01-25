@@ -9,4 +9,5 @@ export class Stock{
     description:string;
     category:string;
     state:string;
+    x:number;
 }

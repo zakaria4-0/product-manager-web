@@ -18,6 +18,10 @@ import { AdminControlPageComponent } from './admin-control-page/admin-control-pa
 import { StockProductComponent } from './stock-product/stock-product.component';
 import { OurProductsComponent } from './our-products/our-products.component';
 import { PromotionComponent } from './promotion/promotion.component';
+import { CustomersListComponent } from './customers-list/customers-list.component';
+import { PopularProductComponent } from './popular-product/popular-product.component';
+import { NewestProductComponent } from './newest-product/newest-product.component';
+import { BestSellingProductComponent } from './best-selling-product/best-selling-product.component';
 
 
 
@@ -37,6 +41,10 @@ import { PromotionComponent } from './promotion/promotion.component';
     StockProductComponent,
     OurProductsComponent,
     PromotionComponent,
+    CustomersListComponent,
+    PopularProductComponent,
+    NewestProductComponent,
+    BestSellingProductComponent,
    
     
     

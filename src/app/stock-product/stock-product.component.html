@@ -1,4 +1,5 @@
 
+<div class="global">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="main-nav">
   <div class="container-fluid">
     <a  class="navbar-brand" href="/admincontrolpage">Welcome</a>
@@ -7,7 +8,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown" >
       <ul class="navbar-nav">
-        <li class="nav-item dropdown">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="" data-toggle="modal" data-target="#AddProductModel">Add product</a>
+        </li>
+        <li class="nav-item dropdown" id="admin">
           <a  class="nav-link dropdown-toggle " href="#" id="navbarDarkDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
               <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
@@ -26,77 +30,8 @@
   </div>
 </nav>
 
-<section id="container1">
-<h1 id=login>Add Product To Stock</h1>
-<form  #addForm="ngForm" >
-    <small class="text-danger" >{{msg2}} </small>
-    <div class="mb-3" id="div1">
-      <label for="exampleInputEmail1" class="form-label">Product name</label>
-      <input type="email"  [(ngModel)]="stock.productName"  name="productName" class="form-control"   aria-describedby="emailHelp" placeholder="productName" required 
-      #productName="ngModel" [class.is-invalid]="productName.invalid && productName.touched">
-      <small class="text-danger" [class.d-none]="productName.valid || productName.untouched">Required</small>
-    </div>
-      <div class="mb-3" id="div3">
-        <label for="exampleInputEmail1" class="form-label">Initial quantity</label>
-        <input type="email" [(ngModel)]="stock.productQuantityI"  name="productQuantityI" class="form-control"   aria-describedby="emailHelp" placeholder="Initial quantity" required 
-         #productQuantityI="ngModel" [class.is-invalid]="productQuantityI.invalid && productQuantityI.touched">
-        <small class="text-danger" [class.d-none]="productQuantityI.valid || productQuantityI.untouched">Required</small>
-    </div>
-    <div class="mb-3" id="div3">
-      <label for="exampleInputEmail1" class="form-label">Current quantity</label>
-      <input type="email" [(ngModel)]="stock.productQuantity"  name="productQuantity" class="form-control"   aria-describedby="emailHelp" placeholder="Current quantity" required 
-       #productQuantity="ngModel" [class.is-invalid]="productQuantity.invalid && productQuantity.touched">
-      <small class="text-danger" [class.d-none]="productQuantity.valid || productQuantity.untouched">Required</small>
-  </div>
 
-    <div class="mb-3" id="div4">
-            <label for="exampleInputEmail1" class="form-label">Price</label>
-            <input type="email" [(ngModel)]="stock.productPrice"  name="productPrice" class="form-control"   aria-describedby="emailHelp" placeholder="productPrice" required 
-             #productPrice="ngModel" [class.is-invalid]="productPrice.invalid && productPrice.touched">
-            <small class="text-danger" [class.d-none]="productPrice.valid || productPrice.untouched">Required</small>
-    </div>
-    <div class="mb-3" id="div4">
-      <label for="exampleInputEmail1" class="form-label">Promotion price</label>
-      <input type="email" [(ngModel)]="stock.promotionPrice"  name="promotionPrice" class="form-control"   aria-describedby="emailHelp" placeholder="promotionPrice" required 
-       #promotionPrice="ngModel" [class.is-invalid]="promotionPrice.invalid && promotionPrice.touched">
-      <small class="text-danger" [class.d-none]="promotionPrice.valid || promotionPrice.untouched">Required</small>
-</div>
-    
-    <div class="mb-3" id="div4">
-      <label for="exampleInputEmail1" class="form-label">Image URL</label>
-      <input type="email" [(ngModel)]="stock.productImage" name="productImage" class="form-control"   aria-describedby="emailHelp" placeholder="productImage" required 
-       #productImage="ngModel" [class.is-invalid]="productImage.invalid && productImage.touched">
-      <small class="text-danger" [class.d-none]="productImage.valid || productImage.untouched">Required</small>
-</div>
-<div class="mb-3" id="div5">
-  <label for="exampleInputEmail1" class="form-label">Description </label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="stock.description" name="description" placeholder="Description" required 
-  #description="ngModel" [class.is-invalid]="description.invalid && description.touched"></textarea>
-  <small class="text-danger" [class.d-none]="description.valid || description.untouched">Required</small>
-</div>
-<div class="mb-3" id="div4">
-  <label for="exampleInputEmail1" class="form-label">Category</label>
-  <input type="email" [(ngModel)]="stock.category" name="category" class="form-control"   aria-describedby="emailHelp" placeholder="category" required 
-   #category="ngModel" [class.is-invalid]="category.invalid && category.touched">
-  <small class="text-danger" [class.d-none]="category.valid || category.untouched">Required</small>
-</div>
-<div class="mb-3" id="div2">
-  <label for="exampleInputEmail1" class="form-label">State</label><br>
-<select  [(ngModel)]="stock.state"  name="state" class="form-select" aria-label="Default select example" required 
- #state="ngModel" [class.is-invalid]="state.invalid && state.touched">
- <option selected></option>
-  <option >new</option>
-  <option >promotion</option>
-  <option >none</option>
-</select>
-<small class="text-danger" [class.d-none]="state.valid || state.untouched">Required</small>
-
-</div>
-
-    <button  [disabled]="addForm.invalid" (click)="addStock(addForm)" type="button" class="btn btn-success" id="but1">Add to stock</button>
-</form>
-</section><br>
-<section class="container" id="main-container">
+<div class="container" id="main-container">
   
 <h3 style="margin-left: -60px;">Stock:</h3>
 <table class="table table-dark table-striped table-hover">
@@ -217,13 +152,98 @@
           </div>
                 <div class="modal-footer">
                    <button type="button"  data-dismiss="modal" class="btn btn-secondary">Close</button>
-                   <button [disabled]="editForm.invalid" (click)="updateProduct()" class="btn btn-primary" >Save changes</button>
+                   <button [disabled]="editForm.invalid" (click)="updateProduct()" class="btn btn-primary" data-dismiss="modal">Save changes</button>
                 </div>
              </form>
           </div>
        </div>
     </div>
   </div>
+ 
+</div>
+ <!-- Add Modal -->
+ <div  class="modal fade" id="AddProductModel" tabindex="-1" role="dialog" aria-labelledby="employeeEditModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" >
+     <div class="modal-content" >
+        <div class="modal-header">
+           <h5 class="modal-title" id="updateEmployeeModalLabel">Add Product To Stock </h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body" >
+           <form #addForm="ngForm">
+                    <small class="text-danger" >{{msg2}} </small>
+                      <div class="mb-3" id="div1">
+                        <label for="exampleInputEmail1" class="form-label">Product name</label>
+                        <input type="email"  [(ngModel)]="stock.productName"  name="productName" class="form-control"   aria-describedby="emailHelp" placeholder="productName" required 
+                        #productName="ngModel" [class.is-invalid]="productName.invalid && productName.touched">
+                        <small class="text-danger" [class.d-none]="productName.valid || productName.untouched">Required</small>
+                      </div>
+                        <div class="mb-3" id="div3">
+                          <label for="exampleInputEmail1" class="form-label">Initial quantity</label>
+                          <input type="email" [(ngModel)]="stock.productQuantityI"  name="productQuantityI" class="form-control"   aria-describedby="emailHelp" placeholder="Initial quantity" required 
+                          #productQuantityI="ngModel" [class.is-invalid]="productQuantityI.invalid && productQuantityI.touched">
+                          <small class="text-danger" [class.d-none]="productQuantityI.valid || productQuantityI.untouched">Required</small>
+                      </div>
+                      <div class="mb-3" id="div3">
+                        <label for="exampleInputEmail1" class="form-label">Current quantity</label>
+                        <input type="email" [(ngModel)]="stock.productQuantity"  name="productQuantity" class="form-control"   aria-describedby="emailHelp" placeholder="Current quantity" required 
+                        #productQuantity="ngModel" [class.is-invalid]="productQuantity.invalid && productQuantity.touched">
+                        <small class="text-danger" [class.d-none]="productQuantity.valid || productQuantity.untouched">Required</small>
+                    </div>
 
-</section>
+                      <div class="mb-3" id="div4">
+                              <label for="exampleInputEmail1" class="form-label">Price</label>
+                              <input type="email" [(ngModel)]="stock.productPrice"  name="productPrice" class="form-control"   aria-describedby="emailHelp" placeholder="productPrice" required 
+                              #productPrice="ngModel" [class.is-invalid]="productPrice.invalid && productPrice.touched">
+                              <small class="text-danger" [class.d-none]="productPrice.valid || productPrice.untouched">Required</small>
+                      </div>
+                      <div class="mb-3" id="div4">
+                        <label for="exampleInputEmail1" class="form-label">Promotion price</label>
+                        <input type="email" [(ngModel)]="stock.promotionPrice"  name="promotionPrice" class="form-control"   aria-describedby="emailHelp" placeholder="promotionPrice" required 
+                        #promotionPrice="ngModel" [class.is-invalid]="promotionPrice.invalid && promotionPrice.touched">
+                        <small class="text-danger" [class.d-none]="promotionPrice.valid || promotionPrice.untouched">Required</small>
+                  </div>
+                      
+                      <div class="mb-3" id="div4">
+                        <label for="exampleInputEmail1" class="form-label">Image URL</label>
+                        <input type="email" [(ngModel)]="stock.productImage" name="productImage" class="form-control"   aria-describedby="emailHelp" placeholder="productImage" required 
+                        #productImage="ngModel" [class.is-invalid]="productImage.invalid && productImage.touched">
+                        <small class="text-danger" [class.d-none]="productImage.valid || productImage.untouched">Required</small>
+                  </div>
+                  <div class="mb-3" id="div5">
+                    <label for="exampleInputEmail1" class="form-label">Description </label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="stock.description" name="description" placeholder="Description" required 
+                    #description="ngModel" [class.is-invalid]="description.invalid && description.touched"></textarea>
+                    <small class="text-danger" [class.d-none]="description.valid || description.untouched">Required</small>
+                  </div>
+                  <div class="mb-3" id="div4">
+                    <label for="exampleInputEmail1" class="form-label">Category</label>
+                    <input type="email" [(ngModel)]="stock.category" name="category" class="form-control"   aria-describedby="emailHelp" placeholder="category" required 
+                    #category="ngModel" [class.is-invalid]="category.invalid && category.touched">
+                    <small class="text-danger" [class.d-none]="category.valid || category.untouched">Required</small>
+                  </div>
+                  <div class="mb-3" id="div2">
+                    <label for="exampleInputEmail1" class="form-label">State</label><br>
+                  <select  [(ngModel)]="stock.state"  name="state" class="form-select" aria-label="Default select example" required 
+                  #state="ngModel" [class.is-invalid]="state.invalid && state.touched">
+                  <option selected></option>
+                    <option >new</option>
+                    <option >promotion</option>
+                    <option >none</option>
+                  </select>
+                  <small class="text-danger" [class.d-none]="state.valid || state.untouched">Required</small>
+
+                  </div>
+              <div class="modal-footer">
+                 <button type="button"  data-dismiss="modal" class="btn btn-secondary">Close</button>
+                 <button [disabled]="addForm.invalid" (click)="addStock(addForm)" class="btn btn-primary" >Add to stock</button>
+              </div>
+           </form>
+        </div>
+     </div>
+  </div>
+</div>
+</div>
 

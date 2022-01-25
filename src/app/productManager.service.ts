@@ -105,11 +105,25 @@ export class ProductManagerService{
     return this.http.get<Blob>(`${this.apiServerUrl}/productmanager/pdfStock`,{ headers : headers,responseType : 
         'blob' as 'json'})
     }
+    public customersPdf():Observable<Blob>{
+        var authorization = 'Bearer '+sessionStorage.getItem("access_token");
+
+         const headers = new HttpHeaders({ 'Content-Type': 'application/json',
+         "Authorization": authorization, responseType : 'blob'});
+    return this.http.get<Blob>(`${this.apiServerUrl}/productmanager/pdfCustomers`,{ headers : headers,responseType : 
+        'blob' as 'json'})
+    }
     public getStockByCategory(category:string):Observable<Stock[]>{
         return this.http.get<Stock[]>(`${this.apiServerUrl}/productmanager/getstock-category/${category}`)
     }
     public getStockByState(state:string):Observable<Stock[]>{
         return this.http.get<Stock[]>(`${this.apiServerUrl}/productmanager/getstock-state/${state}`)
+    }
+    public getCustomers():Observable<Customer[]>{
+        return this.http.get<Customer[]>(`${this.apiServerUrl}/productmanager/listCustomers`)
+    }
+    public getCustomerLogins():Observable<Customer[]>{
+        return this.http.get<Customer[]>(`${this.apiServerUrl}/productmanager/listCustomerLogins`)
     }
     
 

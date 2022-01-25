@@ -26,15 +26,18 @@
     </div>
     </nav>
     <div class="container bootstrap snippets bootdey" style="margin-top: 100px;">
-        <div class="row" >
-            <div class="col-md-9" >
-                <div class="col-md-6 col-sm-6" *ngFor="let prom of promotion">
+        <div class="row flow-offset-1" >
+            <div class="col-md-4" *ngFor="let prom of promotion">
+                
                     <div class="store-item" >
                         
-                        <div class="store-item-image">
+                        <div class="store-item-image" style="background-color: white;">
                             <a href="/customerLogin">
-                                <img src="{{prom.productImage}}" alt="" class="img-responsive" style="width: 500px; height: 200px;">
+                                <img src="{{prom.productImage}}" alt="" class="img-responsive" style="width: 400px; height: 200px;">
                             </a>
+                            <span class="tag2 hot" id="hot" style="font-size: small;"><b>
+                              -{{prom.x}}% </b>                           
+                          </span> 
                         </div>
                         <div class="store-item-info clearfix">
                             <span class="store-item-price pull-right" style="color: darkgrey;"><del>{{prom.productPrice}}$</del></span><br>             
@@ -44,7 +47,7 @@
                             <a href="/customerLogin" class="text-muted"> Add to cart</a></small>
                         </div>
                     </div>
-                </div>     
+                    
           </div>
       </div>
     </div>

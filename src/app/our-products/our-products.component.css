@@ -127,7 +127,9 @@
     min-height: 48px;
   }
   .ibox-content {
-    background-color: #ffffff;
+    background-color:  #e8edf7da ;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     color: inherit;
     padding: 15px 20px 20px 20px;
     border-color: #e7eaec;

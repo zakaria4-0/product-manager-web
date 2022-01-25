@@ -1,10 +1,17 @@
 
-				                
+main#global{
+    
+    height:674px; 
+    background-color: #ffffff;
+   
+}				                
 
 div#main-div{
-    margin-top: 40px;
-    font-size: medium;
+    
+    font-size: large;
+   
 }
+
 ul#main-ul{
     height: 500px;
     margin-top: auto;
