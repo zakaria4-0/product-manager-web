@@ -316,16 +316,8 @@ body{
         position: relative
     }
 }
-nav#secondnav{
-    margin-top: 70px;
-    background-color:  #4e75bd9c ;
-      backdrop-filter: blur(40px);
-      -webkit-backdrop-filter: blur(40px);
-  }
-  div#navbarSupportedContent{
-    margin-right: 0px;
-    margin-left: 1200px;
-  }
+
+
   
     a.canvas:link {
       text-decoration: none;
@@ -355,4 +347,7 @@ nav#secondnav{
     button#closebt{
       background-color: blanchedalmond;
       margin-left: 350px;
+    }
+    div.container{
+        margin-top: 100px;
     }

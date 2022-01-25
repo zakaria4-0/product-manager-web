@@ -79,3 +79,7 @@ div#offcanvasExample{
     text-decoration: none;
     color: blue;
   }
+  button#closebt{
+    background-color: blanchedalmond;
+    margin-left: 350px;
+  }

@@ -50,11 +50,17 @@
         <div class="ibox-content product-box">
             <div class="product-imitation">
                 <img src="{{product.productImage}}" style="width: 200px; height: 300px;" alt="">
+                <span class="tag2 hot" id="hot" style="font-size: small;" *ngIf="product.state=='promotion'">
+                  <del>{{product.productPrice}}$</del>                            
+              </span> 
             </div>
             <div class="product-desc">
-                <span class="product-price">
-                    {{product.productPrice}}$
-                </span>
+                <span class="product-price" *ngIf="product.state=='promotion';else other_content">
+                 {{product.promotionPrice}}$
+              </span>
+              <ng-template #other_content><span class="product-price" >
+                {{product.productPrice}}$
+            </span></ng-template>
                 <small class="text-muted">Available in stock: {{product.productQuantity}}</small><br>
                 <strong> {{product.productName}}</strong>
 

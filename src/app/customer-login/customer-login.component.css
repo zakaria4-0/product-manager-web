@@ -15,3 +15,25 @@ form {
 h1#login{
     text-align: center;
 }
+a#login:link {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+  }
+  
+  /* visited link */
+  a#login:visited {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+  }
+  
+  /* mouse over link */
+  a#login:hover {
+    text-decoration: none;
+    color: rgb(221, 27, 27);
+  }
+  
+  /* selected link */
+  a#login:active {
+    text-decoration: none;
+    color: blue;
+  }
