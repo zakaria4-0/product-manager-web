@@ -13,7 +13,7 @@ export class StockProductComponent implements OnInit {
   public stock2:Stock;
   public products:Stock[];
   public deletePro:Stock;
-  public updatePro:Stock=new Stock();
+  public updatePro:Stock;
   public msg='';
   public msg2='';
 
@@ -40,30 +40,29 @@ export class StockProductComponent implements OnInit {
     this.service.getStock().subscribe(
       (response:Stock[]) =>{
         this.products=response;
+        
         console.log(this.products)
       },
       error =>{
-        console.log("exception occured")
+        console.log("exception occured");
       }
     )
   }
   public onSelectProduct(product:Stock):void{
     this.updatePro=product;
-
   }
 
-  public updateProduct():void{
-    this.service.updateProduct(this.updatePro).subscribe(
+  public updateProduct(product:Stock):void{
+    this.service.updateProduct(product).subscribe(
       (Response:Stock) =>{
         console.log(Response);
         this.getStock();
-        
       },
       error =>{
-        console.log("exception occured")
+        console.log("exception occured");
         this.msg="error occured";
       }
-    )
+    );
 
   }
 
@@ -76,7 +75,7 @@ export class StockProductComponent implements OnInit {
       error=>{
         console.log("failed to delete product")
       }
-    )
+    );
   }
 
   public onOpenModal(product:Stock): void {

@@ -103,44 +103,45 @@
              <form #editForm="ngForm">
               <small class="text-danger" >{{msg}} </small>
               
+              
                 <div class="form-group">
                    <label for="name">Name</label>
-                   <input type="text" ngModel="{{updatePro?.productName}}" [(ngModel)]="updatePro.productName" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
+                   <input type="text"  ngModel="{{updatePro?.productName}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
                 </div>
                 
                 <div class="form-group">
                    <label for="email">Initial quantity</label>
-                   <input type="email" ngModel="{{updatePro?.productQuantityI}}" [(ngModel)]="updatePro.productQuantityI" name="productQuantityI" class="form-control" id="email" placeholder="Initial quantity">
+                   <input type="email"  ngModel="{{updatePro?.productQuantityI}}" name="productQuantityI" class="form-control" id="Initial-quantity" placeholder="Initial quantity">
                 </div>
                 <div class="form-group">
                    <label for="phone">Current quantity</label>
-                   <input type="text" ngModel="{{updatePro?.productQuantity}}" [(ngModel)]="updatePro.productQuantity" name="productQuantity" class="form-control" id="jobTitle" placeholder="Current quantity">
+                   <input type="text"  ngModel="{{updatePro?.productQuantity}}" name="productQuantity" class="form-control" id="Current-quantity" placeholder="Current quantity">
                 </div>
                 <div class="form-group">
                    <label for="phone">Price</label>
-                   <input type="text" ngModel="{{updatePro?.productPrice}}" [(ngModel)]="updatePro.productPrice" name="productPrice" class="form-control" id="phone" name="phone" placeholder="Price">
+                   <input type="text"  ngModel="{{updatePro?.productPrice}}" name="productPrice" class="form-control" id="Price" name="Price" placeholder="Price">
                 </div>
                 <div class="form-group">
                    <label for="phone">Promotion price</label>
-                   <input type="text" ngModel="{{updatePro?.promotionPrice}}" [(ngModel)]="updatePro.promotionPrice" name="promotionPrice" class="form-control" id="imageUrl" placeholder="Promotion price">
+                   <input type="text"  ngModel="{{updatePro?.promotionPrice}}" name="promotionPrice" class="form-control" id="Promotion price" placeholder="Promotion price">
                 </div>
                 <div class="form-group">
                   <label for="phone">Image URL</label>
-                  <input type="text" ngModel="{{updatePro?.productImage}}" [(ngModel)]="updatePro.productImage" name="productImage" class="form-control" id="imageUrl" placeholder="Image URL">
+                  <input type="text"  ngModel="{{updatePro?.productImage}}" name="productImage" class="form-control" id="imageUrl" placeholder="Image URL">
                </div>
                <div class="form-group">
                 <label for="phone">Description</label>
-                <textarea ngModel="{{updatePro?.description}}" [(ngModel)]="updatePro.description" class="form-control" id="exampleFormControlTextarea1" rows="3"  name="description" placeholder="Description" required 
+                <textarea  ngModel="{{updatePro?.description}}" class="form-control" id="exampleFormControlTextarea1" rows="3"  name="description" placeholder="Description" required 
                  #description="ngModel" [class.is-invalid]="description.invalid && description.touched"></textarea>
                  <small class="text-danger" [class.d-none]="description.valid || description.untouched">Required</small>
              </div>
              <div class="form-group">
               <label for="phone">category</label>
-              <input type="text" ngModel="{{updatePro?.category}}" [(ngModel)]="updatePro.category" name="category" class="form-control" id="imageUrl" placeholder="category">
+              <input type="text"  ngModel="{{updatePro?.category}}" name="category" class="form-control" id="category" placeholder="category">
            </div>
-           <div class="form-group" >
+           <div class="form-group">
             <label for="exampleInputEmail1" class="form-label">State</label><br>
-          <select  ngModel="{{updatePro?.state}}" [(ngModel)]="updatePro.state" name="state" class="form-select" aria-label="Default select example" required 
+          <select   ngModel="{{updatePro?.state}}" name="state" class="form-select" aria-label="Default select example" required 
            #state="ngModel" [class.is-invalid]="state.invalid && state.touched">
            <option selected></option>
             <option >new</option>
@@ -150,9 +151,10 @@
           <small class="text-danger" [class.d-none]="state.valid || state.untouched">Required</small>
           
           </div>
+          <input type="hidden" ngModel="{{updatePro?.id}}" name="id" class="form-control" id="id" placeholder="Email">
                 <div class="modal-footer">
                    <button type="button"  data-dismiss="modal" class="btn btn-secondary">Close</button>
-                   <button [disabled]="editForm.invalid" (click)="updateProduct()" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                   <button [disabled]="editForm.invalid" (click)="updateProduct(editForm.value)" class="btn btn-primary" data-dismiss="modal">Save changes</button>
                 </div>
              </form>
           </div>
