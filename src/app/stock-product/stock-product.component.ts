@@ -13,7 +13,8 @@ export class StockProductComponent implements OnInit {
   public stock2:Stock;
   public products:Stock[];
   public deletePro:Stock;
-  public updatePro:Stock;
+  public updatePro:Stock=new Stock();
+  public stock3:Stock=new Stock();
   public msg='';
   public msg2='';
 

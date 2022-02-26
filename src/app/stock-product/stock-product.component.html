@@ -103,10 +103,10 @@
              <form #editForm="ngForm">
               <small class="text-danger" >{{msg}} </small>
               
-              
+              <input type="hidden" ngModel="{{updatePro?.id}}" name="id" class="form-control" id="id" placeholder="Email">
                 <div class="form-group">
                    <label for="name">Name</label>
-                   <input type="text"  ngModel="{{updatePro?.productName}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
+                   <input type="text"   ngModel="{{updatePro?.productName}}" name="productName" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
                 </div>
                 
                 <div class="form-group">
@@ -119,7 +119,7 @@
                 </div>
                 <div class="form-group">
                    <label for="phone">Price</label>
-                   <input type="text"  ngModel="{{updatePro?.productPrice}}" name="productPrice" class="form-control" id="Price" name="Price" placeholder="Price">
+                   <input type="text" ngModel="{{updatePro?.productPrice}}" name="productPrice" class="form-control" id="Price"  placeholder="Price">
                 </div>
                 <div class="form-group">
                    <label for="phone">Promotion price</label>
@@ -132,8 +132,8 @@
                <div class="form-group">
                 <label for="phone">Description</label>
                 <textarea  ngModel="{{updatePro?.description}}" class="form-control" id="exampleFormControlTextarea1" rows="3"  name="description" placeholder="Description" required 
-                 #description="ngModel" [class.is-invalid]="description.invalid && description.touched"></textarea>
-                 <small class="text-danger" [class.d-none]="description.valid || description.untouched">Required</small>
+                ></textarea>
+                 
              </div>
              <div class="form-group">
               <label for="phone">category</label>
@@ -141,8 +141,8 @@
            </div>
            <div class="form-group">
             <label for="exampleInputEmail1" class="form-label">State</label><br>
-          <select   ngModel="{{updatePro?.state}}" name="state" class="form-select" aria-label="Default select example" required 
-           #state="ngModel" [class.is-invalid]="state.invalid && state.touched">
+          <select  ngModel="{{updatePro?.state}}" name="state" class="form-select" aria-label="Default select example" required 
+           >
            <option selected></option>
             <option >new</option>
             <option >promotion</option>
@@ -151,7 +151,7 @@
           <small class="text-danger" [class.d-none]="state.valid || state.untouched">Required</small>
           
           </div>
-          <input type="hidden" ngModel="{{updatePro?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+          
                 <div class="modal-footer">
                    <button type="button"  data-dismiss="modal" class="btn btn-secondary">Close</button>
                    <button [disabled]="editForm.invalid" (click)="updateProduct(editForm.value)" class="btn btn-primary" data-dismiss="modal">Save changes</button>
