@@ -1,3 +1,4 @@
+import { Time } from "@angular/common";
 import { Product } from "./product";
 
 export class Reservation{
@@ -8,5 +9,6 @@ export class Reservation{
     address:string;
     region:string;
     products:Product[];
-    date:Date;
+    date:string;
+    time:Time;
 }

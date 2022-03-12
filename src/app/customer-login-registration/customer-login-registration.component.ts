@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CustomerLogin } from '../customerLogin';
@@ -24,9 +25,9 @@ export class CustomerLoginRegistrationComponent implements OnInit {
         console.log("response received");
         this.router.navigate(["/customerLogin"])
       },
-      error=>{
+      (error:HttpErrorResponse)=>{
         console.log("exception occured");
-        this.msg="User with this email is already exists";
+        this.msg=error.error.message;
       }
     )
   }

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Admin } from '../admin';
@@ -18,13 +19,14 @@ export class AdminLoginComponent implements OnInit {
 
   public loginAdmin(){
     this.servcie.loginAdmin(this.adminLog).subscribe(
-      data=>{
+      (response:Admin)=>{
         console.log("response received");
+        sessionStorage.setItem('loggedUser',this.adminLog.name);
         this.router.navigate(['/admincontrolpage'])
       },
-      error=>{
+      (error:HttpErrorResponse)=>{
         console.log("exception occured");
-        this.msg="please enter a valid name and password";
+        this.msg=error.error.message;
       }
     )
   }

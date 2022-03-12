@@ -9,11 +9,13 @@ import { ProductManagerService } from '../productManager.service';
 })
 export class CustomersListComponent implements OnInit {
   public customers:Customer[]=[];
+  userName='';
 
   constructor(private service:ProductManagerService) { }
 
   ngOnInit(): void {
     this.getCustomers();
+    this.userName=sessionStorage.getItem('loggedUser');
   }
   public getCustomers(){
     this.service.getCustomers().subscribe(

@@ -8,11 +8,14 @@ import { CustomerLoginRegistrationComponent } from './customer-login-registratio
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { CustomerRegistrationComponent } from './customer-registration/customer-registration.component';
 import { CustomersListComponent } from './customers-list/customers-list.component';
+import { KPIComponent } from './kpi/kpi.component';
+import { ListReclamComponent } from './list-reclam/list-reclam.component';
 import { MainComponent } from './main/main.component';
 import { NewestProductComponent } from './newest-product/newest-product.component';
 import { OurProductsComponent } from './our-products/our-products.component';
 import { PopularProductComponent } from './popular-product/popular-product.component';
 import { PromotionComponent } from './promotion/promotion.component';
+import { ReclamationComponent } from './reclamation/reclamation.component';
 import { ReservCustomerLComponent } from './reserv-customer-l/reserv-customer-l.component';
 import { ReservCustomerComponent } from './reserv-customer/reserv-customer.component';
 import { StockProductComponent } from './stock-product/stock-product.component';
@@ -36,7 +39,10 @@ const routes: Routes = [
   {path:"customersList",component:CustomersListComponent},
   {path:"popularProducts",component:PopularProductComponent},
   {path:"bestselling",component:BestSellingProductComponent},
-  {path:"newestProducts",component:NewestProductComponent}
+  {path:"newestProducts",component:NewestProductComponent},
+  {path:"KPI",component:KPIComponent},
+  {path:"reclamation",component:ReclamationComponent},
+  {path:"reclamations",component:ListReclamComponent}
   
 ];
 

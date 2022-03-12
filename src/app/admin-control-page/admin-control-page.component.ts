@@ -10,12 +10,12 @@ import { Stock } from '../stock';
 })
 export class AdminControlPageComponent implements OnInit {
   public products:Stock[];
-
+  userName='';
   constructor(private router:Router, private service:ProductManagerService) { }
 
   ngOnInit(): void {
     this.getStock();
-    
+    this.userName=sessionStorage.getItem('loggedUser');
     
   }
   

@@ -8,8 +8,10 @@ import { Admin } from "./admin";
 import { Command } from "./command";
 import { Customer } from "./customer";
 import { CustomerLogin } from "./customerLogin";
+import { Indicator } from "./indicator";
 import { OrderResponse } from "./orderResponse";
 import { Product } from "./product";
+import { Reclamation } from "./reclamation";
 import { Reservation } from "./reservation";
 import { Stock } from "./stock";
 
@@ -62,8 +64,8 @@ export class ProductManagerService{
         return this.http.post<Command[]>(`${this.apiServerUrl}/productmanager/commandLogin`,command)
 
     }
-    public getCommand(cname:string):Observable<Product[]>{
-        return this.http.get<Product[]>(`${this.apiServerUrl}/productmanager/getCommand/${cname}`)
+    public getCommand(cname:string):Observable<Command[]>{
+        return this.http.get<Command[]>(`${this.apiServerUrl}/productmanager/getCommand/${cname}`)
     }
 
     public deleteCommand():Observable<void>{
@@ -113,6 +115,14 @@ export class ProductManagerService{
     return this.http.get<Blob>(`${this.apiServerUrl}/productmanager/pdfCustomers`,{ headers : headers,responseType : 
         'blob' as 'json'})
     }
+    public reclamationPdf():Observable<Blob>{
+        var authorization = 'Bearer '+sessionStorage.getItem("access_token");
+
+         const headers = new HttpHeaders({ 'Content-Type': 'application/json',
+         "Authorization": authorization, responseType : 'blob'});
+    return this.http.get<Blob>(`${this.apiServerUrl}/productmanager/pdfReclamation`,{ headers : headers,responseType : 
+        'blob' as 'json'})
+    }
     public getStockByCategory(category:string):Observable<Stock[]>{
         return this.http.get<Stock[]>(`${this.apiServerUrl}/productmanager/getstock-category/${category}`)
     }
@@ -124,6 +134,24 @@ export class ProductManagerService{
     }
     public getCustomerLogins():Observable<Customer[]>{
         return this.http.get<Customer[]>(`${this.apiServerUrl}/productmanager/listCustomerLogins`)
+    }
+    public deleteCom(id:number){
+        return this.http.delete(`${this.apiServerUrl}/productmanager/deleteCom/${id}`)
+    }
+    public kpis(date:string):Observable<Indicator>{
+        return this.http.get<Indicator>(`${this.apiServerUrl}/productmanager/kpi/${date}`)
+    }
+    public chart(date:string):Observable<Reservation[]>{
+        return this.http.get<Reservation[]>(`${this.apiServerUrl}/productmanager/reservations/${date}`)
+    }
+    public addReclamation(reclamation:Reclamation):Observable<Reclamation>{
+        return this.http.post<Reclamation>(`${this.apiServerUrl}/productmanager/addReclamation`,reclamation);
+    }
+    public reclamations():Observable<Reclamation[]>{
+        return this.http.get<Reclamation[]>(`${this.apiServerUrl}/productmanager/reclamations`);
+    }
+    public chart2(date:string):Observable<Reclamation[]>{
+        return this.http.get<Reclamation[]>(`${this.apiServerUrl}/productmanager/reclamation/${date}`)
     }
     
 

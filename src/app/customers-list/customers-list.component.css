@@ -3,7 +3,7 @@ header{
     height:730px;
 }
 table{
-    margin-top: 130px;
+    margin-top: 70px;
     width: 1230px;
     margin-left: 140px;
     border-radius: 5px;
@@ -12,9 +12,9 @@ table{
 }
 input#searchName{
     position: absolute;
-    top: 135px;
+    top: 90px;
     left: 143px;
 }
 div#navbarNavDarkDropdown{
-    margin-left: 1200px;
+    margin-left: 1000px;
 }        

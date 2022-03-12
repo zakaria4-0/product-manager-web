@@ -27,6 +27,7 @@
       <a class="nav-link active" aria-current="page" href="/main">Home</a>
       <a class="nav-link active" aria-current="page" href="/ourProducts">Products</a>
       <a class="nav-link active" aria-current="page" href="/customerRegistration">Shop</a>
+      <a class="nav-link active" aria-current="page" href="/reclamation">Reclamation</a>
       <a class="nav-link active" aria-current="page" href="/customerLogin">Account</a>
       <a class="nav-link active" aria-current="page" href="/adminLogin">Admin account</a>
   </div>
@@ -36,10 +37,10 @@
     <small class="text-danger" >{{msg}} </small>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Name</label>
-        <input type="email"  [(ngModel)]="reservation.name" [(ngModel)]="command.cname" name="name" class="form-control"   aria-describedby="emailHelp" placeholder="Name" required 
+        <input type="email"  [(ngModel)]="reservation.name"  name="name" class="form-control"   aria-describedby="emailHelp" placeholder="Name" required 
         #name="ngModel" [class.is-invalid]="name.invalid && name.touched">
-        <small class="text-danger" [class.d-none]="name.valid || name.untouched">name is required</small>
-        
+        <small class="text-danger" [class.d-none]="name.valid || name.untouched">name is required</small>&nbsp;&nbsp;
+        <small class="text-danger" [class.d-none]="name.value == customer">please give the correct name "{{customer}}"</small>
       </div>
 
       <div class="mb-3">
@@ -106,6 +107,7 @@
           <th scope="col">ProductName</th>
           <th scope="col">Quantity</th>
           <th scope="col">Price</th>
+          <th scope="col">delete</th>
         </tr>
       </thead>
       <tbody>
@@ -114,11 +116,18 @@
           <td>{{com.name}}</td>
           <td>{{com.qte}}</td>
           <td>{{com.price}}$</td>
+          <td><button (click)="deleteCom(com.id)" type="button" class="btn btn-danger"  >delete</button></td>
         </tr>
         
       </tbody>
+      <tfoot><tr>
+        <th>Total</th>
+        <td></td>
+        <td>{{total}} $</td>
+        <td></td>
+      </tr></tfoot>
     </table>
-      <button  [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Purchase</button><br>
+      <button  [disabled]="addForm.invalid || name.value != customer" type="submit" class="btn btn-primary">Purchase</button><br>
       <small style="color: green;" >{{msg1}} </small>
 </form>
   

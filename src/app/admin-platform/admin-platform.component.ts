@@ -9,17 +9,20 @@ import { ProductManagerService } from '../productManager.service';
 })
 export class AdminPlatformComponent implements OnInit {
   public customerinfo:OrderResponse[];
+  userName='';
 
   constructor(private service:ProductManagerService) { }
 
   ngOnInit(): void {
     this.getInfo();
+    this.userName=sessionStorage.getItem('loggedUser');
   }
 
   public getInfo(){
     this.service.getInfo().subscribe(
       (response:OrderResponse[])=>{
         this.customerinfo=response;
+        
         console.log("response received");
       },
       error=>{
@@ -34,7 +37,7 @@ export class AdminPlatformComponent implements OnInit {
     const results:OrderResponse[]=[];
     for(const customer of this.customerinfo){
       if(customer.name.toLowerCase().indexOf(key.toLowerCase()) !== -1 
-      || customer.date.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      || customer.date==key
       || customer.address.toLowerCase().indexOf(key.toLowerCase()) !== -1
       || customer.region.toLowerCase().indexOf(key.toLowerCase()) !== -1
       || customer.ville.toLowerCase().indexOf(key.toLowerCase()) !== -1

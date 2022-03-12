@@ -22,6 +22,10 @@ import { CustomersListComponent } from './customers-list/customers-list.componen
 import { PopularProductComponent } from './popular-product/popular-product.component';
 import { NewestProductComponent } from './newest-product/newest-product.component';
 import { BestSellingProductComponent } from './best-selling-product/best-selling-product.component';
+import { ProductManagerService } from './productManager.service';
+import { KPIComponent } from './kpi/kpi.component';
+import { ReclamationComponent } from './reclamation/reclamation.component';
+import { ListReclamComponent } from './list-reclam/list-reclam.component';
 
 
 
@@ -45,6 +49,9 @@ import { BestSellingProductComponent } from './best-selling-product/best-selling
     PopularProductComponent,
     NewestProductComponent,
     BestSellingProductComponent,
+    KPIComponent,
+    ReclamationComponent,
+    ListReclamComponent,
    
     
     
@@ -59,7 +66,7 @@ import { BestSellingProductComponent } from './best-selling-product/best-selling
     
   ],
   
-  providers: [],
+  providers: [ProductManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

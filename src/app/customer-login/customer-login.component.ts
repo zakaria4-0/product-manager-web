@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CustomerLogin } from '../customerLogin';
@@ -21,11 +22,12 @@ export class CustomerLoginComponent implements OnInit {
     this.service.loginCustomer(this.customerLog).subscribe(
       data=>{
         console.log("response received");
+        sessionStorage.setItem('custName',this.customerLog.name);
         this.router.navigate(["/reservCustomerL"]);
       },
-      error=>{
+      (error:HttpErrorResponse)=>{
         console.log("exception occured");
-        this.msg="please enter a valid name and password";
+        this.msg=error.error.message;
 
       }
     )

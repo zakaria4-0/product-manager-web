@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 import { ProductManagerService } from '../productManager.service';
@@ -17,11 +18,13 @@ export class StockProductComponent implements OnInit {
   public stock3:Stock=new Stock();
   public msg='';
   public msg2='';
+  userName='';
 
   constructor(private service:ProductManagerService) { }
 
   ngOnInit(): void {
-    this.getStock()
+    this.getStock();
+    this.userName=sessionStorage.getItem('loggedUser');
   }
   public addStock(form:NgForm){
     this.service.postToStock(this.stock).subscribe(
@@ -30,9 +33,9 @@ export class StockProductComponent implements OnInit {
         this.getStock();
         form.reset();
       },
-      error =>{
+      (error:HttpErrorResponse) =>{
         console.log("exception occured")
-        this.msg2="Product already exists"
+        this.msg2=error.error.message;
       }
     )
   }
