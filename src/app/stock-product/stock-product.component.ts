@@ -19,6 +19,8 @@ export class StockProductComponent implements OnInit {
   public msg='';
   public msg2='';
   userName='';
+  public total1:number;
+  public total2: number;
 
   constructor(private service:ProductManagerService) { }
 
@@ -44,6 +46,12 @@ export class StockProductComponent implements OnInit {
     this.service.getStock().subscribe(
       (response:Stock[]) =>{
         this.products=response;
+        this.total1=0;
+        this.total2=0
+        for(let pro of this.products){
+          this.total1 +=pro.productQuantityI;
+          this.total2 +=pro.productQuantity;
+        }
         
         console.log(this.products)
       },
@@ -115,6 +123,26 @@ export class StockProductComponent implements OnInit {
         console.log("pdf failed to generate")
       }
     )
+  }
+  public searchProduct(key: any):void{
+    const results:Stock[]=[];
+    for(const prod of this.products){
+      if(prod.productName.toLowerCase().indexOf(key.toLowerCase()) !== -1 
+      || prod.productPrice==key
+      || prod.id==key
+      || prod.category.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      || prod.state.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      || prod.productQuantityI==key
+      
+      ){
+        results.push(prod);
+
+      }
+    }
+    this.products=results;
+    if(results.length==0 || !key){
+      this.getStock();
+    }
   }
   
 

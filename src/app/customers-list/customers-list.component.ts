@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer } from '../customer';
+import { CustomerLogin } from '../customerLogin';
 import { ProductManagerService } from '../productManager.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { ProductManagerService } from '../productManager.service';
   styleUrls: ['./customers-list.component.css']
 })
 export class CustomersListComponent implements OnInit {
-  public customers:Customer[]=[];
+  public customers:CustomerLogin[]=[];
   userName='';
 
   constructor(private service:ProductManagerService) { }
@@ -18,19 +18,8 @@ export class CustomersListComponent implements OnInit {
     this.userName=sessionStorage.getItem('loggedUser');
   }
   public getCustomers(){
-    this.service.getCustomers().subscribe(
-      (response:Customer[])=>{
-        for(const customer of response){
-        this.customers.push(customer);
-        }
-        console.log(this.customers);
-      },
-      error=>{
-        console.log("exception occured");
-      }
-    );
     this.service.getCustomerLogins().subscribe(
-      (Response:Customer[])=>{
+      (Response:CustomerLogin[])=>{
         for(const customer of Response){
           this.customers.push(customer);
           }
@@ -42,7 +31,7 @@ export class CustomersListComponent implements OnInit {
     )
   }
   public searchEmployees(key: any):void{
-    const results:Customer[]=[];
+    const results:CustomerLogin[]=[];
     for(const customer of this.customers){
       if(customer.name.toLowerCase().indexOf(key.toLowerCase()) !== -1 
       || customer.email.toLowerCase().indexOf(key.toLowerCase()) !== -1

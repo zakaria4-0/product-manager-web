@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 import { Admin } from "./admin";
 import { Command } from "./command";
-import { Customer } from "./customer";
+
 import { CustomerLogin } from "./customerLogin";
 import { Indicator } from "./indicator";
 import { OrderResponse } from "./orderResponse";
@@ -38,10 +38,6 @@ export class ProductManagerService{
 
     }
 
-    public registrationCustomer(customer:Customer):Observable<Customer>{
-        return this.http.post<Customer>(`${this.apiServerUrl}/productmanager/registercustomer`,customer)
-
-    }
 
     public customerPlaceOrder(reservation:Reservation):Observable<Reservation>{
         return this.http.post<Reservation>(`${this.apiServerUrl}/productmanager/customerplaceorder`,reservation)
@@ -129,11 +125,9 @@ export class ProductManagerService{
     public getStockByState(state:string):Observable<Stock[]>{
         return this.http.get<Stock[]>(`${this.apiServerUrl}/productmanager/getstock-state/${state}`)
     }
-    public getCustomers():Observable<Customer[]>{
-        return this.http.get<Customer[]>(`${this.apiServerUrl}/productmanager/listCustomers`)
-    }
-    public getCustomerLogins():Observable<Customer[]>{
-        return this.http.get<Customer[]>(`${this.apiServerUrl}/productmanager/listCustomerLogins`)
+    
+    public getCustomerLogins():Observable<CustomerLogin[]>{
+        return this.http.get<CustomerLogin[]>(`${this.apiServerUrl}/productmanager/listCustomerLogins`)
     }
     public deleteCom(id:number){
         return this.http.delete(`${this.apiServerUrl}/productmanager/deleteCom/${id}`)

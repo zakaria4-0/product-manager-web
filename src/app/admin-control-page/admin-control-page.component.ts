@@ -60,7 +60,16 @@ export class AdminControlPageComponent implements OnInit {
       progress.append(prog_bar);
       const span=document.createElement('span')
       span.innerHTML= a.toFixed(2) +"%";
-      prog_bar.append(span);
+      if (a!=0) {
+        prog_bar.append(span);
+      }
+      if (a==0) {
+        const span1=document.createElement('span');
+        span1.innerHTML='sold out'
+        span1.style.color='red'
+        span1.style.marginLeft='50%'
+        progress.append(span1);
+      }
       container.append(div)
 
       

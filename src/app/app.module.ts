@@ -7,9 +7,7 @@ import { AppComponent } from './app.component';
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { CustomerLoginRegistrationComponent } from './customer-login-registration/customer-login-registration.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
-import { CustomerRegistrationComponent } from './customer-registration/customer-registration.component';
 import { FormsModule } from '@angular/forms';
-import { ReservCustomerComponent } from './reserv-customer/reserv-customer.component';
 import { ReservCustomerLComponent } from './reserv-customer-l/reserv-customer-l.component';
 import { MainComponent } from './main/main.component';
 import { NO_ERRORS_SCHEMA } from '@angular/compiler';
@@ -36,8 +34,6 @@ import { ListReclamComponent } from './list-reclam/list-reclam.component';
     CustomerLoginComponent,
     CustomerLoginRegistrationComponent,
     AdminLoginComponent,
-    CustomerRegistrationComponent,
-    ReservCustomerComponent,
     ReservCustomerLComponent,
     MainComponent,
     AdminPlatformComponent,

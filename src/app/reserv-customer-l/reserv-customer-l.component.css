@@ -1,14 +1,13 @@
 form#main-form {
-    width: 800px;
-    min-height: 100px;
+    width: 900px;
+    min-height: 200px;
     height: auto;
-    top: 600px;
+    margin-top: 1%;
+    margin-left: 22%;
     border-radius: 5px;
-    margin: 2% auto;
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
+    font-family:   'Arial Narrow Bold', sans-serif;
     padding: 2%;
-    background-color:  #4e75bd9c ;
+    background-color:  #adc3ec ;
 }
 h1#login{
     text-align: center;
