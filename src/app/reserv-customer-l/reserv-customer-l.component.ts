@@ -36,10 +36,10 @@ export class ReservCustomerLComponent implements OnInit {
     this.service.customerLoginPlaceOrder(this.reservation).subscribe(
       data=>{
         console.log("response received")
+        this.msg="";
         this.msg1="your command has been sent successfully"
         this.getCommand(this.command.cname);
         form.reset();
-        this.msg="";
       },
       (error:HttpErrorResponse)=>{
         console.log("exception occured")

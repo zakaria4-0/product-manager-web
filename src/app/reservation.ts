@@ -11,4 +11,5 @@ export class Reservation{
     products:Product[];
     date:string;
     time:Time;
+    total:number;
 }

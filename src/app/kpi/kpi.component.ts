@@ -4,7 +4,6 @@ import { ProductManagerService } from '../productManager.service';
 import { Reservation } from '../reservation';
 import { Time } from "@angular/common";
 import { BarController, BarElement, CategoryScale, Chart, LinearScale, LineController, LineElement, PointElement, Title } from 'chart.js';
-import { OrderResponse } from '../orderResponse';
 import { map, share, Subscription, timer } from 'rxjs';
 import { Reclamation } from '../reclamation';
 Chart.register(LineController ,BarController,BarElement ,CategoryScale, LineElement, PointElement, LinearScale, Title);
@@ -17,7 +16,7 @@ export class KPIComponent implements OnInit {
   public indicator:Indicator=new Indicator;
   public res:Reservation=new Reservation();
   userName='';
-  public reservations:OrderResponse[];
+  public reservations:Reservation[];
   public efficiency:number[]=[];
   public ppm:number[]=[];
   public time:Time[]=[];
@@ -122,7 +121,7 @@ export class KPIComponent implements OnInit {
               datasets: [{
                   label: 'Current Vallue',
                   data: this.ppm,
-                  backgroundColor: "rgb(115 185 243 / 65%)",
+                  backgroundColor: "rgba(241, 100, 100, 0.842 )",
                   borderColor: "#00e741",
                   
               },
@@ -149,7 +148,7 @@ export class KPIComponent implements OnInit {
   }
   public getDates(){
     this.service.getInfo().subscribe(
-      (response:OrderResponse[])=>{
+      (response:Reservation[])=>{
         this.reservations=response;
       },
       error =>{

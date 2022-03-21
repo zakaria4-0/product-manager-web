@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderResponse } from '../orderResponse';
 import { ProductManagerService } from '../productManager.service';
+import { Reservation } from '../reservation';
 
 @Component({
   selector: 'app-admin-platform',
@@ -8,7 +8,7 @@ import { ProductManagerService } from '../productManager.service';
   styleUrls: ['./admin-platform.component.css']
 })
 export class AdminPlatformComponent implements OnInit {
-  public customerinfo:OrderResponse[];
+  public customerinfo:Reservation[];
   userName='';
 
   constructor(private service:ProductManagerService) { }
@@ -20,10 +20,9 @@ export class AdminPlatformComponent implements OnInit {
 
   public getInfo(){
     this.service.getInfo().subscribe(
-      (response:OrderResponse[])=>{
+      (response:Reservation[])=>{
         this.customerinfo=response;
-        
-        console.log("response received");
+        console.log(this.customerinfo);
       },
       error=>{
         console.log("exception occured")
@@ -34,7 +33,7 @@ export class AdminPlatformComponent implements OnInit {
   }
 
   public searchEmployees(key: any):void{
-    const results:OrderResponse[]=[];
+    const results:Reservation[]=[];
     for(const customer of this.customerinfo){
       if(customer.name.toLowerCase().indexOf(key.toLowerCase()) !== -1 
       || customer.date==key
@@ -42,9 +41,6 @@ export class AdminPlatformComponent implements OnInit {
       || customer.region.toLowerCase().indexOf(key.toLowerCase()) !== -1
       || customer.ville.toLowerCase().indexOf(key.toLowerCase()) !== -1
       || customer.email.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      || customer.productName.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      || customer.productPrice==key
-      || customer.productQte==key
       || customer.id==key
       ){
         results.push(customer);

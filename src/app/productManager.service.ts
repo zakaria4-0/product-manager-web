@@ -9,7 +9,6 @@ import { Command } from "./command";
 
 import { CustomerLogin } from "./customerLogin";
 import { Indicator } from "./indicator";
-import { OrderResponse } from "./orderResponse";
 import { Product } from "./product";
 import { Reclamation } from "./reclamation";
 import { Reservation } from "./reservation";
@@ -48,9 +47,8 @@ export class ProductManagerService{
         return this.http.post<Reservation>(`${this.apiServerUrl}/productmanager/customerloginplaceorder`,reservation)
 
     }
-    public getInfo():Observable<OrderResponse[]>{
-        return this.http.get<OrderResponse[]>(`${this.apiServerUrl}/productmanager/getinfo`)
-
+    public getInfo():Observable<Reservation[]>{
+        return this.http.get<Reservation[]>(`${this.apiServerUrl}/productmanager/getinfo`)
     }
     public postCommand(command:Command):Observable<Command[]>{
         return this.http.post<Command[]>(`${this.apiServerUrl}/productmanager/command`,command)
@@ -58,7 +56,6 @@ export class ProductManagerService{
     }
     public postCommandLogin(command:Command):Observable<Command[]>{
         return this.http.post<Command[]>(`${this.apiServerUrl}/productmanager/commandLogin`,command)
-
     }
     public getCommand(cname:string):Observable<Command[]>{
         return this.http.get<Command[]>(`${this.apiServerUrl}/productmanager/getCommand/${cname}`)
@@ -146,6 +143,15 @@ export class ProductManagerService{
     }
     public chart2(date:string):Observable<Reclamation[]>{
         return this.http.get<Reclamation[]>(`${this.apiServerUrl}/productmanager/reclamation/${date}`)
+    }
+    public getReservationByEmail(email:string):Observable<Reservation[]>{
+        return this.http.get<Reservation[]>(`${this.apiServerUrl}/productmanager/customerReservation/${email}`)
+    }
+    public getCustomer(name:string,password:string):Observable<CustomerLogin>{
+        return this.http.get<CustomerLogin>(`${this.apiServerUrl}/productmanager/getCustomer/${name}/${password}`)
+    }
+    public getStockId(name:string):Observable<number>{
+        return this.http.get<number>(`${this.apiServerUrl}/productmanager/getStockId/${name}`)
     }
     
 

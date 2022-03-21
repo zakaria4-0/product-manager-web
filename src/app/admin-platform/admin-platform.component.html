@@ -31,7 +31,7 @@
      name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search customer..." >
     </form>
 
-<table class="table table-success table-striped table-bordered">
+<table class="table table-success table-bordered">
 <thead>
     <tr>
         <th>Id</th>
@@ -58,9 +58,9 @@
         <td>{{customer.address}}</td>
         <td>{{customer.region}}</td>
         <td>{{customer.ville}}</td>
-        <td>{{customer.productName}}</td>
-        <td>{{customer.productQte}}</td>
-        <td>{{customer.productPrice}} dh</td>
+        <td><div *ngFor="let product of customer.products">{{product.name}}</div></td>
+        <td><div *ngFor="let product of customer.products">{{product.qte}}</div></td>
+        <td><div *ngFor="let product of customer.products">{{product.price}} dh</div></td>
         <td>{{customer.total}} dh</td>
     </tr>
 </tbody>

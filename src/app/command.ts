@@ -4,4 +4,5 @@ export class Command{
     name:string;
     qte:number;
     price:number;
+    codeArticle:number;
 }

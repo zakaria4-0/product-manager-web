@@ -4,6 +4,7 @@ import { AdminControlPageComponent } from './admin-control-page/admin-control-pa
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminPlatformComponent } from './admin-platform/admin-platform.component';
 import { BestSellingProductComponent } from './best-selling-product/best-selling-product.component';
+import { CustomerCommandsComponent } from './customer-commands/customer-commands.component';
 import { CustomerLoginRegistrationComponent } from './customer-login-registration/customer-login-registration.component';
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { CustomersListComponent } from './customers-list/customers-list.component';
@@ -38,7 +39,8 @@ const routes: Routes = [
   {path:"newestProducts",component:NewestProductComponent},
   {path:"KPI",component:KPIComponent},
   {path:"reclamation",component:ReclamationComponent},
-  {path:"reclamations",component:ListReclamComponent}
+  {path:"reclamations",component:ListReclamComponent},
+  {path:"customerCommands",component:CustomerCommandsComponent}
   
 ];
 

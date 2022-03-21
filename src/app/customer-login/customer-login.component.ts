@@ -23,6 +23,7 @@ export class CustomerLoginComponent implements OnInit {
       data=>{
         console.log("response received");
         sessionStorage.setItem('custName',this.customerLog.name);
+        sessionStorage.setItem('custPassword',this.customerLog.password);
         this.router.navigate(["/reservCustomerL"]);
       },
       (error:HttpErrorResponse)=>{
