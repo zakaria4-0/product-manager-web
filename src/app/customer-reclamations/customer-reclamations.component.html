@@ -26,41 +26,32 @@
       </div>
     </div>
   </nav>
-  <table class="table-primary table table-bordered">
-      <thead>
+  <Table class="table-danger table-bordered">
+      <Thead>
           <tr>
+              <th>Code_Reclamation</th>
+              <th>name</th>
+              <th>email</th>
               <th>Code_Command</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Address</th>
-              <th>Region</th>
-              <th>City</th>
               <th>Product_Name</th>
               <th>Code_Article</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Total</th>
-
+              <th>Motif</th>
+              <th>Date</th>
+              <th>Time</th>
           </tr>
-
-      </thead>
-      <tbody>
-          <tr *ngFor="let reserv of reservations">
-              <td>{{reserv.id}}</td>
-              <td>{{reserv.date}}</td>
-              <td>{{reserv.time}}</td>
-              <td>{{reserv.address}}</td>
-              <td>{{reserv.region}}</td>
-              <td>{{reserv.ville}}</td>
-              <td><div *ngFor="let product of reserv.products">{{product.name}}</div></td>
-              <td ><div *ngFor="let product of reserv.products">{{product.codeArticle}}</div></td>
-              <td ><div *ngFor="let product of reserv.products">{{product.qte}}</div></td>
-              <td ><div *ngFor="let product of reserv.products">{{product.price}} dh</div></td>
-              <td>{{reserv.total}} dh</td>
+      </Thead>
+      <Tbody>
+          <tr *ngFor="let rec of reclamations">
+              <td>{{rec.id}}</td>
+              <td>{{rec.clientName}}</td>
+              <td>{{rec.clientEmail}}</td>
+              <td>{{rec.codeCommand}}</td>
+              <td>{{rec.productName}}</td>
+              <td>{{rec.codeArticle}}</td>
+              <td>{{rec.motif}}</td>
+              <td>{{rec.date}}</td>
+              <td>{{rec.time}}</td>
               
           </tr>
-      </tbody>
-      <tfoot>
-
-      </tfoot>
-  </table>
+      </Tbody>
+  </Table>

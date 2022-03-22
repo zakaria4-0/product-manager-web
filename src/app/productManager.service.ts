@@ -153,6 +153,10 @@ export class ProductManagerService{
     public getStockId(name:string):Observable<number>{
         return this.http.get<number>(`${this.apiServerUrl}/productmanager/getStockId/${name}`)
     }
+    public getRecalamtionByEmail(email:string):Observable<Reclamation[]>{
+        return this.http.get<Reclamation[]>(`${this.apiServerUrl}/productmanager/customerReclamation/${email}`)
+
+    }
     
 
 

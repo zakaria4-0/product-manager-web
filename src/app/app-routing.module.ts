@@ -7,6 +7,7 @@ import { BestSellingProductComponent } from './best-selling-product/best-selling
 import { CustomerCommandsComponent } from './customer-commands/customer-commands.component';
 import { CustomerLoginRegistrationComponent } from './customer-login-registration/customer-login-registration.component';
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
+import { CustomerReclamationsComponent } from './customer-reclamations/customer-reclamations.component';
 import { CustomersListComponent } from './customers-list/customers-list.component';
 import { KPIComponent } from './kpi/kpi.component';
 import { ListReclamComponent } from './list-reclam/list-reclam.component';
@@ -40,7 +41,8 @@ const routes: Routes = [
   {path:"KPI",component:KPIComponent},
   {path:"reclamation",component:ReclamationComponent},
   {path:"reclamations",component:ListReclamComponent},
-  {path:"customerCommands",component:CustomerCommandsComponent}
+  {path:"customerCommands",component:CustomerCommandsComponent},
+  {path:"customerReclamations",component:CustomerReclamationsComponent}
   
 ];
 

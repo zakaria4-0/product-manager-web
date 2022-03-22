@@ -25,6 +25,7 @@ import { KPIComponent } from './kpi/kpi.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 import { ListReclamComponent } from './list-reclam/list-reclam.component';
 import { CustomerCommandsComponent } from './customer-commands/customer-commands.component';
+import { CustomerReclamationsComponent } from './customer-reclamations/customer-reclamations.component';
 
 
 
@@ -50,6 +51,7 @@ import { CustomerCommandsComponent } from './customer-commands/customer-commands
     ReclamationComponent,
     ListReclamComponent,
     CustomerCommandsComponent,
+    CustomerReclamationsComponent,
    
     
     
