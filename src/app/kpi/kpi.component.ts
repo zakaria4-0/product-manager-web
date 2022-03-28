@@ -3,10 +3,10 @@ import { Indicator } from '../indicator';
 import { ProductManagerService } from '../productManager.service';
 import { Reservation } from '../reservation';
 import { Time } from "@angular/common";
-import { BarController, BarElement, CategoryScale, Chart, LinearScale, LineController, LineElement, PointElement, Title } from 'chart.js';
+import * as ch from 'chart.js';
 import { map, share, Subscription, timer } from 'rxjs';
 import { Reclamation } from '../reclamation';
-Chart.register(LineController ,BarController,BarElement ,CategoryScale, LineElement, PointElement, LinearScale, Title);
+ch.Chart.register(ch.LineController ,ch.BarController,ch.BarElement ,ch.CategoryScale, ch.LineElement, ch.PointElement, ch.LinearScale, ch.Title);
 @Component({
   selector: 'app-kpi',
   templateUrl: './kpi.component.html',
@@ -21,8 +21,8 @@ export class KPIComponent implements OnInit {
   public ppm:number[]=[];
   public time:Time[]=[];
   public time1:Time[]=[];
-  public chart1:Chart;
-  public chart2:Chart;
+  public chart1:ch.Chart;
+  public chart2:ch.Chart;
   rxTime = new Date();
   subscription: Subscription;
   constructor(private service:ProductManagerService) { }
@@ -66,18 +66,19 @@ export class KPIComponent implements OnInit {
         this.efficiency=[];
         this.time=[];
         for (let i = 0; i < response.length; i++) {
-          this.efficiency.push(response[i].id-response[0].id+1);
+          this.efficiency.push(response[i].products.length);
           this.time.push(response[i].time);
         }
         if (this.chart1!=null) {
           this.chart1.destroy();
         }
-        this.chart1=new Chart("myAreaChart", {
+        this.chart1=new ch.Chart("myAreaChart", {
           type: 'line',
           data: {
               datasets: [{
                   label: 'Current Vallue',
                   data: this.efficiency,
+
                   backgroundColor: "rgb(115 185 243 / 65%)",
                   borderColor: "#00e741",
                   fill: true,
@@ -85,16 +86,11 @@ export class KPIComponent implements OnInit {
              ],
               labels: this.time
           },
-          options:{
+          options: {
             scales: {
-              x: {
-                  display: true
-              },
-              y: {
-                  display: true
-              }
-          }
-          }
+            }
+        }
+          
      
       });
       },
@@ -109,13 +105,13 @@ export class KPIComponent implements OnInit {
         this.ppm=[];
         this.time1=[];
         for (let i = 0; i < response.length; i++) {
-          this.ppm.push(response[i].id-response[0].id+1);
+          this.ppm.push(response.indexOf(response[i])+1);
           this.time1.push(response[i].time);
         }
         if (this.chart2!=null) {
           this.chart2.destroy();
         }
-        this.chart2=new Chart("myAreaChart2", {
+        this.chart2=new ch.Chart("myAreaChart2", {
           type: 'bar',
           data: {
               datasets: [{

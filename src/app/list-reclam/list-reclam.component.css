@@ -1,15 +1,15 @@
 table{
     border-radius: 5px;
     
-    width: 1300px;
-    margin-left: 7%;
-    margin-top: 7%;
+    width: 1390px;
+    margin-left: 4%;
+    margin-top: 5%;
 }
 li.dropdown{
     margin-left: 1000px;
 }        
 input#searchName{
     position: absolute;
-    top: 120px;
-    left: 107px;
+    top: 12%;
+    left: 4%;
 }

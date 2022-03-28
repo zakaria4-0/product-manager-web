@@ -5,8 +5,8 @@ header{
 table{
     
     margin-top: 70px;
-    width: 1230px;
-    margin-left: 140px;
+    width: 1400px;
+    margin-left: 3.5%;
     border-radius: 5px;
     
     
@@ -15,7 +15,7 @@ table{
 input#searchName{
     position: absolute;
     top: 90px;
-    left: 143px;
+    left: 3.5%;
 }
 div#navbarNavDarkDropdown{
     margin-left: 1000px;

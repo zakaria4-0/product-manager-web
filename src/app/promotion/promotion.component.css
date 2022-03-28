@@ -39,7 +39,7 @@
     font-size: 28px;
 }
 
-.text-primary, .text-primary:hover, a, a:focus, a:hover {
+.text-primary, .text-primary:hover, .car, a:focus, a:hover {
     color: #1bbae1;
     text-decoration:none;
 }

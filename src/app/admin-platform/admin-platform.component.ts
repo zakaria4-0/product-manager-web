@@ -10,6 +10,8 @@ import { Reservation } from '../reservation';
 export class AdminPlatformComponent implements OnInit {
   public customerinfo:Reservation[];
   userName='';
+  totalPrice:number;
+  totalQte:number;
 
   constructor(private service:ProductManagerService) { }
 
@@ -22,6 +24,14 @@ export class AdminPlatformComponent implements OnInit {
     this.service.getInfo().subscribe(
       (response:Reservation[])=>{
         this.customerinfo=response;
+        this.totalPrice=0;
+        this.totalQte=0;
+        for (let reserv of response) {
+          this.totalPrice +=reserv.total;
+          for (let product of reserv.products) {
+            this.totalQte += product.qte
+          }
+        }
         console.log(this.customerinfo);
       },
       error=>{
