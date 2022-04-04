@@ -10,6 +10,6 @@ export class Reservation{
     region:string;
     products:Product[];
     date:string;
-    time:Time;
+    time:Date;
     total:number;
 }

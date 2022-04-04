@@ -92,7 +92,7 @@ export class ReservCustomerLComponent implements OnInit {
   public deleteCommand(){
     this.service.deleteCommand().subscribe(
       data=>{
-        console.log("deleted successfuly received")
+        console.log("deleted successfuly")
       },
       error=>{
         console.log("delete failed")

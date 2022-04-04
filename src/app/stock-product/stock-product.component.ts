@@ -52,7 +52,6 @@ export class StockProductComponent implements OnInit {
           this.total1 +=pro.productQuantityI;
           this.total2 +=pro.productQuantity;
         }
-        
         console.log(this.products)
       },
       error =>{

@@ -1,13 +1,12 @@
 import { Time } from "@angular/common";
+import { ProductC } from "./productC";
 
 export class Reclamation{
     public id:number;
     public clientName:string;
     public clientEmail:string;
     public codeCommand:number;
-    public productName:string;
-    public codeArticle:number;
-    public motif:string;
+    public productClaimeds:ProductC[];
     public date:string;
-    public time:Time;
+    public time:Date;
 }

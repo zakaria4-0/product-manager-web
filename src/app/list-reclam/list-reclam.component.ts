@@ -34,10 +34,7 @@ export class ListReclamComponent implements OnInit {
       if(reclam.clientName.toLowerCase().indexOf(key.toLowerCase()) !== -1
       || reclam.clientEmail.toLowerCase().indexOf(key.toLowerCase()) !== -1
       || reclam.codeCommand==key
-      || reclam.productName.toLowerCase().indexOf(key.toLowerCase()) !== -1 
-      || reclam.codeArticle==key
       || reclam.id==key
-      || reclam.motif.toLowerCase().indexOf(key.toLowerCase()) !== -1
       || reclam.date.toLowerCase().indexOf(key.toLowerCase()) !== -1
       || reclam.time==key
       ){

@@ -39,6 +39,7 @@
               <th>codeCommand</th>
               <th>ProductName</th>
               <th>CodeArticle</th>
+              <th>Quantity</th>
               <th>Motif</th>
               <th>Date</th>
               <th>Time</th>
@@ -50,9 +51,10 @@
                   <td>{{reclam.clientName}}</td>
                   <td>{{reclam.clientEmail}}</td>
                   <td>{{reclam.codeCommand}}</td>
-                  <td>{{reclam.productName}}</td>
-                  <td>{{reclam.codeArticle}}</td>
-                  <td>{{reclam.motif}}</td>
+                  <td><div *ngFor="let product of reclam.productClaimeds">{{product.name}}</div></td>
+                  <td><div *ngFor="let product of reclam.productClaimeds">{{product.codeArticle}}</div></td>
+                  <td><div *ngFor="let product of reclam.productClaimeds">{{product.qte}}</div></td>
+                  <td><div *ngFor="let product of reclam.productClaimeds">{{product.motif}}</div></td>
                   <td>{{reclam.date}}</td>
                   <td>{{reclam.time}}</td>
               </tr>

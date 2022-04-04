@@ -11,6 +11,7 @@ import { CustomerLogin } from "./customerLogin";
 import { Indicator } from "./indicator";
 import { Product } from "./product";
 import { Reclamation } from "./reclamation";
+import { ReclamSupport } from "./reclamSupport";
 import { Reservation } from "./reservation";
 import { Stock } from "./stock";
 
@@ -157,8 +158,18 @@ export class ProductManagerService{
         return this.http.get<Reclamation[]>(`${this.apiServerUrl}/productmanager/customerReclamation/${email}`)
 
     }
-    
-
+    public addReclamSupport(reclamation:ReclamSupport):Observable<ReclamSupport>{
+        return this.http.post<ReclamSupport>(`${this.apiServerUrl}/productmanager/addReclamSupport`,reclamation);
+    }
+    public getReclamSupport(cName:string):Observable<ReclamSupport[]>{
+        return this.http.get<ReclamSupport[]>(`${this.apiServerUrl}/productmanager/getReclamsSupport/${cName}`);
+    }
+    public deleteReclamation(id:number){
+        return this.http.delete(`${this.apiServerUrl}/productmanager/deleteReclamSupportById/${id}`)
+    }
+    public deleteAllReclam(){
+        return this.http.delete(`${this.apiServerUrl}/productmanager/deleteReclamSupport`)
+    }
 
 
 

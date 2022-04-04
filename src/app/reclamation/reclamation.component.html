@@ -38,10 +38,10 @@
 
 <form  #addForm="ngForm" (ngSubmit)="addReclamation(addForm)" id="main-form">
     <h1 id=login>Reclamation client</h1>
-    <small class="text-danger" >{{msg}} </small>
+    
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Client_Name</label>
-      <input type="email"  [(ngModel)]="reclamation.clientName"  name="clientName" class="form-control"   aria-describedby="emailHelp" placeholder="clientName" required 
+      <input type="email"  [(ngModel)]="reclamation.clientName" [(ngModel)]="reclamSupport.cName"  name="clientName" class="form-control"   aria-describedby="emailHelp" placeholder="clientName" required 
       #clientName="ngModel" [class.is-invalid]="clientName.invalid && clientName.touched">
       <small class="text-danger" [class.d-none]="clientName.valid || clientName.untouched">clientName is required</small>&nbsp;&nbsp;
       
@@ -60,29 +60,65 @@
       <small class="text-danger" [class.d-none]="codeCommand.valid || codeCommand.untouched">codeCommand is required</small>&nbsp;&nbsp;
       
     </div>
-      <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"><b>Place your reclamation here</b></label>
+    <form #reclamForm="ngForm">
+      <div class="row g-3">
+      <div class="col-sm">
         <label for="exampleInputEmail1" class="form-label">Product_Name</label>
-        <input type="email"  [(ngModel)]="reclamation.productName"  name="name" class="form-control"   aria-describedby="emailHelp" placeholder="Product_Name" required 
+        <input type="email"  [(ngModel)]="reclamSupport.name"  name="name" class="form-control"   aria-describedby="emailHelp" placeholder="Product_Name" required 
         #name="ngModel" [class.is-invalid]="name.invalid && name.touched">
         <small class="text-danger" [class.d-none]="name.valid || name.untouched">name is required</small>&nbsp;&nbsp;
         
       </div>
 
-      <div class="mb-3">
+      <div class="col-sm">
         <label for="exampleInputEmail1" class="form-label">Code_Article</label>
-        <input type="email" [(ngModel)]="reclamation.codeArticle" name="Code_Article" class="form-control"   aria-describedby="emailHelp" placeholder="Code_Article" required 
+        <input type="email" [(ngModel)]="reclamSupport.codeArticle" name="Code_Article" class="form-control"   aria-describedby="emailHelp" placeholder="Code_Article" required 
          #Code_Article="ngModel" [class.is-invalid]="Code_Article.invalid && Code_Article.touched">
         <small class="text-danger" [class.d-none]="Code_Article.valid || Code_Article.untouched">Code_Article is required</small>
         
       </div>
-      <div class="mb-3">
+      <div class="col-sm">
+        <label for="exampleInputEmail1" class="form-label">Quantity</label>
+        <input type="email" [(ngModel)]="reclamSupport.qte" name="qte" class="form-control"   aria-describedby="emailHelp" placeholder="quantity" required 
+         #qte="ngModel" [class.is-invalid]="qte.invalid && qte.touched">
+        <small class="text-danger" [class.d-none]="qte.valid || qte.untouched">quantity is required</small>
+        
+      </div>
+      <div class="col-sm">
         <label for="exampleInputEmail1" class="form-label">Motif</label>
-        <input type="email" [(ngModel)]="reclamation.motif" name="Motif" class="form-control"   aria-describedby="emailHelp" placeholder="Motif" required 
+        <input type="email" [(ngModel)]="reclamSupport.motif" name="Motif" class="form-control"   aria-describedby="emailHelp" placeholder="Motif" required 
          #Motif="ngModel" [class.is-invalid]="Motif.invalid && Motif.touched">
         <small class="text-danger" [class.d-none]="Motif.valid || Motif.untouched">Motif is required</small>
         
       </div>
-      
-      <button  [disabled]="addForm.invalid " type="submit" class="btn btn-primary">Submit</button><br>
-      <small style="color: green;" >{{msg1}} </small>
+    </div>
+      <button [disabled]="reclamForm.invalid" (click)="addReclamSupport(reclamForm)" type="button" class="btn btn-success" style="display: inline-block;">Add</button>
+      &nbsp;&nbsp;&nbsp;
+      <small class="text-danger" style="display: inline-block;">{{msg2}} </small>
+    </form>
+    <br>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ProductName</th>
+          <th>CodeArticle</th>
+          <th>Quantité</th>
+          <th>Motif</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reclam of reclamSupportList">
+          <td>{{reclam.name}}</td>
+          <td>{{reclam.codeArticle}}</td>
+          <td>{{reclam.qte}}</td>
+          <td>{{reclam.motif}}</td>
+          <td><button (click)="deleteReclamation(reclam.id)" type="button" class="btn btn-danger"  >delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+      <button  [disabled]="addForm.invalid " type="submit" class="btn btn-primary" style="display: inline-block;">Submit</button>&nbsp;&nbsp;&nbsp;
+      <small style="color: green; display: inline-block;">{{msg1}} </small>
+      <small class="text-danger" style="display: inline-block;">{{msg}} </small>
 </form>

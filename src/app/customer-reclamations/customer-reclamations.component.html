@@ -35,6 +35,7 @@
               <th>Code_Command</th>
               <th>Product_Name</th>
               <th>Code_Article</th>
+              <th>Quantité</th>
               <th>Motif</th>
               <th>Date</th>
               <th>Time</th>
@@ -46,9 +47,10 @@
               <td>{{rec.clientName}}</td>
               <td>{{rec.clientEmail}}</td>
               <td>{{rec.codeCommand}}</td>
-              <td>{{rec.productName}}</td>
-              <td>{{rec.codeArticle}}</td>
-              <td>{{rec.motif}}</td>
+              <td><div *ngFor="let product of rec.productClaimeds">{{product.name}}</div></td>
+              <td><div *ngFor="let product of rec.productClaimeds">{{product.codeArticle}}</div></td>
+              <td><div *ngFor="let product of rec.productClaimeds">{{product.qte}}</div></td>
+              <td><div *ngFor="let product of rec.productClaimeds">{{product.motif}}</div></td>
               <td>{{rec.date}}</td>
               <td>{{rec.time}}</td>
               
