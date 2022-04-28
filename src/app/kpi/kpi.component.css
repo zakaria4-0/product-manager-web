@@ -62,15 +62,15 @@ div#navbarNavDarkDropdown{
     text-align: left;
     background-color: #fff;
    }
-   h1.green{
+   .green{
     display: inline-block;
      color: rgb(24, 228, 24);
    }
-   h1.yellow{
+   .yellow{
     display: inline-block;
      color: yellow;
    }
-   h1.red{
+   .red{
     display: inline-block;
      color: red;
    }

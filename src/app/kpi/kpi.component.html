@@ -118,6 +118,75 @@
   
                        
                     </div>
+                    <div class="row">
+  
+                      <!-- Content Column -->
+                      <div class="col-lg-6 mb-4" >
+
+                          <!-- Project Card Example -->
+                          <div class="card shadow mb-4">
+                              <div class="card-header py-3">
+                                  <h6 style="display: inline-block;" class="m-0 font-weight-bold text-primary"></h6>&nbsp;&nbsp;
+                                  
+                                
+                              </div>
+                              <div class="card-body" >
+                                <canvas id="myAreaChart"  #mychart>
+                                                                      
+                                </canvas>
+                                
+                              </div>
+                          </div>
+
+                          <!-- Color System -->
+                          
+
+                      </div>
+                      <div class="col-lg-6 mb-4">
+
+                        <!-- Project Card Example -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                              <h6 style="display: inline-block;" class="m-0 font-weight-bold text-primary">Taux de Clôture des réclamations: </h6>&nbsp;&nbsp;
+                              <h5 *ngIf="tauxCloture>=78.4" class="green">{{tauxCloture.toFixed(2)}}%</h5>
+                              <h5 *ngIf="tauxCloture<78.4 && tauxCloture>=19.6" class="yellow">{{tauxCloture.toFixed(2)}}%</h5>
+                              <h5 *ngIf="tauxCloture<19.6" class="red">{{tauxCloture.toFixed(2)}}%</h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <h6 style="display: inline-block;" class="m-0 font-weight-bold text-primary">Réclamations encours: </h6>&nbsp;
+                              <h5 class="red">{{reclamEncour}}</h5>
+                            </div>
+                            <div class="card-body">
+                                <table class="table-secondary table table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th>2022</th>
+                                      <th>Jan-22</th>
+                                      <th>Feb-22</th>
+                                      <th>Mar-22</th>
+                                      <th>Apr-22</th>
+                                      <th>May-22</th>
+                                      <th>Jun-22</th>
+                                      <th>Jul-22</th>
+                                      <th>Aug-22</th>
+                                      <th>Sep-22</th>
+                                      <th>Oct-22</th>
+                                      <th>Nov-22</th>
+                                      <th>Dec-22</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+
+                                  </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Color System -->
+                        
+
+                    </div>
+
+                     
+                  </div>
   
                 </div>
                 <!-- /.container-fluid -->

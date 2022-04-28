@@ -3,5 +3,6 @@ export class CustomerLogin{
     name:string;
     email:string;
     phoneNumber:string;
+    category:string;
     password:string;
 }

@@ -86,11 +86,28 @@
         
       </div>
       <div class="col-sm">
-        <label for="exampleInputEmail1" class="form-label">Motif</label>
-        <input type="email" [(ngModel)]="reclamSupport.motif" name="Motif" class="form-control"   aria-describedby="emailHelp" placeholder="Motif" required 
-         #Motif="ngModel" [class.is-invalid]="Motif.invalid && Motif.touched">
-        <small class="text-danger" [class.d-none]="Motif.valid || Motif.untouched">Motif is required</small>
-        
+        <label for="exampleInputEmail1" class="form-label">Motif</label><br>
+    <select  [(ngModel)]="reclamSupport.motif" name="motif" class="form-select" aria-label="Default select example" required 
+     #motif="ngModel" [class.is-invalid]="motif.invalid && motif.touched">
+     <option >livré non facturé</option>
+     <option >facturé non livré</option>
+     <option >erreur quantité</option>
+     <option value="">erreur de prix</option>
+     <option value="">erreur de préparation</option>
+     <option value="">erreur client</option>
+     <option value="">mode de paimenent</option>
+     <option value="">défaut produit</option>
+     <option value="">défaut étiquette</option>
+     <option value="">baisse de prix</option>
+     <option >quantité endommagée</option>
+     <option >erreur de facture</option>
+     <option value="">erreur de livraison</option>
+     <option >retard livraison</option>
+     <option value="">proche périmé</option>
+     <option value="">non-fondées</option>
+     <option >autre</option>
+    </select>
+    <small class="text-danger" [class.d-none]="motif.valid || motif.untouched">Required</small>
       </div>
     </div>
       <button [disabled]="reclamForm.invalid" (click)="addReclamSupport(reclamForm)" type="button" class="btn btn-success" style="display: inline-block;">Add</button>

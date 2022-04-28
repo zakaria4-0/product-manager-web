@@ -9,4 +9,5 @@ export class Reclamation{
     public productClaimeds:ProductC[];
     public date:string;
     public time:Date;
+    etat:string;
 }

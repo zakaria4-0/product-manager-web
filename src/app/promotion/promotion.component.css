@@ -63,6 +63,9 @@ div#offcanvasExample{
     background-color: #2b2f3e;
   }
   /* visited link */
+  a.canvas{
+    text-decoration: none;
+  }
   a.canvas:visited {
     text-decoration: none;
     color: rgb(255, 255, 255);

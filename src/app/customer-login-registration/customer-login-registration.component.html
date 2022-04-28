@@ -57,6 +57,20 @@
         <small class="text-danger" [class.d-none]="email.valid || email.untouched">phone number is required</small>
         
       </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Category</label>
+        <select [(ngModel)]="regCustomer.category" name="category" class="form-select" aria-label="Default select example" required
+        #category="ngModel" [class.is-invalid]="category.invalid && category.touched">
+          <option selected>Open this select menu</option>
+          <option >grossiste</option>
+          <option >pharmacie</option>
+          <option >clinique</option>
+          <option >para/droguiste</option>
+          <option >particulier + autre</option>
+          <option >institution</option>
+        </select>
+        <small class="text-danger" [class.d-none]="category.valid || category.untouched">category is required</small>
+      </div>
 
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>

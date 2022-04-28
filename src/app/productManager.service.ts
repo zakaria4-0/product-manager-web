@@ -170,7 +170,9 @@ export class ProductManagerService{
     public deleteAllReclam(){
         return this.http.delete(`${this.apiServerUrl}/productmanager/deleteReclamSupport`)
     }
-
+    public editReclam(reclamation:Reclamation){
+        return this.http.put(`${this.apiServerUrl}/productmanager/editReclam`,reclamation)
+    }
 
 
 

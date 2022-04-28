@@ -39,6 +39,7 @@
               <th>Motif</th>
               <th>Date</th>
               <th>Time</th>
+              <th>Etat</th>
           </tr>
       </Thead>
       <Tbody>
@@ -53,6 +54,8 @@
               <td><div *ngFor="let product of rec.productClaimeds">{{product.motif}}</div></td>
               <td>{{rec.date}}</td>
               <td>{{rec.time}}</td>
+              <td *ngIf="rec.etat==null">encour</td>
+              <td *ngIf="rec.etat!=null">{{rec.etat}}</td>
               
           </tr>
       </Tbody>

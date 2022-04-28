@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Indicator } from '../indicator';
 import { ProductManagerService } from '../productManager.service';
 import { Reservation } from '../reservation';
-import { Time } from "@angular/common";
 import * as ch from 'chart.js';
 import { map, share, Subscription, timer } from 'rxjs';
 import { Reclamation } from '../reclamation';
@@ -34,6 +33,8 @@ export class KPIComponent implements OnInit {
   rxTime = new Date();
   subscription: Subscription;
   public total:number;
+  public tauxCloture:number;
+  public reclamEncour:number;
   constructor(private service:ProductManagerService) { }
 
   ngOnInit(): void {
@@ -56,6 +57,21 @@ export class KPIComponent implements OnInit {
       .subscribe(time => {
         this.rxTime = time;
       });
+    this.service.reclamations().subscribe(
+      (response:Reclamation[])=>{
+        var i=0
+        this.reclamEncour=0
+        for (let reclam of response) {
+          if (reclam.etat!=null) {
+            i+=1
+          }
+          if (reclam.etat==null) {
+            this.reclamEncour+=1
+          }
+        }
+        this.tauxCloture=100*i/response.length
+      }
+    )
   }
 
   public kpis(){

@@ -41,12 +41,30 @@ export class ListReclamComponent implements OnInit {
         results.push(reclam);
 
       }
+      if (reclam.etat!=null) {
+        if(reclam.etat.toLowerCase().indexOf(key.toLowerCase()) !== -1){
+          results.push(reclam)
+        }
+      }
     }
     this.reclamations=results;
     if(results.length==0 || !key){
       this.getReclamations();
     }
   }
+
+  public editReclam(reclam:Reclamation){
+    this.service.editReclam(reclam).subscribe(
+      data=>{
+        console.log("edited successfully")
+        this.getReclamations()
+      },
+      error=>{
+        console.log("exception occured")
+      }
+    )
+  }
+
   public reclamationPdf(){
     this.service.reclamationPdf().subscribe(
       (data:Blob)=>{

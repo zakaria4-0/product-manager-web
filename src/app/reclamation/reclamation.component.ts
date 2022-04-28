@@ -63,7 +63,6 @@ export class ReclamationComponent implements OnInit {
       (response:ReclamSupport[])=>{
         this.reclamation.productClaimeds=response;
         this.reclamSupportList=response;
-        
       },
       (error:HttpErrorResponse)=>{
         console.log(error.error.message);
