@@ -173,6 +173,9 @@ export class ProductManagerService{
     public editReclam(reclamation:Reclamation){
         return this.http.put(`${this.apiServerUrl}/productmanager/editReclam`,reclamation)
     }
+    public commandeByCategory(date:string,category:string):Observable<Reservation[]>{
+        return this.http.get<Reservation[]>(`${this.apiServerUrl}/productmanager/commandByCategory/${date}/${category}`);
+    }
 
 
 
