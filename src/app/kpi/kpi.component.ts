@@ -8,6 +8,7 @@ import { Reclamation } from '../reclamation';
 import 'chartjs-adapter-moment';
 import { Stock } from '../stock';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ProductC } from '../productC';
 
 
 
@@ -38,14 +39,19 @@ export class KPIComponent implements OnInit {
   public total:number;
   public tauxCloture:number;
   public reclamEncour:number;
-  public tauxGrossiste:number=0; public tauxPharmacie:number; public tauxClinique:number;public tauxParaDroguiste:number; public tauxParticulierAutres:number; public tauxInstitutions:number;
+  public tauxGrossiste:number=0; public tauxPharmacie:number=0; public tauxClinique:number=0;public tauxParaDroguiste:number=0; public tauxParticulierAutres:number=0; public tauxInstitutions:number=0;
   chart6: any;
   chart7: any;
   chart8: any;
   public chart9:ch.Chart;
-  public commands:number[]
+  public commands:number[]=[]
+  public totalReclamation:number
+  public chart10: ch.Chart;
+  public tauxCategory:number[]
   
-  constructor(private service:ProductManagerService) { }
+  constructor(private service:ProductManagerService) {
+    
+   }
 
   ngOnInit(): void {
     var today=new Date();
@@ -63,6 +69,8 @@ export class KPIComponent implements OnInit {
     this.chartParaDroguiste();
     this.chartParticulierAutre();
     this.chartInstitution();
+    
+    
     this.subscription = timer(0, 1000)
       .pipe(
         map(() => new Date()),
@@ -80,18 +88,14 @@ export class KPIComponent implements OnInit {
           if (reclam.etat!=null) {
             i+=1
           }
-          if (reclam.etat==null) {
-            this.reclamEncour+=1
-          }
         }
         this.tauxCloture=100*i/response.length
+        this.reclamEncour=100-this.tauxCloture
       }
     );
   }
 
   public kpis(){
-    var qte;
-    this.commands=[]
     this.service.kpis(this.res.date).subscribe(
       (response:Indicator) =>{
         this.indicator=response;
@@ -101,130 +105,34 @@ export class KPIComponent implements OnInit {
         console.log("exception occured");
       }
     )
-    this.service.commandeByCategory(this.res.date,"grossiste").subscribe(
-      (response:Reservation[])=>{
-        qte=0
-        if(this.productsQte!=null && this.productsQte!=0){
-        for (let res of response) {
-          for (let pro of res.products) {
-            qte += pro.qte
-          }
-        }
-        this.tauxGrossiste=100*qte/this.productsQte
-        
-      }else{
-        this.tauxGrossiste=0
-      }
-      this.commands.push(this.tauxGrossiste)
-      },
-      error =>{
-        console.log("exception occured");
-      }
-    )
-    this.service.commandeByCategory(this.res.date,"pharmacie").subscribe(
-      (response:Reservation[])=>{
-        qte=0
-        if(this.productsQte!=null && this.productsQte!=0){
-        for (let res of response) {
-          for (let pro of res.products) {
-            qte += pro.qte
-          }
-        }
-        this.tauxPharmacie=100*qte/this.productsQte
-        
-      }else{
-        this.tauxPharmacie=0
-      }
-      this.commands.push(this.tauxPharmacie)
+    const clients=["grossiste","pharmacie","clinique","para-droguiste","particulier + autre","institution"]
+    var qte;
+    var taux: number;
+    this.tauxCategory=[]
+    for(let client of clients){
       
-      },
-      error =>{
-        console.log("exception occured");
-      }
-    )
-    this.service.commandeByCategory(this.res.date,"clinique").subscribe(
-      (response:Reservation[])=>{
-        qte=0
-        if(this.productsQte!=null && this.productsQte!=0){
-        for (let res of response) {
-          for (let pro of res.products) {
-            qte += pro.qte
+      this.service.commandeByCategory(this.res.date,client).subscribe(
+        (response:Reservation[])=>{
+          taux=0
+          qte=0
+          for (let res of response) {
+            for(let product of res.products){
+              qte+=product.qte
+            }
           }
-        }
-        this.tauxClinique=100*qte/this.productsQte
-        
-      }else{
-        this.tauxClinique=0
-      }
-      this.commands.push(this.tauxClinique)
-      },
-      error =>{
-        console.log("exception occured");
-      }
-    )
-    this.service.commandeByCategory(this.res.date,"para-droguiste").subscribe(
-      (response:Reservation[])=>{
-        qte=0
-        if(this.productsQte!=null && this.productsQte!=0){
-        for (let res of response) {
-          for (let pro of res.products) {
-            qte += pro.qte
+          if(this.productsQte!=null && this.productsQte!=0){
+            taux=100*qte/this.productsQte
           }
+          this.tauxCategory[clients.indexOf(client)]=taux
+          this.chartRepartitionCommande();    
+        },
+        error =>{
+          console.log("exception occured");
         }
-        this.tauxParaDroguiste=100*qte/this.productsQte
-        
-      }else{
-        this.tauxParaDroguiste=0
-      }
-      this.commands.push(this.tauxParaDroguiste)
-      },
-      error =>{
-        console.log("exception occured");
-      }
-    )
-    this.service.commandeByCategory(this.res.date,"particulier + autre").subscribe(
-      (response:Reservation[])=>{
-        qte=0
-        if(this.productsQte!=null && this.productsQte!=0){
-        for (let res of response) {
-          for (let pro of res.products) {
-            qte += pro.qte
-          }
-        }
-        this.tauxParticulierAutres=100*qte/this.productsQte
-        
-      }else{
-        this.tauxParticulierAutres=0
-      }
-      this.commands.push(this.tauxParticulierAutres)
-      },
-      error =>{
-        console.log("exception occured");
-      }
-    )
-    this.service.commandeByCategory(this.res.date,"institution").subscribe(
-      (response:Reservation[])=>{
-        qte=0
-        if(this.productsQte!=null && this.productsQte!=0){
-        for (let res of response) {
-          for (let pro of res.products) {
-            qte += pro.qte
-          }
-        }
-        this.tauxInstitutions=100*qte/this.productsQte
-        
-      }else{
-        this.tauxInstitutions=0
-      }
-      this.commands.push(this.tauxInstitutions)
-      },
-      error =>{
-        console.log("exception occured");
-      }
-    )
-    console.log(this.commands)
+      )
+      
+    }
     
-    this.chartRepartitionCommande();
   }
   public getStock(){
     this.service.getStock().subscribe(
@@ -844,9 +752,9 @@ export class KPIComponent implements OnInit {
       }
     )
   }
+  
   public chartRepartitionCommande(){
     
-    console.log(this.commands)
     if(this.chart9!=null){
       this.chart9.destroy();
     }
@@ -857,28 +765,84 @@ export class KPIComponent implements OnInit {
           'grossiste', 'pharmacie','clinique','para/droguiste','particulier+autres','institutions'
         ],
         datasets:[{
-          data:this.commands,
+          data:this.tauxCategory,
           backgroundColor:[
            'blue','red',"pink","yellow","green","grey"
-          ]
+          ],
+          hoverOffset: 4,
+          borderAlign: 'inner',
+          borderJoinStyle:'round',
+          
+          
         }]
+      },
+      options:{
+        radius:'80%'
       }
     })
+  }
+  public chartRepartitionReclamation(){
+    var qte
+    var pourcentageMotif
+    var listPourcentage :number[]=[]
+    const motifs=["livré non facturé","facturé non livré","erreur quantité","erreur de prix","erreur de préparation","erreur client","mode de paiment","défaut produit","défaut étiquette","baisse de prix","quantité endommagée","erreur de facture","erreur de livraison","retard livraison","proche périmé","non-fondées","autre"]
+    
+      this.service.productByDate(this.res.date).subscribe(
+        (reponse:ProductC[])=>{
+          for(let motif of motifs){
+            pourcentageMotif=0
+            qte=0
+          for(let pro of reponse){
+            if(pro.motif==motif){
+            qte += pro.qte
+            }
+          }
+          if(this.totalReclamation!=0){
+            pourcentageMotif=100*qte/this.totalReclamation
+          }
+          listPourcentage.push(pourcentageMotif)
+        }
+        if(this.chart10!=null){
+          this.chart10.destroy();
+        }
+        this.chart10=new ch.Chart("myAreaChart10",{
+          type:"doughnut",
+          data:{
+            labels:[
+              "livré non facturé","facturé non livré","erreur quantité","erreur de prix","erreur de préparation","erreur client","mode de paiment","défaut produit","défaut étiquette","baisse de prix","quantité endommagée","erreur de facture","erreur de livraison","retard livraison","proche périmé","non-fondées","autre"
+            ],
+            datasets:[{
+              data:listPourcentage,
+              backgroundColor:[
+               'blue','red',"pink","yellow","green","grey","rgb(219, 106, 0)","rgb(0, 172, 163)","rgb(179, 70, 252)","rgb(245, 102, 226)","rgba(110, 255, 171, 0.377)","rgba(0, 48, 153, 0.5)","rgba(88, 0, 0, 0.5)","rgba(146, 92, 92, 0.5)","rgba(158, 71, 0, 0.5)","rgba(152, 202, 151, 0.5)","rgb(189, 196, 94)"
+              ],
+              hoverOffset: 4,
+              borderAlign: 'inner',
+              borderJoinStyle:'round'
+              
+            }]
+          },
+          options:{
+            radius:'85%'
+          }
+        })
+        }
+      )
   }
   public chartR(){
     this.service.chart2(this.res.date).subscribe(
       (response:Reclamation[])=>{
         this.ppm=[];
         this.time1=[];
-        var total=0;
+        this.totalReclamation=0;
         for (let reclam of response) {
           for (let product of reclam.productClaimeds) {
-            total += product.qte;
+            this.totalReclamation += product.qte;
           }
           if (this.productsQte!=0) {
-            this.ppm.push(100*(total)/this.productsQte);
+            this.ppm.push(100*(this.totalReclamation)/this.productsQte);
           }else{
-            this.ppm.push(100*total);
+            this.ppm.push(100*this.totalReclamation);
           }
           this.time1.push(reclam.time);
         }
@@ -947,6 +911,7 @@ export class KPIComponent implements OnInit {
         }
      
       });
+      this.chartRepartitionReclamation();
       },
       error =>{
         console.log("failed to load the chart");

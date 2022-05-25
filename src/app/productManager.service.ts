@@ -10,6 +10,7 @@ import { Command } from "./command";
 import { CustomerLogin } from "./customerLogin";
 import { Indicator } from "./indicator";
 import { Product } from "./product";
+import { ProductC } from "./productC";
 import { Reclamation } from "./reclamation";
 import { ReclamSupport } from "./reclamSupport";
 import { Reservation } from "./reservation";
@@ -175,6 +176,9 @@ export class ProductManagerService{
     }
     public commandeByCategory(date:string,category:string):Observable<Reservation[]>{
         return this.http.get<Reservation[]>(`${this.apiServerUrl}/productmanager/commandByCategory/${date}/${category}`);
+    }
+    public productByDate(date:string):Observable<ProductC[]>{
+        return this.http.get<ProductC[]>(`${this.apiServerUrl}/productmanager/productsClaimedByDate/${date}`);
     }
 
 

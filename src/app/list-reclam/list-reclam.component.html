@@ -44,6 +44,7 @@
               <th>Date</th>
               <th>Time</th>
               <th>état</th>
+              <th>date de clôture</th>
           </tr>
         </thead>
           <tbody>
@@ -60,6 +61,8 @@
                   <td>{{reclam.time}}</td>
                   <td *ngIf="reclam.etat!=null">{{reclam.etat}}</td>
                   <td *ngIf="reclam.etat==null"><button type="button" (click)="editReclam(reclam)" class="btn btn-info">clôturer</button></td>
+                  <td *ngIf="reclam.dateCloture!=null">{{reclam.dateCloture}}</td>
+                  <td *ngIf="reclam.dateCloture==null">encoure</td>
               </tr>
           </tbody>
           <tfoot>
