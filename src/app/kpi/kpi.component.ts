@@ -6,13 +6,8 @@ import * as ch from 'chart.js';
 import { map, share, Subscription, timer } from 'rxjs';
 import { Reclamation } from '../reclamation';
 import 'chartjs-adapter-moment';
-import { Stock } from '../stock';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProductC } from '../productC';
-
-
-
-
 
 ch.Chart.register(ch.TimeSeriesScale,ch.ArcElement,ch.TimeScale,ch.Legend,ch.Tooltip,ch.LineController ,ch.BarController,ch.BarElement ,ch.CategoryScale, ch.LineElement, ch.PointElement, ch.LinearScale,ch.DoughnutController ,ch.Title);
 @Component({
@@ -22,13 +17,12 @@ ch.Chart.register(ch.TimeSeriesScale,ch.ArcElement,ch.TimeScale,ch.Legend,ch.Too
 })
 export class KPIComponent implements OnInit {
   public indicator:Indicator=new Indicator;
-  public res:Reservation=new Reservation();
+  public totalCommandes:number
+  public totalReclamations:number
   userName='';
   public productsQte:number;
   public efficiency:number[]=[];
   public ppm:number[]=[];
-  public time:Date[]=[];
-  public time1:Date[]=[];
   public chart1:ch.Chart;
   public chart2:ch.Chart;
   public chart3:ch.Chart;
@@ -37,38 +31,111 @@ export class KPIComponent implements OnInit {
   rxTime = new Date();
   subscription: Subscription;
   public total:number;
+  public total2:number;
   public tauxCloture:number;
   public reclamEncour:number;
-  public tauxGrossiste:number=0; public tauxPharmacie:number=0; public tauxClinique:number=0;public tauxParaDroguiste:number=0; public tauxParticulierAutres:number=0; public tauxInstitutions:number=0;
   chart6: any;
   chart7: any;
   chart8: any;
   public chart9:ch.Chart;
-  public commands:number[]=[]
   public totalReclamation:number
   public chart10: ch.Chart;
   public tauxCategory:number[]
-  
+  public tauxCategoryByYear:number[]
+  public today=new Date();
+  public dd = String(this.today.getDate()).padStart(2, '0');
+  public mm = String(this.today.getMonth() + 1).padStart(2, '0');
+  public yyyy = this.today.getFullYear();
+  year=this.yyyy.toString();
+  month:string
+  date:string
+  tempsClotureMoyen:number
   constructor(private service:ProductManagerService) {
     
    }
 
   ngOnInit(): void {
-    var today=new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var yyyy = today.getFullYear();
-    this.res.date=yyyy+"-"+mm+"-"+dd;
+    this.month=this.year+"-"+this.mm
+    this.date=this.month+"-"+this.dd;
     this.userName=sessionStorage.getItem("loggedUser");
 
-    this.getStock();
+    this.total=0
+    this.totalCommandes=0
+    var clients=["grossiste","pharmacie","clinique","para-droguiste","particulier+autre","institution"]
+    var totalCategoryYear
+    var qte
+    this.tauxCategoryByYear=[0,0,0,0,0,0]
+    this.service.chart(this.year).subscribe(
+      (response:Reservation[])=>{
+        for(let res of response){
+          for(let pro of res.products){
+            this.totalCommandes+=pro.qte
+          }
+          if(res.month==this.month){
+            for(let pro of res.products){
+              this.total+=pro.qte
+            }
+          }
+        }
+        for(let client of clients){
+          totalCategoryYear=0
+          qte=0
+        for(let res of response){
+            if(res.category==client){
+              for(let pro of res.products){
+                qte+=pro.qte
+              }
+            }
+          }
+          if(this.totalCommandes!=0){
+            totalCategoryYear=100*qte/this.totalCommandes
+          }
+          this.tauxCategoryByYear[clients.indexOf(client)]=totalCategoryYear
+        }
+        console.log(this.total);
+        this.kpiByClient();
+      }
+    )
+
+this.total2=0
+this.totalReclamations=0
+var somme=0
+this.tempsClotureMoyen=0
+var i=0
+    this.service.chart2(this.year).subscribe(
+      (response:Reclamation[])=>{
+        for(let res of response){
+          if(res.etat=="clôturé"){
+            somme+=Date.parse(res.dateCloture)-Date.parse(res.date);
+            i+=1 
+          }
+          this.tempsClotureMoyen=(somme/i)/(1000 * 60 * 60 * 24)
+          for(let pro of res.productClaimeds){
+            this.totalReclamations+=pro.qte
+          }
+          if(res.month==this.month){
+            for(let pro of res.productClaimeds){
+              this.total2+=pro.qte
+            }
+          }
+        }
+        console.log(this.total2)
+        this.chartRepartitionReclamation();
+      }
+    )
+
+    this.kpis();
+    this.reclamationStat();
     this.chart();
+    this.chartR()
     this.chartGrossiste();
     this.chartPharmacie();
     this.chartClinique();
     this.chartParaDroguiste();
     this.chartParticulierAutre();
     this.chartInstitution();
+    
+    
     
     
     this.subscription = timer(0, 1000)
@@ -79,24 +146,9 @@ export class KPIComponent implements OnInit {
       .subscribe(time => {
         this.rxTime = time;
       });
-
-    this.service.reclamations().subscribe(
-      (response:Reclamation[])=>{
-        var i=0
-        this.reclamEncour=0
-        for (let reclam of response) {
-          if (reclam.etat!=null) {
-            i+=1
-          }
-        }
-        this.tauxCloture=100*i/response.length
-        this.reclamEncour=100-this.tauxCloture
-      }
-    );
   }
-
   public kpis(){
-    this.service.kpis(this.res.date).subscribe(
+    this.service.kpis(this.month).subscribe(
       (response:Indicator) =>{
         this.indicator=response;
         console.log(this.indicator);
@@ -105,61 +157,60 @@ export class KPIComponent implements OnInit {
         console.log("exception occured");
       }
     )
-    const clients=["grossiste","pharmacie","clinique","para-droguiste","particulier + autre","institution"]
+    
+  }
+  public kpiByClient(){
+    const clients=["grossiste","pharmacie","clinique","para-droguiste","particulier+autre","institution"]
     var qte;
     var taux: number;
-    this.tauxCategory=[]
-    for(let client of clients){
+    this.tauxCategory=[0,0,0,0,0,0]
+    
       
-      this.service.commandeByCategory(this.res.date,client).subscribe(
+      this.service.commandeByCategory2(this.month).subscribe(
         (response:Reservation[])=>{
-          taux=0
+          for(let client of clients){
+            taux=0
           qte=0
           for (let res of response) {
-            for(let product of res.products){
+            if(res.category==client){
+              for(let product of res.products){
               qte+=product.qte
             }
+            }
+            
           }
-          if(this.productsQte!=null && this.productsQte!=0){
-            taux=100*qte/this.productsQte
+          if(this.total!=null && this.total!=0){
+            taux=100*qte/this.total
           }
           this.tauxCategory[clients.indexOf(client)]=taux
+          }
+          
+          console.log(this.tauxCategory)
           this.chartRepartitionCommande();    
         },
         error =>{
           console.log("exception occured");
         }
-      )
-      
+      )  
     }
-    
-  }
-  public getStock(){
-    this.service.getStock().subscribe(
-      (response:Stock[]) =>{
-        this.total=0;
-        for(let pro of response){
-          this.total +=pro.productQuantity;
-        }
-      },
-      error =>{
-        console.log("exception occured");
-      }
-    )
-  }
+  
   public chart(){
-    this.service.chart(this.res.date).subscribe(
+    var months=[this.year+"-01",this.year+"-02",this.year+"-03",this.year+"-04",this.year+"-05",this.year+"-06",this.year+"-07",this.year+"-08",this.year+"-09",this.year+"-10",this.year+"-11",this.year+"-12"]
+    this.service.chart(this.year).subscribe(
       (response:Reservation[])=>{
         this.efficiency=[];
-        this.time=[];
-        this.productsQte=0;
-        for (let i = 0; i < response.length; i++) {
-          for(let j=0;j<response[i].products.length;j++){
-            this.productsQte += response[i].products[j].qte;
+        for(let month of months){
+          this.productsQte=0;
+          for (let com of response) {
+            if(com.month==month){
+              for(let pro of com.products){
+            this.productsQte += pro.qte;
           }
-          this.efficiency.push(100*this.productsQte/this.total);
-          this.time.push((response[i].time));
+            }
         }
+        this.efficiency.push(this.productsQte);
+        }
+        
         
         if (this.chart1!=null) {
           this.chart1.destroy();
@@ -176,7 +227,7 @@ export class KPIComponent implements OnInit {
                   fill: true,
               },
              ],
-              labels: this.time
+              labels: months
           },
           options: {
             hover: {
@@ -203,9 +254,9 @@ export class KPIComponent implements OnInit {
             x:{
               type:'time',
               time:{
-                parser:"hh:mm:ss",
+                parser:"yyyy-MM",
                 displayFormats:{
-                  hour:'hh:mm:ss'
+                  hour:'yyyy-MM'
                 }
               },
               title: {
@@ -232,30 +283,30 @@ export class KPIComponent implements OnInit {
         console.log("failed to load the chart");
       }
     )
-    this.kpis();
-    this.chartR()
   }
   public chartGrossiste(){
+    var months=[this.year+"-01",this.year+"-02",this.year+"-03",this.year+"-04",this.year+"-05",this.year+"-06",this.year+"-07",this.year+"-08",this.year+"-09",this.year+"-10",this.year+"-11",this.year+"-12"]
     var grossiste: number[]=[]
-    var houres: Date[]=[]
-    var tauxCommande;
     var qte;
-    this.service.commandeByCategory(this.res.date,"grossiste").subscribe(
+    this.service.commandeByCategory(this.year,"grossiste").subscribe(
       (response:Reservation[])=>{
-        qte=0
+        for(let month of months){
+          qte=0
         for (let res of response) {
-          for (let pro of res.products) {
+          if(res.month==month){
+            for (let pro of res.products) {
             qte += pro.qte
           }
-          tauxCommande=100*qte/this.productsQte;
-          grossiste.push(tauxCommande);
-          houres.push(res.time);
+          }
         }
+          grossiste.push(qte);
+        }
+        
         if (this.chart3!=null) {
           this.chart3.destroy();
         }
         this.chart3=new ch.Chart("myAreaChart3",{
-          type: 'line',
+          type: 'bar',
           data: {
               datasets: [{
                   label: 'taux de commande grossiste',
@@ -263,10 +314,9 @@ export class KPIComponent implements OnInit {
 
                   backgroundColor: "rgb(115 185 243 / 65%)",
                   borderColor: "#0431B4",
-                  fill: true,
               },
              ],
-              labels: houres
+              labels: months
           },
           options: {
             hover: {
@@ -293,9 +343,9 @@ export class KPIComponent implements OnInit {
             x:{
               type:'time',
               time:{
-                parser:"hh:mm:ss",
+                parser:"yyyy-MM",
                 displayFormats:{
-                  hour:'hh:mm:ss'
+                  hour:'yyyy-MM'
                 }
               },
               title: {
@@ -322,26 +372,28 @@ export class KPIComponent implements OnInit {
     )
   }
   public chartPharmacie(){
+    var months=[this.year+"-01",this.year+"-02",this.year+"-03",this.year+"-04",this.year+"-05",this.year+"-06",this.year+"-07",this.year+"-08",this.year+"-09",this.year+"-10",this.year+"-11",this.year+"-12"]
     var pharmacie: number[]=[]
-    var houres: Date[]=[]
-    var tauxCommande;
     var qte;
-    this.service.commandeByCategory(this.res.date,"pharmacie").subscribe(
+    this.service.commandeByCategory(this.year,"pharmacie").subscribe(
       (response:Reservation[])=>{
-        qte=0
+        for(let month of months){
+          qte=0
         for (let res of response) {
+          if(res.month==month){
           for (let pro of res.products) {
             qte += pro.qte
           }
-          tauxCommande=100*qte/this.productsQte;
-          pharmacie.push(tauxCommande);
-          houres.push(res.time);
         }
+        }
+        pharmacie.push(qte);
+        }
+        
         if (this.chart4!=null) {
           this.chart4.destroy();
         }
         this.chart4=new ch.Chart("myAreaChart4",{
-          type: 'line',
+          type: 'bar',
           data: {
               datasets: [{
                   label: 'taux de commande pharmacie',
@@ -349,10 +401,10 @@ export class KPIComponent implements OnInit {
 
                   backgroundColor: "rgb(115 185 243 / 65%)",
                   borderColor: "#FFFF00",
-                  fill: true,
+                  
               },
              ],
-              labels: houres
+              labels: months
           },
           options: {
             hover: {
@@ -379,9 +431,9 @@ export class KPIComponent implements OnInit {
             x:{
               type:'time',
               time:{
-                parser:"hh:mm:ss",
+                parser:"yyyy-MM",
                 displayFormats:{
-                  hour:'hh:mm:ss'
+                  hour:'yyyy-MM'
                 }
               },
               title: {
@@ -408,37 +460,39 @@ export class KPIComponent implements OnInit {
     )
   }
   public chartClinique(){
+    var months=[this.year+"-01",this.year+"-02",this.year+"-03",this.year+"-04",this.year+"-05",this.year+"-06",this.year+"-07",this.year+"-08",this.year+"-09",this.year+"-10",this.year+"-11",this.year+"-12"]
     var clinique: number[]=[]
-    var houres: Date[]=[]
-    var tauxCommande;
     var qte;
-    this.service.commandeByCategory(this.res.date,"clinique").subscribe(
+    this.service.commandeByCategory(this.year,"clinique").subscribe(
       (response:Reservation[])=>{
-        qte=0
+        for(let month of months){
+          qte=0
         for (let res of response) {
-          for (let pro of res.products) {
+          if(res.month==month){
+            for (let pro of res.products) {
             qte += pro.qte
           }
-          tauxCommande=100*qte/this.productsQte;
-          clinique.push(tauxCommande);
-          houres.push(res.time);
+          } 
         }
+        clinique.push(qte);
+        }
+        
         if (this.chart5!=null) {
           this.chart5.destroy();
         }
         this.chart5=new ch.Chart("myAreaChart5",{
-          type: 'line',
+          type: 'bar',
           data: {
               datasets: [{
-                  label: 'taux de commande pharmacie',
+                  label: 'taux de commande clinique',
                   data: clinique,
 
                   backgroundColor: "rgb(115 185 243 / 65%)",
                   borderColor: "#FE2E64",
-                  fill: true,
+                  
               },
              ],
-              labels: houres
+              labels: months
           },
           options: {
             hover: {
@@ -465,9 +519,9 @@ export class KPIComponent implements OnInit {
             x:{
               type:'time',
               time:{
-                parser:"hh:mm:ss",
+                parser:"yyyy-MM",
                 displayFormats:{
-                  hour:'hh:mm:ss'
+                  hour:'yyyy-MM'
                 }
               },
               title: {
@@ -495,37 +549,39 @@ export class KPIComponent implements OnInit {
     
   }
   public chartParaDroguiste(){
+    var months=[this.year+"-01",this.year+"-02",this.year+"-03",this.year+"-04",this.year+"-05",this.year+"-06",this.year+"-07",this.year+"-08",this.year+"-09",this.year+"-10",this.year+"-11",this.year+"-12"]
     var paraDroguiste: number[]=[]
-    var houres: Date[]=[]
-    var tauxCommande;
     var qte;
-    this.service.commandeByCategory(this.res.date,"para-droguiste").subscribe(
+    this.service.commandeByCategory(this.year,"para-droguiste").subscribe(
       (response:Reservation[])=>{
-        qte=0
+        for(let month of months){
+          qte=0
         for (let res of response) {
-          for (let pro of res.products) {
+          if(res.month==month){
+            for (let pro of res.products) {
             qte += pro.qte
           }
-          tauxCommande=100*qte/this.productsQte;
-          paraDroguiste.push(tauxCommande);
-          houres.push(res.time);
+          }
         }
+        paraDroguiste.push(qte);
+        }
+        
         if (this.chart6!=null) {
           this.chart6.destroy();
         }
         this.chart6=new ch.Chart("myAreaChart6",{
-          type: 'line',
+          type: 'bar',
           data: {
               datasets: [{
-                  label: 'taux de commande pharmacie',
+                  label: 'taux de commande para-droguiste',
                   data: paraDroguiste,
 
                   backgroundColor: "rgb(115 185 243 / 65%)",
                   borderColor: "#04B4AE",
-                  fill: true,
+                  
               },
              ],
-              labels: houres
+              labels: months
           },
           options: {
             hover: {
@@ -552,9 +608,9 @@ export class KPIComponent implements OnInit {
             x:{
               type:'time',
               time:{
-                parser:"hh:mm:ss",
+                parser:"yyyy-MM",
                 displayFormats:{
-                  hour:'hh:mm:ss'
+                  hour:'yyyy-MM'
                 }
               },
               title: {
@@ -581,37 +637,40 @@ export class KPIComponent implements OnInit {
     )
   }
   public chartParticulierAutre(){
-    var institution: number[]=[]
-    var houres: Date[]=[]
-    var tauxCommande;
+    var months=[this.year+"-01",this.year+"-02",this.year+"-03",this.year+"-04",this.year+"-05",this.year+"-06",this.year+"-07",this.year+"-08",this.year+"-09",this.year+"-10",this.year+"-11",this.year+"-12"]
+    var PA: number[]=[]
     var qte;
-    this.service.commandeByCategory(this.res.date,"institution").subscribe(
+    this.service.commandeByCategory(this.year,"particulier+autre").subscribe(
       (response:Reservation[])=>{
-        qte=0
+        for(let month of months){
+          qte=0
         for (let res of response) {
-          for (let pro of res.products) {
+          if(res.month==month){
+            for (let pro of res.products) {
             qte += pro.qte
           }
-          tauxCommande=100*qte/this.productsQte;
-          institution.push(tauxCommande);
-          houres.push(res.time);
+          }
+          
         }
-        if (this.chart8!=null) {
-          this.chart8.destroy();
+        PA.push(qte);
         }
-        this.chart8=new ch.Chart("myAreaChart8",{
-          type: 'line',
+        
+        if (this.chart7!=null) {
+          this.chart7.destroy();
+        }
+        this.chart7=new ch.Chart("myAreaChart7",{
+          type: 'bar',
           data: {
               datasets: [{
-                  label: 'taux de commande institution',
-                  data: institution,
+                  label: 'taux de commande particulier + autre',
+                  data: PA,
 
                   backgroundColor: "rgb(115 185 243 / 65%)",
                   borderColor: "#04B4AE",
-                  fill: true,
+                  
               },
              ],
-              labels: houres
+              labels: months
           },
           options: {
             hover: {
@@ -629,7 +688,7 @@ export class KPIComponent implements OnInit {
               title: {
                 color: 'red',
                 display: true,
-                text: 'taux de commande institution'
+                text: 'taux de commande particulier + autre'
               },
               ticks:{               
                 color: 'blue'
@@ -638,9 +697,9 @@ export class KPIComponent implements OnInit {
             x:{
               type:'time',
               time:{
-                parser:"hh:mm:ss",
+                parser:"yyyy-MM",
                 displayFormats:{
-                  hour:'hh:mm:ss'
+                  hour:'yyyy-MM'
                 }
               },
               title: {
@@ -667,37 +726,39 @@ export class KPIComponent implements OnInit {
     )
   }
   public chartInstitution(){
-    var particulierAutre: number[]=[]
-    var houres: Date[]=[]
-    var tauxCommande;
+    var months=[this.year+"-01",this.year+"-02",this.year+"-03",this.year+"-04",this.year+"-05",this.year+"-06",this.year+"-07",this.year+"-08",this.year+"-09",this.year+"-10",this.year+"-11",this.year+"-12"]
+    var institution: number[]=[]
     var qte;
-    this.service.commandeByCategory(this.res.date,"particulier + autre").subscribe(
+    this.service.commandeByCategory(this.year,"institution").subscribe(
       (response:Reservation[])=>{
-        qte=0
+        for(let month of months){
+          qte=0
         for (let res of response) {
-          for (let pro of res.products) {
+          if(res.month==month){
+            for (let pro of res.products) {
             qte += pro.qte
           }
-          tauxCommande=100*qte/this.productsQte;
-          particulierAutre.push(tauxCommande);
-          houres.push(res.time);
+          }
         }
-        if (this.chart7!=null) {
-          this.chart7.destroy();
+        institution.push(qte);
         }
-        this.chart7=new ch.Chart("myAreaChart7",{
-          type: 'line',
+        
+        if (this.chart8!=null) {
+          this.chart8.destroy();
+        }
+        this.chart8=new ch.Chart("myAreaChart8",{
+          type: 'bar',
           data: {
               datasets: [{
-                  label: 'taux de commande particulier+autre',
-                  data: particulierAutre,
+                  label: 'taux de commande institutions',
+                  data: institution,
 
                   backgroundColor: "rgb(115 185 243 / 65%)",
-                  borderColor: "#DF3A01",
-                  fill: true,
+                  
+                  
               },
              ],
-              labels: houres
+              labels: months
           },
           options: {
             hover: {
@@ -715,7 +776,7 @@ export class KPIComponent implements OnInit {
               title: {
                 color: 'red',
                 display: true,
-                text: 'taux de commande particulier+Autre'
+                text: 'taux de commande institution'
               },
               ticks:{               
                 color: 'blue'
@@ -724,9 +785,9 @@ export class KPIComponent implements OnInit {
             x:{
               type:'time',
               time:{
-                parser:"hh:mm:ss",
+                parser:"yyyy-MM",
                 displayFormats:{
-                  hour:'hh:mm:ss'
+                  hour:'yyyy-MM'
                 }
               },
               title: {
@@ -762,12 +823,12 @@ export class KPIComponent implements OnInit {
       type:"doughnut",
       data:{
         labels:[
-          'grossiste', 'pharmacie','clinique','para/droguiste','particulier+autres','institutions'
+          'grossiste', 'pharmacie','clinique','para/droguiste','particulier+autre','institutions'
         ],
         datasets:[{
           data:this.tauxCategory,
           backgroundColor:[
-           'blue','red',"pink","yellow","green","grey"
+           'blue','#51D5C8',"pink","#690BBA","#30627A","grey"
           ],
           hoverOffset: 4,
           borderAlign: 'inner',
@@ -787,7 +848,7 @@ export class KPIComponent implements OnInit {
     var listPourcentage :number[]=[]
     const motifs=["livré non facturé","facturé non livré","erreur quantité","erreur de prix","erreur de préparation","erreur client","mode de paiment","défaut produit","défaut étiquette","baisse de prix","quantité endommagée","erreur de facture","erreur de livraison","retard livraison","proche périmé","non-fondées","autre"]
     
-      this.service.productByDate(this.res.date).subscribe(
+      this.service.productByDate(this.month).subscribe(
         (reponse:ProductC[])=>{
           for(let motif of motifs){
             pourcentageMotif=0
@@ -797,11 +858,12 @@ export class KPIComponent implements OnInit {
             qte += pro.qte
             }
           }
-          if(this.totalReclamation!=0){
-            pourcentageMotif=100*qte/this.totalReclamation
+          if(this.total2!=0){
+            pourcentageMotif=100*qte/this.total2
           }
           listPourcentage.push(pourcentageMotif)
         }
+        console.log(listPourcentage)
         if(this.chart10!=null){
           this.chart10.destroy();
         }
@@ -814,7 +876,7 @@ export class KPIComponent implements OnInit {
             datasets:[{
               data:listPourcentage,
               backgroundColor:[
-               'blue','red',"pink","yellow","green","grey","rgb(219, 106, 0)","rgb(0, 172, 163)","rgb(179, 70, 252)","rgb(245, 102, 226)","rgba(110, 255, 171, 0.377)","rgba(0, 48, 153, 0.5)","rgba(88, 0, 0, 0.5)","rgba(146, 92, 92, 0.5)","rgba(158, 71, 0, 0.5)","rgba(152, 202, 151, 0.5)","rgb(189, 196, 94)"
+               'blue','#51D5C8',"pink","#690BBA","#30627A","grey","rgb(219, 106, 0)","rgb(0, 172, 163)","rgb(179, 70, 252)","rgb(245, 102, 226)","rgba(110, 255, 171, 0.377)","rgba(0, 48, 153, 0.5)","rgba(88, 0, 0, 0.5)","rgba(146, 92, 92, 0.5)","rgba(158, 71, 0, 0.5)","rgba(152, 202, 151, 0.5)","rgb(189, 196, 94)"
               ],
               hoverOffset: 4,
               borderAlign: 'inner',
@@ -830,22 +892,22 @@ export class KPIComponent implements OnInit {
       )
   }
   public chartR(){
-    this.service.chart2(this.res.date).subscribe(
+    this.ppm=[];
+    var months=[this.year+"-01",this.year+"-02",this.year+"-03",this.year+"-04",this.year+"-05",this.year+"-06",this.year+"-07",this.year+"-08",this.year+"-09",this.year+"-10",this.year+"-11",this.year+"-12"]
+    this.service.chart2(this.year).subscribe(
       (response:Reclamation[])=>{
-        this.ppm=[];
-        this.time1=[];
-        this.totalReclamation=0;
+        for(let month of months){
+          this.totalReclamation=0;
         for (let reclam of response) {
-          for (let product of reclam.productClaimeds) {
+          if(reclam.month==month){
+            for (let product of reclam.productClaimeds) {
             this.totalReclamation += product.qte;
           }
-          if (this.productsQte!=0) {
-            this.ppm.push(100*(this.totalReclamation)/this.productsQte);
-          }else{
-            this.ppm.push(100*this.totalReclamation);
           }
-          this.time1.push(reclam.time);
         }
+        this.ppm.push(this.totalReclamation);
+        }
+        
         if (this.chart2!=null) {
           this.chart2.destroy();
         }
@@ -859,7 +921,7 @@ export class KPIComponent implements OnInit {
                   borderColor: "#00e741",
               },
              ],
-              labels: this.time1
+              labels: months
           },
           
           options: {
@@ -889,9 +951,9 @@ export class KPIComponent implements OnInit {
               
               type:'time',
               time:{
-                parser:"hh:mm:ss",
+                parser:"yyyy-MM",
                 displayFormats:{
-                  hour:'hh:mm:ss'
+                  hour:'yyyy-MM'
                 }
               },
               title: {
@@ -911,12 +973,32 @@ export class KPIComponent implements OnInit {
         }
      
       });
-      this.chartRepartitionReclamation();
+      
       },
       error =>{
         console.log("failed to load the chart");
       }
     )
+  }
+  public reclamationStat(){
+    this.tauxCloture=0
+      this.reclamEncour=0
+    this.service.chart2(this.year).subscribe(
+      (response:Reclamation[])=>{
+        var i=0
+        this.reclamEncour=0
+        for (let reclam of response) {
+          if (reclam.etat=="clôturé") {
+            i+=1
+          }
+        }
+        if(response.length!=0){
+          this.tauxCloture=100*i/response.length
+        this.reclamEncour=100-this.tauxCloture
+        }
+        
+      }
+    );
   }
 
 }

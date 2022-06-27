@@ -1,10 +1,12 @@
 
 form {
+  position: absolute;
     width: 500px;
     min-height: 200px;
     height: auto;
     margin-top: 7%;
-    margin-left: 33%;
+    left: 50%;
+    margin-left: -250px;
     border-radius: 5px;
     font-family:   'Arial Narrow Bold', sans-serif;
     padding: 2%;
@@ -13,3 +15,24 @@ form {
 h1#login{
     text-align: center;
 }
+a.nav-link:active{
+    color: rgb(75, 152, 224);
+  }
+  a.nav-link:visited {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+  }
+  a.nav-link:hover {
+    text-decoration: none;
+    color: rgb(75, 152, 224);
+  }
+  div#offcanvasExample{
+    background-color: #2b2f3e;
+  }
+  li{
+    list-style-type: none;
+  }
+  button#closebt{
+    color: white;
+    margin-left: 350px;
+  }

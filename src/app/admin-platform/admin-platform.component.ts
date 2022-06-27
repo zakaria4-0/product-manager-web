@@ -62,22 +62,20 @@ export class AdminPlatformComponent implements OnInit {
       this.getInfo();
     }
   }
-  public commandsPdf(){
-    this.service.commandsPdf().subscribe(
+  public commandsExcel(){
+    this.service.commandesExcelExporter().subscribe(
       (data:Blob)=>{
-        var file = new Blob([data], { type: 'application/pdf' })
+        var today:Date=new Date();
+        var file = new Blob([data], { type: 'application/octet-stream' })
         var fileURL = URL.createObjectURL(file);
         //window.open(fileURL); 
           var a         = document.createElement('a');
           a.href        = fileURL; 
           a.target      = '_blank';
-          a.download    = 'List-of-commands.pdf';
+          a.download    = 'commandes'+"_"+today+'.xlsx';
           document.body.appendChild(a);
           a.click();
-        console.log("pdf generated successfully")
-      },
-      erro=>{
-        console.log("pdf failed to generate")
+        console.log("Excel generated successfully")
       }
     )
   }

@@ -104,22 +104,24 @@ export class StockProductComponent implements OnInit {
     
     button.click();
   }
-  public stockPdf(){
-    this.service.stockPdf().subscribe(
+
+  public stockExcel(){
+    this.service.stockExcelExporter().subscribe(
       (data:Blob)=>{
-        var file = new Blob([data], { type: 'application/pdf' })
+        var today:Date=new Date();
+        var file = new Blob([data], { type: 'application/octet-stream' })
         var fileURL = URL.createObjectURL(file);
         //window.open(fileURL); 
           var a         = document.createElement('a');
           a.href        = fileURL; 
           a.target      = '_blank';
-          a.download    = 'List-of-products.pdf';
+          a.download    = 'stock'+'_'+today+'.xlsx';
           document.body.appendChild(a);
           a.click();
-        console.log("pdf generated successfully")
+        
       },
       error=>{
-        console.log("pdf failed to generate")
+        console.log("Excel failed to generate")
       }
     )
   }

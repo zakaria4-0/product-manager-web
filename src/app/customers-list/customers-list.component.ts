@@ -45,22 +45,23 @@ export class CustomersListComponent implements OnInit {
       this.getCustomers();
     }
   }
-  public cutomersPdf(){
-    this.service.customersPdf().subscribe(
+  public customersExcel(){
+    this.service.customersExcel().subscribe(
       (data:Blob)=>{
-        var file = new Blob([data], { type: 'application/pdf' })
+        var today:Date=new Date()
+        var file = new Blob([data], { type: 'application/octet-stream' })
         var fileURL = URL.createObjectURL(file);
         //window.open(fileURL); 
           var a         = document.createElement('a');
           a.href        = fileURL; 
           a.target      = '_blank';
-          a.download    = 'List-of-customers.pdf';
+          a.download    = 'clients'+'_'+today+'.xlsx';
           document.body.appendChild(a);
           a.click();
-        console.log("pdf generated successfully")
+       
       },
       error=>{
-        console.log("pdf failed to generate")
+        console.log("Excel failed to generate")
       }
     )
   }

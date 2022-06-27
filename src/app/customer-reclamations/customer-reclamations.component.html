@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="main-nav">
     <div class="container-fluid">
-      <a  class="navbar-brand" href="/reservCustomerL">Welcome</a><b class="navbar-brand" style="font-family:Arial; font-size:25px;">{{custName}}</b>
+      <a  class="navbar-brand" href="/reservCustomerL">Accueil</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavDarkDropdown" style="margin-left: 1040px;">
+      <div class="collapse navbar-collapse" id="navbarNavDarkDropdown" style="margin-left: 1250px;">
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a  class="nav-link dropdown-toggle " href="#" id="navbarDarkDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -15,10 +15,10 @@
             </a>
             
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="/customerCommands">My commands</a></li>
-              <li><a class="dropdown-item" href="/customerReclamations">My reclamations</a></li>
+              <li><a class="dropdown-item" href="/customerCommands">Mes commandes</a></li>
+              <li><a class="dropdown-item" href="/customerReclamations">Mes réclamations</a></li>
               <li><a class="dropdown-item" href="">Profil</a></li>
-              <li><a class="dropdown-item" href="/customerLogin">Logout</a></li>
+              <li><a class="dropdown-item" href="/customerLogin">Se déconnecter</a></li>
               
             </ul>
           </li>
@@ -29,16 +29,16 @@
   <Table class="table-danger table-bordered">
       <Thead>
           <tr>
-              <th>Code_Reclamation</th>
-              <th>name</th>
+              <th>Code_Réclamation</th>
+              <th>nom</th>
               <th>email</th>
-              <th>Code_Command</th>
-              <th>Product_Name</th>
+              <th>Code_Commande</th>
+              <th>Produit</th>
               <th>Code_Article</th>
               <th>Quantité</th>
               <th>Motif</th>
               <th>Date</th>
-              <th>Time</th>
+              <th>Heure</th>
               <th>Etat</th>
           </tr>
       </Thead>
@@ -54,7 +54,7 @@
               <td><div *ngFor="let product of rec.productClaimeds">{{product.motif}}</div></td>
               <td>{{rec.date}}</td>
               <td>{{rec.time}}</td>
-              <td *ngIf="rec.etat==null">encour</td>
+              <td *ngIf="rec.etat==null">en-cours</td>
               <td *ngIf="rec.etat!=null">{{rec.etat}}</td>
               
           </tr>

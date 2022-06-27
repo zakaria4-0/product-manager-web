@@ -1,73 +1,76 @@
-<nav class="navbar navbar-dark  bg-dark fixed-top" >
+<nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-          <button type="button" class="btn-close text-reset" id="closebt" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header">
+            
+            <button type="button" class="btn-close btn-close-white" id="closebt" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <label style="color: white;">Navigation:</label>
+            <ul>
+              <li ><a  class="nav-link active " aria-current="page" href="/main"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+              </svg> Accueil</a></li><br>
+              <li ><a  class="nav-link active" aria-current="page" href="/ourProducts"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-columns-gap" viewBox="0 0 16 16">
+                <path d="M6 1v3H1V1h5zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12v3h-5v-3h5zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8v7H1V8h5zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6v7h-5V1h5zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z"/>
+              </svg> Produits</a></li><br>
+              <li><a class="nav-link active" aria-current="page" href="/customerLogin"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 0 16 16">
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
+              </svg> Commander</a></li><br>
+              <li><a class="nav-link active" aria-current="page" href="/reclamation"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-frown-fill" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm-2.715 5.933a.5.5 0 0 1-.183-.683A4.498 4.498 0 0 1 8 9.5a4.5 4.5 0 0 1 3.898 2.25.5.5 0 0 1-.866.5A3.498 3.498 0 0 0 8 10.5a3.498 3.498 0 0 0-3.032 1.75.5.5 0 0 1-.683.183zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z"/>
+              </svg> Réclamer</a></li><br>
+              <li><a class="nav-link active" aria-current="page" href="/customerLogin"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+              </svg> Espace Client</a></li>
+              <li><a class="nav-link active" aria-current="page" href="/adminLogin"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
+                <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H4Zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2H2Z"/>
+              </svg> Espace Admin</a></li>
+            </ul>
+            
+          </div>
         </div>
-        <div class="offcanvas-body">
-         <ul>
-          <li style="list-style-type: none;"><a class="canvas" href="/popularProducts"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/>
-          </svg> Popular</a></li><br>
-          <li style="list-style-type: none;"><a class="canvas" href="/newestProducts"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-dotted" viewBox="0 0 16 16">
-            <path d="M8 0c-.176 0-.35.006-.523.017l.064.998a7.117 7.117 0 0 1 .918 0l.064-.998A8.113 8.113 0 0 0 8 0zM6.44.152c-.346.069-.684.16-1.012.27l.321.948c.287-.098.582-.177.884-.237L6.44.153zm4.132.271a7.946 7.946 0 0 0-1.011-.27l-.194.98c.302.06.597.14.884.237l.321-.947zm1.873.925a8 8 0 0 0-.906-.524l-.443.896c.275.136.54.29.793.459l.556-.831zM4.46.824c-.314.155-.616.33-.905.524l.556.83a7.07 7.07 0 0 1 .793-.458L4.46.824zM2.725 1.985c-.262.23-.51.478-.74.74l.752.66c.202-.23.418-.446.648-.648l-.66-.752zm11.29.74a8.058 8.058 0 0 0-.74-.74l-.66.752c.23.202.447.418.648.648l.752-.66zm1.161 1.735a7.98 7.98 0 0 0-.524-.905l-.83.556c.169.253.322.518.458.793l.896-.443zM1.348 3.555c-.194.289-.37.591-.524.906l.896.443c.136-.275.29-.54.459-.793l-.831-.556zM.423 5.428a7.945 7.945 0 0 0-.27 1.011l.98.194c.06-.302.14-.597.237-.884l-.947-.321zM15.848 6.44a7.943 7.943 0 0 0-.27-1.012l-.948.321c.098.287.177.582.237.884l.98-.194zM.017 7.477a8.113 8.113 0 0 0 0 1.046l.998-.064a7.117 7.117 0 0 1 0-.918l-.998-.064zM16 8a8.1 8.1 0 0 0-.017-.523l-.998.064a7.11 7.11 0 0 1 0 .918l.998.064A8.1 8.1 0 0 0 16 8zM.152 9.56c.069.346.16.684.27 1.012l.948-.321a6.944 6.944 0 0 1-.237-.884l-.98.194zm15.425 1.012c.112-.328.202-.666.27-1.011l-.98-.194c-.06.302-.14.597-.237.884l.947.321zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a6.999 6.999 0 0 1-.458-.793l-.896.443zm13.828.905c.194-.289.37-.591.524-.906l-.896-.443c-.136.275-.29.54-.459.793l.831.556zm-12.667.83c.23.262.478.51.74.74l.66-.752a7.047 7.047 0 0 1-.648-.648l-.752.66zm11.29.74c.262-.23.51-.478.74-.74l-.752-.66c-.201.23-.418.447-.648.648l.66.752zm-1.735 1.161c.314-.155.616-.33.905-.524l-.556-.83a7.07 7.07 0 0 1-.793.458l.443.896zm-7.985-.524c.289.194.591.37.906.524l.443-.896a6.998 6.998 0 0 1-.793-.459l-.556.831zm1.873.925c.328.112.666.202 1.011.27l.194-.98a6.953 6.953 0 0 1-.884-.237l-.321.947zm4.132.271a7.944 7.944 0 0 0 1.012-.27l-.321-.948a6.954 6.954 0 0 1-.884.237l.194.98zm-2.083.135a8.1 8.1 0 0 0 1.046 0l-.064-.998a7.11 7.11 0 0 1-.918 0l-.064.998zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-          </svg> Newest</a></li><br>
-          <li style="list-style-type: none;"><a class="canvas" href="/bestselling"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
-            <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
-          </svg> Bestselling</a></li><br>
-           <li style="list-style-type: none;"><a class="canvas" href="/promotion"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gift-fill" viewBox="0 0 16 16">
-            <path d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zm6 4v7.5a1.5 1.5 0 0 1-1.5 1.5H9V7h6zM2.5 16A1.5 1.5 0 0 1 1 14.5V7h6v9H2.5z"/>
-          </svg> Sold</a></li><br>
-          <li style="list-style-type: none;"><a class="canvas" href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
-          </svg> PFQ</a></li>
-         </ul>
-        </div>
-      </div>
-    <a class="nav-link active" aria-current="page" href="/main">Home</a>
-    <a class="nav-link active" aria-current="page" href="/ourProducts">Products</a>
-    <a class="nav-link active" aria-current="page" href="/customerLogin">Shop</a>
-    <a class="nav-link active" aria-current="page" href="/reclamation">Reclamation</a>
-    <a class="nav-link active" aria-current="page" href="/customerLogin">Account</a>
-    <a class="nav-link active" aria-current="page" href="/adminLogin">Admin account</a>
-  </div>
-  </nav>
+        
+    </div>
+</nav>
 
 <form  #addForm="ngForm" (ngSubmit)="addReclamation(addForm)" id="main-form">
-    <h1 id=login>Reclamation client</h1>
+    <h1 id=login>Réclamation client</h1>
     
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Client_Name</label>
-      <input type="email"  [(ngModel)]="reclamation.clientName" [(ngModel)]="reclamSupport.cName"  name="clientName" class="form-control"   aria-describedby="emailHelp" placeholder="clientName" required 
+      <label for="exampleInputEmail1" class="form-label">Nom</label>
+      <input type="email"  [(ngModel)]="reclamation.clientName" [(ngModel)]="reclamSupport.cName"  name="clientName" class="form-control"   aria-describedby="emailHelp" placeholder="nom" required 
       #clientName="ngModel" [class.is-invalid]="clientName.invalid && clientName.touched">
-      <small class="text-danger" [class.d-none]="clientName.valid || clientName.untouched">clientName is required</small>&nbsp;&nbsp;
+      <small class="text-danger" [class.d-none]="clientName.valid || clientName.untouched">champ requis</small>&nbsp;&nbsp;
       
     </div>
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Client_Email</label>
-      <input type="email"  [(ngModel)]="reclamation.clientEmail"  name="clientEmail" class="form-control"   aria-describedby="emailHelp" placeholder="clientEmail" required 
+      <label for="exampleInputEmail1" class="form-label">Email</label>
+      <input type="email"  [(ngModel)]="reclamation.clientEmail"  name="clientEmail" class="form-control"   aria-describedby="emailHelp" placeholder="Email" required 
       #clientEmail="ngModel" [class.is-invalid]="clientEmail.invalid && clientEmail.touched">
-      <small class="text-danger" [class.d-none]="clientEmail.valid || clientEmail.untouched">clientEmail is required</small>&nbsp;&nbsp;
+      <small class="text-danger" [class.d-none]="clientEmail.valid || clientEmail.untouched">champ requis</small>&nbsp;&nbsp;
       
     </div>
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Code_Command</label>
-      <input type="email"  [(ngModel)]="reclamation.codeCommand"  name="codeCommand" class="form-control"   aria-describedby="emailHelp" placeholder="codeCommand" required 
+      <label for="exampleInputEmail1" class="form-label">Code_Commande</label>
+      <input type="email"  [(ngModel)]="reclamation.codeCommand"  name="codeCommand" class="form-control"   aria-describedby="emailHelp" placeholder="codeCommande" required 
       #codeCommand="ngModel" [class.is-invalid]="codeCommand.invalid && codeCommand.touched">
-      <small class="text-danger" [class.d-none]="codeCommand.valid || codeCommand.untouched">codeCommand is required</small>&nbsp;&nbsp;
+      <small class="text-danger" [class.d-none]="codeCommand.valid || codeCommand.untouched">champ requis</small>&nbsp;&nbsp;
       
     </div>
-    <label for="exampleInputEmail1" class="form-label"><b>Place your reclamation here</b></label>
+    <label for="exampleInputEmail1" class="form-label"><b>Ajouter vos réclamations:</b></label>
     <form #reclamForm="ngForm">
       <div class="row g-3">
       <div class="col-sm">
-        <label for="exampleInputEmail1" class="form-label">Product_Name</label>
-        <input type="email"  [(ngModel)]="reclamSupport.name"  name="name" class="form-control"   aria-describedby="emailHelp" placeholder="Product_Name" required 
+        <label for="exampleInputEmail1" class="form-label">Produit</label>
+        <input type="email"  [(ngModel)]="reclamSupport.name"  name="name" class="form-control"   aria-describedby="emailHelp" placeholder="Produit" required 
         #name="ngModel" [class.is-invalid]="name.invalid && name.touched">
-        <small class="text-danger" [class.d-none]="name.valid || name.untouched">name is required</small>&nbsp;&nbsp;
+        <small class="text-danger" [class.d-none]="name.valid || name.untouched">champ requis</small>&nbsp;&nbsp;
         
       </div>
 
@@ -75,14 +78,14 @@
         <label for="exampleInputEmail1" class="form-label">Code_Article</label>
         <input type="email" [(ngModel)]="reclamSupport.codeArticle" name="Code_Article" class="form-control"   aria-describedby="emailHelp" placeholder="Code_Article" required 
          #Code_Article="ngModel" [class.is-invalid]="Code_Article.invalid && Code_Article.touched">
-        <small class="text-danger" [class.d-none]="Code_Article.valid || Code_Article.untouched">Code_Article is required</small>
+        <small class="text-danger" [class.d-none]="Code_Article.valid || Code_Article.untouched">champ requis</small>
         
       </div>
       <div class="col-sm">
-        <label for="exampleInputEmail1" class="form-label">Quantity</label>
-        <input type="email" [(ngModel)]="reclamSupport.qte" name="qte" class="form-control"   aria-describedby="emailHelp" placeholder="quantity" required 
+        <label for="exampleInputEmail1" class="form-label">Quantité</label>
+        <input type="email" [(ngModel)]="reclamSupport.qte" name="qte" class="form-control"   aria-describedby="emailHelp" placeholder="quantité" required 
          #qte="ngModel" [class.is-invalid]="qte.invalid && qte.touched">
-        <small class="text-danger" [class.d-none]="qte.valid || qte.untouched">quantity is required</small>
+        <small class="text-danger" [class.d-none]="qte.valid || qte.untouched">champ requis</small>
         
       </div>
       <div class="col-sm">
@@ -92,25 +95,25 @@
      <option >livré non facturé</option>
      <option >facturé non livré</option>
      <option >erreur quantité</option>
-     <option value="">erreur de prix</option>
-     <option value="">erreur de préparation</option>
-     <option value="">erreur client</option>
-     <option value="">mode de paimenent</option>
-     <option value="">défaut produit</option>
-     <option value="">défaut étiquette</option>
-     <option value="">baisse de prix</option>
+     <option value="Administration des commandes">erreur de prix</option>
+     <option >erreur de préparation</option>
+     <option >erreur client</option>
+     <option >mode de paimenent</option>
+     <option >défaut produit</option>
+     <option >défaut étiquette</option>
+     <option >baisse de prix</option>
      <option >quantité endommagée</option>
      <option >erreur de facture</option>
-     <option value="">erreur de livraison</option>
+     <option >erreur de livraison</option>
      <option >retard livraison</option>
-     <option value="">proche périmé</option>
-     <option value="">non-fondées</option>
+     <option >proche périmé</option>
+     <option >non-fondées</option>
      <option >autre</option>
     </select>
-    <small class="text-danger" [class.d-none]="motif.valid || motif.untouched">Required</small>
+    <small class="text-danger" [class.d-none]="motif.valid || motif.untouched">champ requis</small>
       </div>
     </div>
-      <button [disabled]="reclamForm.invalid" (click)="addReclamSupport(reclamForm)" type="button" class="btn btn-success" style="display: inline-block;">Add</button>
+      <button [disabled]="reclamForm.invalid" (click)="addReclamSupport(reclamForm)" type="button" class="btn btn-success" style="display: inline-block;">Ajouter</button>
       &nbsp;&nbsp;&nbsp;
       <small class="text-danger" style="display: inline-block;">{{msg2}} </small>
     </form>
@@ -118,11 +121,11 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>ProductName</th>
-          <th>CodeArticle</th>
+          <th>Produit</th>
+          <th>Code_Article</th>
           <th>Quantité</th>
           <th>Motif</th>
-          <th>Delete</th>
+          <th>Supprimer</th>
         </tr>
       </thead>
       <tbody>
@@ -131,11 +134,11 @@
           <td>{{reclam.codeArticle}}</td>
           <td>{{reclam.qte}}</td>
           <td>{{reclam.motif}}</td>
-          <td><button (click)="deleteReclamation(reclam.id)" type="button" class="btn btn-danger"  >delete</button></td>
+          <td><button (click)="deleteReclamation(reclam.id)" type="button" class="btn btn-danger"  >supprimer</button></td>
         </tr>
       </tbody>
     </table>
-      <button  [disabled]="addForm.invalid " type="submit" class="btn btn-primary" style="display: inline-block;">Submit</button>&nbsp;&nbsp;&nbsp;
+      <button  [disabled]="addForm.invalid " type="submit" class="btn btn-primary" style="display: inline-block;">Envoyer</button>&nbsp;&nbsp;&nbsp;
       <small style="color: green; display: inline-block;">{{msg1}} </small>
       <small class="text-danger" style="display: inline-block;">{{msg}} </small>
 </form>

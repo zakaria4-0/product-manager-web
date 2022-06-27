@@ -1,11 +1,11 @@
 <!-- Header -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="main-nav">
   <div class="container-fluid">
-    <a  class="navbar-brand" href="/admincontrolpage">Welcome </a><b class="navbar-brand" style="font-family:Arial; font-size:25px;">{{userName}}</b>
+    <a  class="navbar-brand" href="/admincontrolpage">Bienvenu </a><b class="navbar-brand" style="font-family:Arial; font-size:25px;">{{userName}}</b>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown" >
+    <div class="collapse navbar-collapse " id="navbarNavDarkDropdown" >
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
           <a  class="nav-link dropdown-toggle " href="#" id="navbarDarkDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -17,7 +17,7 @@
           
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><a class="dropdown-item" href="">Profil</a></li>
-            <li><a class="dropdown-item" href="/adminLogin">Logout</a></li>
+            <li><a class="dropdown-item" href="/adminLogin">Se déconnecter</a></li>
             
           </ul>
         </li>
@@ -35,28 +35,28 @@
   <div class="row">
     <div class="col-md-3" id="col3">
       <!-- left -->
-      <strong style="font-size: x-large;"> Toolbox</strong>
+      <strong style="font-size: x-large;"> Services</strong>
       <hr>
       
       <ul  id="main-ul">
         <li style="list-style-type: none;"><a class="nav-link active" href="/admincontrolpage"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
           <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
-        </svg> Home</a></li>
+        </svg> Accueil</a></li>
         <li style="list-style-type: none;"><a class="nav-link active" href="/productStock"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
         </svg> Stock</a></li>
         <li style="list-style-type: none;"><a class="nav-link active" href="/customerinfo"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-activity" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z"/>
-        </svg> Commands</a></li>
+        </svg> Commandes</a></li>
         <li style="list-style-type: none;"><a class="nav-link active" href="/customersList"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
           <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
           <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
           <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
-        </svg> Customers</a></li>
+        </svg> Clients</a></li>
         <li style="list-style-type: none;"><a class="nav-link active" href="/reclamations"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-angry" viewBox="0 0 16 16">
           <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
           <path d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zm6.991-8.38a.5.5 0 1 1 .448.894l-1.009.504c.176.27.285.64.285 1.049 0 .828-.448 1.5-1 1.5s-1-.672-1-1.5c0-.247.04-.48.11-.686a.502.502 0 0 1 .166-.761l2-1zm-6.552 0a.5.5 0 0 0-.448.894l1.009.504A1.94 1.94 0 0 0 5 6.5C5 7.328 5.448 8 6 8s1-.672 1-1.5c0-.247-.04-.48-.11-.686a.502.502 0 0 0-.166-.761l-2-1z"/>
-        </svg> Reclamations</a></li>
+        </svg> Réclamations</a></li>
         <li style="list-style-type: none;"><a class="nav-link active" href="/KPI"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07Z"/>
         </svg> KPIs</a></li>
@@ -68,13 +68,13 @@
   	</div><!-- /span-3 -->
     <div class="col-md-9">   	
       <!-- column 2 -->	
-       <strong style="font-size: x-large;"> Dashboard</strong>    
+       <strong style="font-size: x-large;"> Tableau de bord</strong>    
        <hr>
 	   <div class="row">
             <!-- center left-->	
   
               <div class="panel panel-default">
-                  <div class="panel-heading"><h4>Stock progress</h4></div>
+                  <div class="panel-heading"><h4>progréssion du stock</h4></div>
                   <div class="panel-body" id="progress">
                     
                     

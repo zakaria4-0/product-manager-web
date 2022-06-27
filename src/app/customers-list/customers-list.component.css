@@ -1,20 +1,37 @@
-header{
-    background-color: white;
-    height:730px;
-}
 table{
-    margin-top: 70px;
-    width: 1230px;
-    margin-left: 140px;
+    position: relative;
     border-radius: 5px;
+    width: 100%;
     
-    
+    font-size: large;
+    margin-left: 1%;
+    margin-top: 5%;
 }
+
 input#searchName{
-    position: absolute;
-    top: 90px;
-    left: 143px;
+    position: relative;
+    top: 10%;
+    
 }
+main#global{
+    height:674px; 
+    background-color: #ffffff;
+   
+}				                
+
+div#main-div{
+    
+    font-size: large;
+   
+}
+
+ul#main-ul{
+    height: 500px;
+    margin-top: auto;
+}  
+div#col3{
+    height: 500px;
+} 
 div#navbarNavDarkDropdown{
-    margin-left: 1000px;
+    margin-left: 90%;
 }        

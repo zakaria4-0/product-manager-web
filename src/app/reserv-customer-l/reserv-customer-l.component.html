@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="main-nav">
   <div class="container-fluid">
-    <a  class="navbar-brand" href="/reservCustomerL">Welcome</a><b class="navbar-brand" style="font-family:Arial; font-size:25px;">{{custName}}</b>
+    <a  class="navbar-brand" href="/reservCustomerL">Bienvenu</a><b class="navbar-brand" style="font-family:Arial; font-size:25px;">{{custName}}</b>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -15,10 +15,10 @@
           </a>
           
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" href="/customerCommands">My commands</a></li>
-            <li><a class="dropdown-item" href="/customerReclamations">My reclamations</a></li>
+            <li><a class="dropdown-item" href="/customerCommands">Mes commandes</a></li>
+            <li><a class="dropdown-item" href="/customerReclamations">Mes réclamations</a></li>
             <li><a class="dropdown-item" href="">Profil</a></li>
-            <li><a class="dropdown-item" href="/customerLogin">Logout</a></li>
+            <li><a class="dropdown-item" href="/customerLogin">Se déconnecter</a></li>
             
           </ul>
         </li>
@@ -27,66 +27,66 @@
   </div>
 </nav>
 <form  #addForm="ngForm" (ngSubmit)="placeOrder(addForm)" id="main-form">
-    <h1 id=login>Reserve here</h1>
-    <small class="text-danger" >{{msg}} </small>
+    <h1 id=login>Commander</h1>
+    
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Name</label>
-        <input type="email"  [(ngModel)]="reservation.name" name="name" class="form-control"   aria-describedby="emailHelp" placeholder="Name" required 
+        <label for="exampleInputEmail1" class="form-label">Nom</label>
+        <input type="email"  [(ngModel)]="reservation.name" name="name" class="form-control"   aria-describedby="emailHelp" placeholder="Nom" required 
         #name="ngModel" [class.is-invalid]="name.invalid && name.touched">
-        <small class="text-danger" [class.d-none]="name.valid || name.untouched">name is required</small>&nbsp;&nbsp;&nbsp;
-        <small class="text-danger" [class.d-none]="name.value == custName">please give the correct name "{{custName}}"</small>
+        <small class="text-danger" [class.d-none]="name.valid || name.untouched">nom est requis</small>&nbsp;&nbsp;&nbsp;
+        <small class="text-danger" [class.d-none]="name.value == custName">nom incorrecte</small>
       </div>
 
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email</label>
         <input type="email" [(ngModel)]="reservation.email" name="email" class="form-control"   aria-describedby="emailHelp" placeholder="Email" required 
          #email="ngModel" [class.is-invalid]="email.invalid && email.touched">
-        <small class="text-danger" [class.d-none]="email.valid || email.untouched">email is required</small>
+        <small class="text-danger" [class.d-none]="email.valid || email.untouched">email est requis</small>
         
       </div>
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">City</label>
-        <input type="email" [(ngModel)]="reservation.ville" name="city" class="form-control"   aria-describedby="emailHelp" placeholder="city" required 
+        <label for="exampleInputEmail1" class="form-label">Ville</label>
+        <input type="email" [(ngModel)]="reservation.ville" name="city" class="form-control"   aria-describedby="emailHelp" placeholder="ville" required 
          #city="ngModel" [class.is-invalid]="city.invalid && city.touched">
-        <small class="text-danger" [class.d-none]="city.valid || city.untouched">city is required</small>
+        <small class="text-danger" [class.d-none]="city.valid || city.untouched">champ requis</small>
         
       </div>
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Address</label>
-        <input type="email" [(ngModel)]="reservation.address" name="address" class="form-control"   aria-describedby="emailHelp" placeholder="address" required 
+        <label for="exampleInputEmail1" class="form-label">Adresse</label>
+        <input type="email" [(ngModel)]="reservation.address" name="address" class="form-control"   aria-describedby="emailHelp" placeholder="adresse" required 
          #address="ngModel" [class.is-invalid]="address.invalid && address.touched">
-        <small class="text-danger" [class.d-none]="address.valid || address.untouched">address is required</small>
+        <small class="text-danger" [class.d-none]="address.valid || address.untouched">champ requis</small>
         
       </div>
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Region</label>
-        <input type="email" [(ngModel)]="reservation.region" name="region" class="form-control"   aria-describedby="emailHelp" placeholder="region" required 
+        <label for="exampleInputEmail1" class="form-label">Région</label>
+        <input type="email" [(ngModel)]="reservation.region" name="region" class="form-control"   aria-describedby="emailHelp" placeholder="région" required 
          #region="ngModel" [class.is-invalid]="region.invalid && region.touched">
-        <small class="text-danger" [class.d-none]="region.valid || region.untouched">region is required</small>
+        <small class="text-danger" [class.d-none]="region.valid || region.untouched">champ requis</small>
         
       </div><br>
 
-      <label for="exampleInputEmail1" class="form-label"><b>Place your commands here</b></label>
+      <label for="exampleInputEmail1" class="form-label"><b>Ajouter vos commandes ici</b></label>
       <form #commandForm="ngForm">
       <div class="row g-3"  >
     
         <div class="col-sm">
-          <label for="exampleInputEmail1" class="form-label">Select Product:</label><br>
+          <label for="exampleInputEmail1" class="form-label">Sélectionner un produit:</label><br>
       <select  [(ngModel)]="command.name" name="product" class="form-select" aria-label="Default select example" required 
        #product="ngModel" [class.is-invalid]="product.invalid && product.touched">
        <option value=""></option>
         <option *ngFor="let prod of products">{{prod.productName}}</option>
       </select>
-      <small class="text-danger" [class.d-none]="product.valid || product.untouched">Required</small>
+      <small class="text-danger" [class.d-none]="product.valid || product.untouched">champ requis</small>
         </div>
         <div class="col-sm">
-          <label for="exampleInputEmail1" class="form-label">Quantity:</label><br>
-          <input type="text" [(ngModel)]="command.qte" name="qte" #qte="ngModel"  class="form-control" placeholder="Quantity" aria-label="Zip" required
+          <label for="exampleInputEmail1" class="form-label">Quantité:</label><br>
+          <input type="text" [(ngModel)]="command.qte" name="qte" #qte="ngModel"  class="form-control" placeholder="Quantité" aria-label="Zip" required
           [class.is-invalid]="qte.invalid && qte.touched">
-          <small class="text-danger" [class.d-none]="qte.valid || qte.untouched">Product quantity is required</small>
+          <small class="text-danger" [class.d-none]="qte.valid || qte.untouched">champ requis</small>
         </div>
        
-          <button (click)="saveCommand(commandForm)" type="button" class="btn btn-success" id="butsuccess">Add to your bag <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 0 16 16">
+          <button (click)="saveCommand(commandForm)" type="button" class="btn btn-success" id="butsuccess">Ajouter au panier <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 0 16 16">
             <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
           </svg></button>
           <small class="text-danger" >{{msg2}} </small>
@@ -98,10 +98,10 @@
       <thead>
         <tr>
           
-          <th scope="col">ProductName</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Price</th>
-          <th scope="col">Delete</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Quantité</th>
+          <th scope="col">Prix</th>
+          <th scope="col">Supprimer</th>
         </tr>
       </thead>
       <tbody>
@@ -110,7 +110,7 @@
           <td>{{com.name}}</td>
           <td>{{com.qte}}</td>
           <td>{{com.price}} dh</td>
-          <td><button (click)="deleteCom(com.id)" type="button" class="btn btn-danger"  >delete</button></td>
+          <td><button (click)="deleteCom(com.id)" type="button" class="btn btn-danger"  >supprimer</button></td>
         </tr>
          
       </tbody>
@@ -122,8 +122,9 @@
       </tr></tfoot>
     </table>
     
-      <button  [disabled]="addForm.invalid || name.value != custName" type="submit" class="btn btn-primary">Purchase</button><br>
+      <button  [disabled]="addForm.invalid || name.value != custName" type="submit" class="btn btn-primary">Acheter</button><br>
       <small style="color: green;" >{{msg1}} </small>
+      <small class="text-danger" >{{msg}} </small>
 </form>
   
   

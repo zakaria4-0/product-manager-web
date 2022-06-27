@@ -15,11 +15,9 @@ import { AdminPlatformComponent } from './admin-platform/admin-platform.componen
 import { AdminControlPageComponent } from './admin-control-page/admin-control-page.component';
 import { StockProductComponent } from './stock-product/stock-product.component';
 import { OurProductsComponent } from './our-products/our-products.component';
-import { PromotionComponent } from './promotion/promotion.component';
+
 import { CustomersListComponent } from './customers-list/customers-list.component';
-import { PopularProductComponent } from './popular-product/popular-product.component';
-import { NewestProductComponent } from './newest-product/newest-product.component';
-import { BestSellingProductComponent } from './best-selling-product/best-selling-product.component';
+
 import { ProductManagerService } from './productManager.service';
 import { KPIComponent } from './kpi/kpi.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
@@ -42,11 +40,9 @@ import { CustomerReclamationsComponent } from './customer-reclamations/customer-
     AdminControlPageComponent,
     StockProductComponent,
     OurProductsComponent,
-    PromotionComponent,
+    
     CustomersListComponent,
-    PopularProductComponent,
-    NewestProductComponent,
-    BestSellingProductComponent,
+    
     KPIComponent,
     ReclamationComponent,
     ListReclamComponent,

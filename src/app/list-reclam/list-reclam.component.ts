@@ -65,19 +65,21 @@ export class ListReclamComponent implements OnInit {
     )
   }
 
-  public reclamationPdf(){
-    this.service.reclamationPdf().subscribe(
+  
+  public reclamationExcel(){
+    this.service.reclamationExcelExporter().subscribe(
       (data:Blob)=>{
-        var file = new Blob([data], { type: 'application/pdf' })
+        var today:Date=new Date();
+        var file = new Blob([data], { type: 'application/octet-stream' })
         var fileURL = URL.createObjectURL(file);
         //window.open(fileURL); 
           var a         = document.createElement('a');
           a.href        = fileURL; 
           a.target      = '_blank';
-          a.download    = 'List-of-reclamations.pdf';
+          a.download    = 'reclamations'+'_'+today+'.xlsx';
           document.body.appendChild(a);
           a.click();
-        console.log("pdf generated successfully")
+        
       },
       error=>{
         console.log("pdf failed to generate")

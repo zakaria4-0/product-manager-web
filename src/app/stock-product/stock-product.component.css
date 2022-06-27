@@ -13,10 +13,34 @@ margin-top: 1%;
 
 table{
     border-radius: 5px;
-    
-    width: 1300px;
-    margin-left: -60px;
+    margin-left: 15px;
+   font-size:11.7px;
+    width: 100%;
 }
-li#admin{
-    margin-left: 1100px;
+div#navbarNavDarkDropdown{
+    
+    margin-left: 90%;
 }        
+
+main#global{
+    
+    height:674px; 
+    background-color: #ffffff;
+   
+}				                
+
+div#main-div{
+    
+    font-size: large;
+   
+}
+
+ul#main-ul{
+    height: 500px;
+    margin-top: auto;
+}  
+div#col3{
+    height: 500px;
+} 
+
+

@@ -86,38 +86,7 @@ export class ProductManagerService{
     public deleteProduct(id:number):Observable<void>{
         return this.http.delete<void>(`${this.apiServerUrl}/productmanager/deleteProduct/${id}`)
     }
-    public commandsPdf():Observable<Blob>{
-        var authorization = 'Bearer '+sessionStorage.getItem("access_token");
-
-         const headers = new HttpHeaders({ 'Content-Type': 'application/json',
-         "Authorization": authorization, responseType : 'blob'});
-    return this.http.get<Blob>(`${this.apiServerUrl}/productmanager/pdfGenerate`,{ headers : headers,responseType : 
-        'blob' as 'json'})
-    }
-    public stockPdf():Observable<Blob>{
-        var authorization = 'Bearer '+sessionStorage.getItem("access_token");
-
-         const headers = new HttpHeaders({ 'Content-Type': 'application/json',
-         "Authorization": authorization, responseType : 'blob'});
-    return this.http.get<Blob>(`${this.apiServerUrl}/productmanager/pdfStock`,{ headers : headers,responseType : 
-        'blob' as 'json'})
-    }
-    public customersPdf():Observable<Blob>{
-        var authorization = 'Bearer '+sessionStorage.getItem("access_token");
-
-         const headers = new HttpHeaders({ 'Content-Type': 'application/json',
-         "Authorization": authorization, responseType : 'blob'});
-    return this.http.get<Blob>(`${this.apiServerUrl}/productmanager/pdfCustomers`,{ headers : headers,responseType : 
-        'blob' as 'json'})
-    }
-    public reclamationPdf():Observable<Blob>{
-        var authorization = 'Bearer '+sessionStorage.getItem("access_token");
-
-         const headers = new HttpHeaders({ 'Content-Type': 'application/json',
-         "Authorization": authorization, responseType : 'blob'});
-    return this.http.get<Blob>(`${this.apiServerUrl}/productmanager/pdfReclamation`,{ headers : headers,responseType : 
-        'blob' as 'json'})
-    }
+    
     public getStockByCategory(category:string):Observable<Stock[]>{
         return this.http.get<Stock[]>(`${this.apiServerUrl}/productmanager/getstock-category/${category}`)
     }
@@ -131,8 +100,8 @@ export class ProductManagerService{
     public deleteCom(id:number){
         return this.http.delete(`${this.apiServerUrl}/productmanager/deleteCom/${id}`)
     }
-    public kpis(date:string):Observable<Indicator>{
-        return this.http.get<Indicator>(`${this.apiServerUrl}/productmanager/kpi/${date}`)
+    public kpis(month:string):Observable<Indicator>{
+        return this.http.get<Indicator>(`${this.apiServerUrl}/productmanager/kpi/${month}`)
     }
     public chart(date:string):Observable<Reservation[]>{
         return this.http.get<Reservation[]>(`${this.apiServerUrl}/productmanager/reservations/${date}`)
@@ -143,8 +112,8 @@ export class ProductManagerService{
     public reclamations():Observable<Reclamation[]>{
         return this.http.get<Reclamation[]>(`${this.apiServerUrl}/productmanager/reclamations`);
     }
-    public chart2(date:string):Observable<Reclamation[]>{
-        return this.http.get<Reclamation[]>(`${this.apiServerUrl}/productmanager/reclamation/${date}`)
+    public chart2(year:string):Observable<Reclamation[]>{
+        return this.http.get<Reclamation[]>(`${this.apiServerUrl}/productmanager/reclamation/${year}`)
     }
     public getReservationByEmail(email:string):Observable<Reservation[]>{
         return this.http.get<Reservation[]>(`${this.apiServerUrl}/productmanager/customerReservation/${email}`)
@@ -174,13 +143,47 @@ export class ProductManagerService{
     public editReclam(reclamation:Reclamation){
         return this.http.put(`${this.apiServerUrl}/productmanager/editReclam`,reclamation)
     }
-    public commandeByCategory(date:string,category:string):Observable<Reservation[]>{
-        return this.http.get<Reservation[]>(`${this.apiServerUrl}/productmanager/commandByCategory/${date}/${category}`);
+    public commandeByCategory(year:string,category:string):Observable<Reservation[]>{
+        return this.http.get<Reservation[]>(`${this.apiServerUrl}/productmanager/commandByCategory/${year}/${category}`);
     }
-    public productByDate(date:string):Observable<ProductC[]>{
-        return this.http.get<ProductC[]>(`${this.apiServerUrl}/productmanager/productsClaimedByDate/${date}`);
+    public commandeByCategory2(month:string):Observable<Reservation[]>{
+        return this.http.get<Reservation[]>(`${this.apiServerUrl}/productmanager/commandByCategory2/${month}`);
     }
+    public productByDate(month:string):Observable<ProductC[]>{
+        return this.http.get<ProductC[]>(`${this.apiServerUrl}/productmanager/productsClaimedByDate/${month}`);
+    }
+    public commandesExcelExporter():Observable<Blob>{
+        var authorization = 'Bearer '+sessionStorage.getItem("access_token");
 
+         const headers = new HttpHeaders({ 'Content-Type': 'application/json',
+         "Authorization": authorization, responseType : 'blob'});
+    return this.http.get<Blob>(`${this.apiServerUrl}/productmanager/commands/export/excel`,{ headers : headers,responseType : 
+        'blob' as 'json'})
+    }
+    public reclamationExcelExporter():Observable<Blob>{
+        var authorization = 'Bearer '+sessionStorage.getItem("access_token");
+
+         const headers = new HttpHeaders({ 'Content-Type': 'application/json',
+         "Authorization": authorization, responseType : 'blob'});
+    return this.http.get<Blob>(`${this.apiServerUrl}/productmanager/reclamations/export/excel`,{ headers : headers,responseType : 
+        'blob' as 'json'})
+    }
+    public stockExcelExporter():Observable<Blob>{
+        var authorization = 'Bearer '+sessionStorage.getItem("access_token");
+
+         const headers = new HttpHeaders({ 'Content-Type': 'application/json',
+         "Authorization": authorization, responseType : 'blob'});
+    return this.http.get<Blob>(`${this.apiServerUrl}/productmanager/stock/export/excel`,{ headers : headers,responseType : 
+        'blob' as 'json'})
+    }
+    public customersExcel():Observable<Blob>{
+        var authorization = 'Bearer '+sessionStorage.getItem("access_token");
+
+         const headers = new HttpHeaders({ 'Content-Type': 'application/json',
+         "Authorization": authorization, responseType : 'blob'});
+    return this.http.get<Blob>(`${this.apiServerUrl}/productmanager/clients/export/excel`,{ headers : headers,responseType : 
+        'blob' as 'json'})
+    }
 
 
 

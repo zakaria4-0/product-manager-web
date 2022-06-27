@@ -2,16 +2,12 @@
 <div class="global">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="main-nav">
   <div class="container-fluid">
-    <a  class="navbar-brand" href="/admincontrolpage">Welcome</a>
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown" >
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="" data-toggle="modal" data-target="#AddProductModel">Add product</a>
-          
-        </li>
         
         <li class="nav-item dropdown" id="admin">
           <a  class="nav-link dropdown-toggle " href="#" id="navbarDarkDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -23,7 +19,7 @@
           
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><a class="dropdown-item" href="#">Profil</a></li>
-            <li><a class="dropdown-item" href="/adminLogin">Logout</a></li>
+            <li><a class="dropdown-item" href="/adminLogin">Se Déconnecter</a></li>
             
           </ul>
         </li>
@@ -31,231 +27,287 @@
     </div>
   </div>
 </nav>
-
+<main id="global">
+  <div class="container bootstrap snippets bootdey" id="main-div">
+    
+    <!-- upper section -->
+    <div class="row">
+      <div class="col-md-3" id="col3">
+        <!-- left -->
+        <strong style="font-size: x-large;"> Services</strong>
+        <hr>
+        
+        <ul  id="main-ul">
+          <li style="list-style-type: none;"><a class="nav-link active" href="/admincontrolpage"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+            <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+          </svg> Accueil</a></li>
+          <li style="list-style-type: none;"><a class="nav-link active" href="/productStock"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+          </svg> Stock</a></li>
+          <li style="list-style-type: none;"><a class="nav-link active" href="/customerinfo"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-activity" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z"/>
+          </svg> Commandes</a></li>
+          <li style="list-style-type: none;"><a class="nav-link active" href="/customersList"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+            <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+          </svg> Clients</a></li>
+          <li style="list-style-type: none;"><a class="nav-link active" href="/reclamations"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-angry" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zm6.991-8.38a.5.5 0 1 1 .448.894l-1.009.504c.176.27.285.64.285 1.049 0 .828-.448 1.5-1 1.5s-1-.672-1-1.5c0-.247.04-.48.11-.686a.502.502 0 0 1 .166-.761l2-1zm-6.552 0a.5.5 0 0 0-.448.894l1.009.504A1.94 1.94 0 0 0 5 6.5C5 7.328 5.448 8 6 8s1-.672 1-1.5c0-.247-.04-.48-.11-.686a.502.502 0 0 0-.166-.761l-2-1z"/>
+          </svg> Réclamations</a></li>
+          <li style="list-style-type: none;"><a class="nav-link active" href="/KPI"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07Z"/>
+          </svg> KPIs</a></li>
+         
+        </ul>
+        
+        
+        
+      </div><!-- /span-3 -->
+      <div class="col-md-9">   	
+        <!-- column 2 -->	
+         <strong style="font-size: x-large;"> Stock</strong>    
+         <hr>
+       <div class="row">
+              <!-- center left-->	
+    
+              <form class="form-inline my-2 my-lg-0" >
+                <strong>Rechercher:</strong><pre> </pre><input type="search"  (ngModelChange)="searchProduct(key.value)" #key="ngModel" ngModel
+                 name="key" id="searchName" class="form-control mr-sm-2" placeholder="Rechercher un produit..." style="width:250px;">
+                 <button type="button" class="btn btn-dark" aria-current="page" data-toggle="modal" data-target="#AddProductModel" style="width: 160px;position: relative;left: 465px;">Ajouter un produit</button>
+                </form> <pre></pre>
+            <table class="table table-dark table-striped table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Code-Article</th>
+                    <th scope="col">Produit</th>
+                    <th scope="col">Quantité initiale</th>
+                    <th scope="col">Quantité actuelle</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Prix promotionnel</th>
+                    <th scope="col">Catégorie</th>
+                    <th>Etat</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr *ngFor="let product of products">
+                    <td>{{product.id}}</td>
+                    <td>{{product.productName}}</td>
+                    <td>{{product.productQuantityI}}</td>
+                    <td>{{product.productQuantity}}</td>
+                    <td>{{product.productPrice}} dh</td>
+                    <td>{{product.promotionPrice}} dh</td>
+                    <td>{{product.category}} </td>
+                    <td>{{product.state}} </td>
+                    <td><button type="button" (click)="onSelectProduct(product)" class="btn btn-info" data-toggle="modal" data-target="#updateEmployeeModal">modifier</button></td>
+                    <td><div id="con"><button (click)="onOpenModal(product)" type="button" class="btn btn-danger" >supprimer</button></div></td>
+                  </tr>
+                  
+                </tbody>
+                <tfoot><tr>
+                  <td><button style="height: 30px;font-size:0%;" type="button" class="btn btn-success" (click)="stockExcel()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                   </svg> </button></td>
+                <th>Total</th>
+                <th>{{total1}}</th>
+                <th>{{total2}}</th>
+              </tr></tfoot>
+              </table>
+              <!-- Delete Modal -->
+              <div class="modal fade" id="deleteEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                   <div class="modal-content">
+                      <div class="modal-header">
+                         <h5 class="modal-title" id="deleteModelLabel">Supprimer le produit</h5>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                         </button>
+                      </div>
+                      <div class="modal-body">
+                         <p>Êtes-vous sûr de vouloir supprimer le produit: {{deletePro?.productName}} </p>
+                         <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                            <button (click)="deleteProduct(deletePro.id)" class="btn btn-danger" data-dismiss="modal">Oui</button>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+              </div>
+              <!-- Edit Modal -->
+              <div class="modal fade" id="updateEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeEditModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                   <div class="modal-content">
+                      <div class="modal-header">
+                         <h5 class="modal-title" id="updateEmployeeModalLabel">Modifier le produit: {{updatePro?.productName}} </h5>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                         </button>
+                      </div>
+                      <div class="modal-body">
+                         <form #editForm="ngForm">
+                          <small class="text-danger" >{{msg}} </small>
+                          
+                          <input type="hidden" ngModel="{{updatePro?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+                            <div class="form-group">
+                               <label for="name">Nom</label>
+                               <input type="text"   ngModel="{{updatePro?.productName}}" name="productName" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nom">
+                            </div>
+                            
+                            <div class="form-group">
+                               <label for="email">Quantité initiale</label>
+                               <input type="email"  ngModel="{{updatePro?.productQuantityI}}" name="productQuantityI" class="form-control" id="Initial-quantity" placeholder="Quantité initiale">
+                            </div>
+                            <div class="form-group">
+                               <label for="phone">Quantité actuelle</label>
+                               <input type="text"  ngModel="{{updatePro?.productQuantity}}" name="productQuantity" class="form-control" id="Current-quantity" placeholder="Quantité actuelle">
+                            </div>
+                            <div class="form-group">
+                               <label for="phone">Prix</label>
+                               <input type="text" ngModel="{{updatePro?.productPrice}}" name="productPrice" class="form-control" id="Price"  placeholder="Prix">
+                            </div>
+                            <div class="form-group">
+                               <label for="phone">Prix promotionnel</label>
+                               <input type="text"  ngModel="{{updatePro?.promotionPrice}}" name="promotionPrice" class="form-control" id="Promotion price" placeholder="Prix promotionnel">
+                            </div>
+                            <div class="form-group">
+                              <label for="phone">Image URL</label>
+                              <input type="text"  ngModel="{{updatePro?.productImage}}" name="productImage" class="form-control" id="imageUrl" placeholder="Image URL">
+                           </div>
+                           <div class="form-group">
+                            <label for="phone">Déscription</label>
+                            <textarea  ngModel="{{updatePro?.description}}" class="form-control" id="exampleFormControlTextarea1" rows="3"  name="description" placeholder="Déscription" required 
+                            ></textarea>
+                             
+                         </div>
+                         <div class="form-group">
+                          <label for="phone">catégorie</label>
+                          <input type="text"  ngModel="{{updatePro?.category}}" name="category" class="form-control" id="category" placeholder="catégorie">
+                       </div>
+                       <div class="form-group">
+                        <label for="exampleInputEmail1" class="form-label">Etat</label><br>
+                      <select  ngModel="{{updatePro?.state}}" name="state" class="form-select" aria-label="Default select example" required 
+                       >
+                       <option selected></option>
+                        <option >Nouveau</option>
+                        <option >promotion</option>
+                        <option >rien</option>
+                      </select>
+                      <small class="text-danger" [class.d-none]="state.valid || state.untouched">Required</small>
+                      
+                      </div>
+                      
+                            <div class="modal-footer">
+                               <button type="button"  data-dismiss="modal" class="btn btn-secondary">Fermer</button>
+                               <button [disabled]="editForm.invalid" (click)="updateProduct(editForm.value)" class="btn btn-primary" data-dismiss="modal">Sauvegarder</button>
+                            </div>
+                         </form>
+                      </div>
+                   </div>
+                </div>
+              </div>
+             
+            </div>
+             <!-- Add Modal -->
+             <div  class="modal fade" id="AddProductModel" tabindex="-1" role="dialog" aria-labelledby="employeeEditModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document" >
+                 <div class="modal-content" >
+                    <div class="modal-header">
+                       <h5 class="modal-title" id="updateEmployeeModalLabel">Ajouter un produit au stock </h5>
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                       </button>
+                    </div>
+                    <div class="modal-body" >
+                       <form #addForm="ngForm">
+                                <small class="text-danger" >{{msg2}} </small>
+                                  <div class="mb-3" id="div1">
+                                    <label for="exampleInputEmail1" class="form-label">Nom du produit</label>
+                                    <input type="email"  [(ngModel)]="stock.productName"  name="productName" class="form-control"   aria-describedby="emailHelp" placeholder="nom du produit" required 
+                                    #productName="ngModel" [class.is-invalid]="productName.invalid && productName.touched">
+                                    <small class="text-danger" [class.d-none]="productName.valid || productName.untouched">Requis</small>
+                                  </div>
+                                    <div class="mb-3" id="div3">
+                                      <label for="exampleInputEmail1" class="form-label">Quantité initiale</label>
+                                      <input type="email" [(ngModel)]="stock.productQuantityI"  name="productQuantityI" class="form-control"   aria-describedby="emailHelp" placeholder="Quantité initiale" required 
+                                      #productQuantityI="ngModel" [class.is-invalid]="productQuantityI.invalid && productQuantityI.touched">
+                                      <small class="text-danger" [class.d-none]="productQuantityI.valid || productQuantityI.untouched">Requis</small>
+                                  </div>
+                                  <div class="mb-3" id="div3">
+                                    <label for="exampleInputEmail1" class="form-label">Quantité actuelle</label>
+                                    <input type="email" [(ngModel)]="stock.productQuantity"  name="productQuantity" class="form-control"   aria-describedby="emailHelp" placeholder="Quantité actuelle" required 
+                                    #productQuantity="ngModel" [class.is-invalid]="productQuantity.invalid && productQuantity.touched">
+                                    <small class="text-danger" [class.d-none]="productQuantity.valid || productQuantity.untouched">Requis</small>
+                                </div>
+            
+                                  <div class="mb-3" id="div4">
+                                          <label for="exampleInputEmail1" class="form-label">Prix</label>
+                                          <input type="email" [(ngModel)]="stock.productPrice"  name="productPrice" class="form-control"   aria-describedby="emailHelp" placeholder="Prix" required 
+                                          #productPrice="ngModel" [class.is-invalid]="productPrice.invalid && productPrice.touched">
+                                          <small class="text-danger" [class.d-none]="productPrice.valid || productPrice.untouched">Requis</small>
+                                  </div>
+                                  <div class="mb-3" id="div4">
+                                    <label for="exampleInputEmail1" class="form-label">Prix promotionnel</label>
+                                    <input type="email" [(ngModel)]="stock.promotionPrice"  name="promotionPrice" class="form-control"   aria-describedby="emailHelp" placeholder="Prix promotionnel" required 
+                                    #promotionPrice="ngModel" [class.is-invalid]="promotionPrice.invalid && promotionPrice.touched">
+                                    <small class="text-danger" [class.d-none]="promotionPrice.valid || promotionPrice.untouched">Requis</small>
+                              </div>
+                                  
+                                  <div class="mb-3" id="div4">
+                                    <label for="exampleInputEmail1" class="form-label">Image URL</label>
+                                    <input type="email" [(ngModel)]="stock.productImage" name="productImage" class="form-control"   aria-describedby="emailHelp" placeholder="productImage" required 
+                                    #productImage="ngModel" [class.is-invalid]="productImage.invalid && productImage.touched">
+                                    <small class="text-danger" [class.d-none]="productImage.valid || productImage.untouched">Requis</small>
+                              </div>
+                              <div class="mb-3" id="div5">
+                                <label for="exampleInputEmail1" class="form-label">Déscription </label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="stock.description" name="description" placeholder="Déscription" required 
+                                #description="ngModel" [class.is-invalid]="description.invalid && description.touched"></textarea>
+                                <small class="text-danger" [class.d-none]="description.valid || description.untouched">Requis</small>
+                              </div>
+                              <div class="mb-3" id="div4">
+                                <label for="exampleInputEmail1" class="form-label">Catégorie</label>
+                                <input type="email" [(ngModel)]="stock.category" name="category" class="form-control"   aria-describedby="emailHelp" placeholder="catégorie" required 
+                                #category="ngModel" [class.is-invalid]="category.invalid && category.touched">
+                                <small class="text-danger" [class.d-none]="category.valid || category.untouched">Requis</small>
+                              </div>
+                              <div class="mb-3" id="div2">
+                                <label for="exampleInputEmail1" class="form-label">Etat</label><br>
+                              <select  [(ngModel)]="stock.state"  name="state" class="form-select" aria-label="Default select example" required 
+                              #state="ngModel" [class.is-invalid]="state.invalid && state.touched">
+                              <option selected></option>
+                                <option >nouveau</option>
+                                <option >promotion</option>
+                                <option >autre</option>
+                              </select>
+                              <small class="text-danger" [class.d-none]="state.valid || state.untouched">Required</small>
+            
+                              </div>
+                          <div class="modal-footer">
+                             <button type="button"  data-dismiss="modal" class="btn btn-secondary">Fermer</button>
+                             <button [disabled]="addForm.invalid" (click)="addStock(addForm)" class="btn btn-primary" data-dismiss="modal">Ajouter au stock</button>
+                          </div>
+                       </form>
+                    </div>
+                 </div>
+              </div>
+            </div>                     
+                
+              </div><!--/col-->
+           
+             
+          
+         </div><!--/row-->
+      </div><!--/col-span-9-->
+    </main>
+    </div><!--/row-->
+  
 
 <div class="container" id="main-container">
   
-  <form class="form-inline my-2 my-lg-0" style="margin-left: -120px;">
-    <strong>search:</strong><pre> </pre><input type="search"  (ngModelChange)="searchProduct(key.value)" #key="ngModel" ngModel
-     name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search product..." style="width:250px;">
-    </form><hr style="margin-left: -120px;">
-<table class="table table-dark table-striped table-hover table-bordered">
-    <thead>
-      <tr>
-        <th scope="col">Serial-number</th>
-        <th scope="col">Product-name</th>
-        <th scope="col">Initial-quantity</th>
-        <th scope="col">Current-quantity</th>
-        <th scope="col">Price</th>
-        <th scope="col">Promotion-price</th>
-        <th scope="col">Category</th>
-        <th>State</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody >
-      <tr *ngFor="let product of products">
-        <td>{{product.id}}</td>
-        <td>{{product.productName}}</td>
-        <td>{{product.productQuantityI}}</td>
-        <td>{{product.productQuantity}}</td>
-        <td>{{product.productPrice}} dh</td>
-        <td>{{product.promotionPrice}} dh</td>
-        <td>{{product.category}} </td>
-        <td>{{product.state}} </td>
-        <td><button type="button" (click)="onSelectProduct(product)" class="btn btn-info" data-toggle="modal" data-target="#updateEmployeeModal">edit</button></td>
-        <td><div id="con"><button (click)="onOpenModal(product)" type="button" class="btn btn-danger" >delete</button></div></td>
-      </tr>
-      
-    </tbody>
-    <tfoot><tr>
-      <td><button style="height: 30px;font-size:0%;" type="button" class="btn btn-success" (click)="stockPdf()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-       </svg> </button></td>
-    <th>Total</th>
-    <th>{{total1}}</th>
-    <th>{{total2}}</th>
-  </tr></tfoot>
-  </table>
-  <!-- Delete Modal -->
-  <div class="modal fade" id="deleteEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-       <div class="modal-content">
-          <div class="modal-header">
-             <h5 class="modal-title" id="deleteModelLabel">Delete Product</h5>
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true">&times;</span>
-             </button>
-          </div>
-          <div class="modal-body">
-             <p>Are you sure you want to delete product: {{deletePro?.productName}} </p>
-             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <button (click)="deleteProduct(deletePro.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
-             </div>
-          </div>
-       </div>
-    </div>
-  </div>
-  <!-- Edit Modal -->
-  <div class="modal fade" id="updateEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeEditModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-       <div class="modal-content">
-          <div class="modal-header">
-             <h5 class="modal-title" id="updateEmployeeModalLabel">Edit Product: {{updatePro?.productName}} </h5>
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true">&times;</span>
-             </button>
-          </div>
-          <div class="modal-body">
-             <form #editForm="ngForm">
-              <small class="text-danger" >{{msg}} </small>
-              
-              <input type="hidden" ngModel="{{updatePro?.id}}" name="id" class="form-control" id="id" placeholder="Email">
-                <div class="form-group">
-                   <label for="name">Name</label>
-                   <input type="text"   ngModel="{{updatePro?.productName}}" name="productName" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
-                </div>
-                
-                <div class="form-group">
-                   <label for="email">Initial quantity</label>
-                   <input type="email"  ngModel="{{updatePro?.productQuantityI}}" name="productQuantityI" class="form-control" id="Initial-quantity" placeholder="Initial quantity">
-                </div>
-                <div class="form-group">
-                   <label for="phone">Current quantity</label>
-                   <input type="text"  ngModel="{{updatePro?.productQuantity}}" name="productQuantity" class="form-control" id="Current-quantity" placeholder="Current quantity">
-                </div>
-                <div class="form-group">
-                   <label for="phone">Price</label>
-                   <input type="text" ngModel="{{updatePro?.productPrice}}" name="productPrice" class="form-control" id="Price"  placeholder="Price">
-                </div>
-                <div class="form-group">
-                   <label for="phone">Promotion price</label>
-                   <input type="text"  ngModel="{{updatePro?.promotionPrice}}" name="promotionPrice" class="form-control" id="Promotion price" placeholder="Promotion price">
-                </div>
-                <div class="form-group">
-                  <label for="phone">Image URL</label>
-                  <input type="text"  ngModel="{{updatePro?.productImage}}" name="productImage" class="form-control" id="imageUrl" placeholder="Image URL">
-               </div>
-               <div class="form-group">
-                <label for="phone">Description</label>
-                <textarea  ngModel="{{updatePro?.description}}" class="form-control" id="exampleFormControlTextarea1" rows="3"  name="description" placeholder="Description" required 
-                ></textarea>
-                 
-             </div>
-             <div class="form-group">
-              <label for="phone">category</label>
-              <input type="text"  ngModel="{{updatePro?.category}}" name="category" class="form-control" id="category" placeholder="category">
-           </div>
-           <div class="form-group">
-            <label for="exampleInputEmail1" class="form-label">State</label><br>
-          <select  ngModel="{{updatePro?.state}}" name="state" class="form-select" aria-label="Default select example" required 
-           >
-           <option selected></option>
-            <option >new</option>
-            <option >promotion</option>
-            <option >none</option>
-          </select>
-          <small class="text-danger" [class.d-none]="state.valid || state.untouched">Required</small>
-          
-          </div>
-          
-                <div class="modal-footer">
-                   <button type="button"  data-dismiss="modal" class="btn btn-secondary">Close</button>
-                   <button [disabled]="editForm.invalid" (click)="updateProduct(editForm.value)" class="btn btn-primary" data-dismiss="modal">Save changes</button>
-                </div>
-             </form>
-          </div>
-       </div>
-    </div>
-  </div>
- 
-</div>
- <!-- Add Modal -->
- <div  class="modal fade" id="AddProductModel" tabindex="-1" role="dialog" aria-labelledby="employeeEditModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document" >
-     <div class="modal-content" >
-        <div class="modal-header">
-           <h5 class="modal-title" id="updateEmployeeModalLabel">Add Product To Stock </h5>
-           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-           <span aria-hidden="true">&times;</span>
-           </button>
-        </div>
-        <div class="modal-body" >
-           <form #addForm="ngForm">
-                    <small class="text-danger" >{{msg2}} </small>
-                      <div class="mb-3" id="div1">
-                        <label for="exampleInputEmail1" class="form-label">Product name</label>
-                        <input type="email"  [(ngModel)]="stock.productName"  name="productName" class="form-control"   aria-describedby="emailHelp" placeholder="productName" required 
-                        #productName="ngModel" [class.is-invalid]="productName.invalid && productName.touched">
-                        <small class="text-danger" [class.d-none]="productName.valid || productName.untouched">Required</small>
-                      </div>
-                        <div class="mb-3" id="div3">
-                          <label for="exampleInputEmail1" class="form-label">Initial quantity</label>
-                          <input type="email" [(ngModel)]="stock.productQuantityI"  name="productQuantityI" class="form-control"   aria-describedby="emailHelp" placeholder="Initial quantity" required 
-                          #productQuantityI="ngModel" [class.is-invalid]="productQuantityI.invalid && productQuantityI.touched">
-                          <small class="text-danger" [class.d-none]="productQuantityI.valid || productQuantityI.untouched">Required</small>
-                      </div>
-                      <div class="mb-3" id="div3">
-                        <label for="exampleInputEmail1" class="form-label">Current quantity</label>
-                        <input type="email" [(ngModel)]="stock.productQuantity"  name="productQuantity" class="form-control"   aria-describedby="emailHelp" placeholder="Current quantity" required 
-                        #productQuantity="ngModel" [class.is-invalid]="productQuantity.invalid && productQuantity.touched">
-                        <small class="text-danger" [class.d-none]="productQuantity.valid || productQuantity.untouched">Required</small>
-                    </div>
-
-                      <div class="mb-3" id="div4">
-                              <label for="exampleInputEmail1" class="form-label">Price</label>
-                              <input type="email" [(ngModel)]="stock.productPrice"  name="productPrice" class="form-control"   aria-describedby="emailHelp" placeholder="productPrice" required 
-                              #productPrice="ngModel" [class.is-invalid]="productPrice.invalid && productPrice.touched">
-                              <small class="text-danger" [class.d-none]="productPrice.valid || productPrice.untouched">Required</small>
-                      </div>
-                      <div class="mb-3" id="div4">
-                        <label for="exampleInputEmail1" class="form-label">Promotion price</label>
-                        <input type="email" [(ngModel)]="stock.promotionPrice"  name="promotionPrice" class="form-control"   aria-describedby="emailHelp" placeholder="promotionPrice" required 
-                        #promotionPrice="ngModel" [class.is-invalid]="promotionPrice.invalid && promotionPrice.touched">
-                        <small class="text-danger" [class.d-none]="promotionPrice.valid || promotionPrice.untouched">Required</small>
-                  </div>
-                      
-                      <div class="mb-3" id="div4">
-                        <label for="exampleInputEmail1" class="form-label">Image URL</label>
-                        <input type="email" [(ngModel)]="stock.productImage" name="productImage" class="form-control"   aria-describedby="emailHelp" placeholder="productImage" required 
-                        #productImage="ngModel" [class.is-invalid]="productImage.invalid && productImage.touched">
-                        <small class="text-danger" [class.d-none]="productImage.valid || productImage.untouched">Required</small>
-                  </div>
-                  <div class="mb-3" id="div5">
-                    <label for="exampleInputEmail1" class="form-label">Description </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="stock.description" name="description" placeholder="Description" required 
-                    #description="ngModel" [class.is-invalid]="description.invalid && description.touched"></textarea>
-                    <small class="text-danger" [class.d-none]="description.valid || description.untouched">Required</small>
-                  </div>
-                  <div class="mb-3" id="div4">
-                    <label for="exampleInputEmail1" class="form-label">Category</label>
-                    <input type="email" [(ngModel)]="stock.category" name="category" class="form-control"   aria-describedby="emailHelp" placeholder="category" required 
-                    #category="ngModel" [class.is-invalid]="category.invalid && category.touched">
-                    <small class="text-danger" [class.d-none]="category.valid || category.untouched">Required</small>
-                  </div>
-                  <div class="mb-3" id="div2">
-                    <label for="exampleInputEmail1" class="form-label">State</label><br>
-                  <select  [(ngModel)]="stock.state"  name="state" class="form-select" aria-label="Default select example" required 
-                  #state="ngModel" [class.is-invalid]="state.invalid && state.touched">
-                  <option selected></option>
-                    <option >new</option>
-                    <option >promotion</option>
-                    <option >none</option>
-                  </select>
-                  <small class="text-danger" [class.d-none]="state.valid || state.untouched">Required</small>
-
-                  </div>
-              <div class="modal-footer">
-                 <button type="button"  data-dismiss="modal" class="btn btn-secondary">Close</button>
-                 <button [disabled]="addForm.invalid" (click)="addStock(addForm)" class="btn btn-primary" data-dismiss="modal">Add to stock</button>
-              </div>
-           </form>
-        </div>
-     </div>
-  </div>
-</div>
+  
 </div>
 

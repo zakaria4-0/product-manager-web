@@ -24,22 +24,22 @@
           </div>
         </div>
       </div>
-      <a class="nav-link active" aria-current="page" href="/main">Home</a>
-      <a class="nav-link active" aria-current="page" href="/ourProducts">Products</a>
-      <a class="nav-link active" aria-current="page" href="/customerLogin">Shop</a>
-      <a class="nav-link active" aria-current="page" href="/reclamation">Reclamation</a>
-      <a class="nav-link active" aria-current="page" href="/customerLogin">Account</a>
-      <a class="nav-link active" aria-current="page" href="/adminLogin">Admin account</a>
+      <a class="nav-link active" aria-current="page" href="/main">Accueil</a>
+    <a class="nav-link active" aria-current="page" href="/ourProducts">Produits</a>
+    <a class="nav-link active" aria-current="page" href="/customerLogin">Commander</a>
+    <a class="nav-link active" aria-current="page" href="/reclamation">Réclamer</a>
+    <a class="nav-link active" aria-current="page" href="/customerLogin">Client</a>
+    <a class="nav-link active" aria-current="page" href="/adminLogin">Admin</a>
   </div>
 </nav>
 <form  #addForm="ngForm" (ngSubmit)="customerRegister()">
-    <h1 id=login>Creat Account</h1>
+    <h1 id=login>Créer un compte</h1>
     <small class="text-danger" >{{msg}} </small>
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Name</label>
-        <input type="email"  [(ngModel)]="regCustomer.name" name="name" class="form-control"   aria-describedby="emailHelp" placeholder="Name" required 
+        <label for="exampleInputEmail1" class="form-label">Nom</label>
+        <input type="email"  [(ngModel)]="regCustomer.name" name="name" class="form-control"   aria-describedby="emailHelp" placeholder="Nom" required 
         #name="ngModel" [class.is-invalid]="name.invalid && name.touched">
-        <small class="text-danger" [class.d-none]="name.valid || name.untouched">name is required</small>
+        <small class="text-danger" [class.d-none]="name.valid || name.untouched">Le nom est requis</small>
         
       </div>
 
@@ -47,45 +47,45 @@
         <label for="exampleInputEmail1" class="form-label">Email</label>
         <input type="email" [(ngModel)]="regCustomer.email" name="email" class="form-control"   aria-describedby="emailHelp" placeholder="Email" required 
          #email="ngModel" [class.is-invalid]="email.invalid && email.touched">
-        <small class="text-danger" [class.d-none]="email.valid || email.untouched">email is required</small>
+        <small class="text-danger" [class.d-none]="email.valid || email.untouched">email est requis</small>
         
       </div>
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Phone number</label>
-        <input type="email" [(ngModel)]="regCustomer.phoneNumber" name="email" class="form-control"   aria-describedby="emailHelp" placeholder="Phone number" required 
+        <label for="exampleInputEmail1" class="form-label">Numéro de téléphone</label>
+        <input type="email" [(ngModel)]="regCustomer.phoneNumber" name="email" class="form-control"   aria-describedby="emailHelp" placeholder="Numéro de téléphone" required 
          #email="ngModel" [class.is-invalid]="email.invalid && email.touched">
-        <small class="text-danger" [class.d-none]="email.valid || email.untouched">phone number is required</small>
+        <small class="text-danger" [class.d-none]="email.valid || email.untouched">champ requis</small>
         
       </div>
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Category</label>
+        <label for="exampleInputEmail1" class="form-label">Catégorie</label>
         <select [(ngModel)]="regCustomer.category" name="category" class="form-select" aria-label="Default select example" required
         #category="ngModel" [class.is-invalid]="category.invalid && category.touched">
-          <option selected>Open this select menu</option>
+          <option selected>Ouvrir</option>
           <option >grossiste</option>
           <option >pharmacie</option>
           <option >clinique</option>
           <option >para/droguiste</option>
-          <option >particulier + autre</option>
+          <option >particulier+autre</option>
           <option >institution</option>
         </select>
-        <small class="text-danger" [class.d-none]="category.valid || category.untouched">category is required</small>
+        <small class="text-danger" [class.d-none]="category.valid || category.untouched">category est requis</small>
       </div>
 
       <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password"  [(ngModel)]="regCustomer.password" name="passwod" class="form-control"  placeholder="Password" required 
+        <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+        <input type="password"  [(ngModel)]="regCustomer.password" name="passwod" class="form-control"  placeholder="Mot de passe" required 
          #password="ngModel" [class.is-invalid]="password.invalid && password.touched">
-        <small class="text-danger" [class.d-none]="password.valid || password.untouched">password is required</small>
+        <small class="text-danger" [class.d-none]="password.valid || password.untouched">Mot de passe requis</small>
       </div>
       <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-        <input type="password"  (ngModel)="regCustomer.password" name="cpasswod" class="form-control"  placeholder="Confirm your password" required 
+        <label for="exampleInputPassword1" class="form-label">Confirmer le mot de passe</label>
+        <input type="password"  (ngModel)="regCustomer.password" name="cpasswod" class="form-control"  placeholder="Confirmer le mot de passe" required 
          #cpassword="ngModel" [class.is-invalid]="cpassword.invalid && cpassword.touched">
-        <small class="text-danger" [class.d-none]="cpassword.value== password.value || cpassword.untouched ">password & confirm password must be the same</small>
+        <small class="text-danger" [class.d-none]="cpassword.value== password.value || cpassword.untouched ">mot de passe incorrecte</small>
       </div>
-      <button  [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Register</button>
-      <small class="float-right" ><a id="login" href="/customerLogin">Already have account</a></small>
+      <button  [disabled]="addForm.invalid" type="submit" class="btn btn-primary">S'inscrire</button>
+      <small class="float-right" ><a id="login" href="/customerLogin">Avoir déjà un compte</a></small>
 </form>
   
   

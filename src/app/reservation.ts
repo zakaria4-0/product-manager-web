@@ -11,5 +11,8 @@ export class Reservation{
     products:Product[];
     date:string;
     time:Date;
+    month:string
+    year:string
+    category:string
     total:number;
 }

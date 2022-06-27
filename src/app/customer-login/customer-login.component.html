@@ -1,61 +1,66 @@
 <nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <div>
-            Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header">
+            
+            <button type="button" class="btn-close btn-close-white" id="closebt" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
-          <div class="dropdown mt-3">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-              Dropdown button
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <div class="offcanvas-body">
+            <label style="color: white;">Navigation:</label>
+            <ul>
+              <li ><a  class="nav-link active " aria-current="page" href="/main"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+              </svg> Accueil</a></li><br>
+              <li ><a  class="nav-link active" aria-current="page" href="/ourProducts"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-columns-gap" viewBox="0 0 16 16">
+                <path d="M6 1v3H1V1h5zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12v3h-5v-3h5zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8v7H1V8h5zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6v7h-5V1h5zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z"/>
+              </svg> Produits</a></li><br>
+              <li><a class="nav-link active" aria-current="page" href="/customerLogin"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 0 16 16">
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
+              </svg> Commander</a></li><br>
+              <li><a class="nav-link active" aria-current="page" href="/reclamation"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-frown-fill" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm-2.715 5.933a.5.5 0 0 1-.183-.683A4.498 4.498 0 0 1 8 9.5a4.5 4.5 0 0 1 3.898 2.25.5.5 0 0 1-.866.5A3.498 3.498 0 0 0 8 10.5a3.498 3.498 0 0 0-3.032 1.75.5.5 0 0 1-.683.183zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z"/>
+              </svg> Réclamer</a></li><br>
+              <li><a class="nav-link active" aria-current="page" href="/customerLogin"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+              </svg> Espace Client</a></li>
+              <li><a class="nav-link active" aria-current="page" href="/adminLogin"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
+                <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H4Zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2H2Z"/>
+              </svg> Espace Admin</a></li>
             </ul>
+            
           </div>
         </div>
-      </div>
-      <a class="nav-link active" aria-current="page" href="/main">Home</a>
-      <a class="nav-link active" aria-current="page" href="/ourProducts">Products</a>
-      <a class="nav-link active" aria-current="page" href="/customerLogin">Shop</a>
-      <a class="nav-link active" aria-current="page" href="/reclamation">Reclamation</a>
-      <a class="nav-link active" aria-current="page" href="/customerLogin">Account</a>
-      <a class="nav-link active" aria-current="page" href="/adminLogin">Admin account</a>
-  </div>
-  </nav>
+        
+    </div>
+</nav>
 <form #loginform="ngForm" (ngSubmit)="customerLogin()">
-    <h1 id="login">Customer Login Account</h1>
+    <h1 id="login">Connexion utilisateur</h1>
     <br>
 <small class="text-danger" > {{msg}} </small>
    
 <div class="mb-3">
-<label for="exampleInputEmail1" class="form-label">Name</label>
-<input type="email" [(ngModel)]=customerLog.name class="form-control" name="name"  aria-describedby="emailHelp" placeholder="Name" required 
+<label for="exampleInputEmail1" class="form-label">Nom</label>
+<input type="email" [(ngModel)]=customerLog.name class="form-control" name="name"  aria-describedby="emailHelp" placeholder="Nom" required 
 #name="ngModel" [class.is-invalid]="name.invalid && name.touched">
-<small class="text-danger" [class.d-none]="name.valid || name.untouched">name is required</small>
+<small class="text-danger" [class.d-none]="name.valid || name.untouched">Le nom est requis</small>
 
 </div>
 <div class="mb-3">
-<label for="exampleInputPassword1" class="form-label">Password</label>
-<input type="password" [(ngModel)]=customerLog.password class="form-control" name="passwod" placeholder="Password" required 
+<label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+<input type="password" [(ngModel)]=customerLog.password class="form-control" name="passwod" placeholder="mot de passe" required 
 #password="ngModel" [class.is-invalid]="password.invalid && password.touched">
-<small class="text-danger" [class.d-none]="password.valid || password.untouched">password is required</small>
+<small class="text-danger" [class.d-none]="password.valid || password.untouched">Mot de passe requis</small>
 </div>
 <div class="mb-3 form-check">
-<input type="checkbox" class="form-check-input" id="exampleCheck1">
-<label class="form-check-label" for="exampleCheck1">Check me out</label>
+
 </div>
-<button [disabled]="loginform.form.invalid" type="submit" class="btn btn-primary">Login</button>
-<small class="float-right" ><a id="login" href="/customerLoginRegistration">Creat Account</a></small>
+<button [disabled]="loginform.form.invalid" type="submit" class="btn btn-primary">Connexion</button>
+<small class="float-right" ><a id="login" href="/customerLoginRegistration">Créer un compte</a></small>
 </form>
 
 

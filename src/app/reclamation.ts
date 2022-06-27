@@ -9,6 +9,9 @@ export class Reclamation{
     public productClaimeds:ProductC[];
     public date:string;
     public time:Date;
+    month:string
+    year:string
     public etat:string;
     public dateCloture:string;
+    public categorie:string;
 }

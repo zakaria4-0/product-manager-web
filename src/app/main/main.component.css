@@ -1,5 +1,9 @@
 
 
+a.canvas{
+  text-decoration: none;
+  text-decoration-line: none;
+}
   a.canvas:link {
     text-decoration: none;
     color: rgb(255, 255, 255);
@@ -21,6 +25,17 @@
   a.canvas:active {
     text-decoration: none;
     color: blue;
+  }
+  a.nav-link:active{
+    color: rgb(75, 152, 224);
+  }
+  a.nav-link:visited {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+  }
+  a.nav-link:hover {
+    text-decoration: none;
+    color: rgb(75, 152, 224);
   }
   div#offcanvasExample{
     background-color: #2b2f3e;
@@ -45,6 +60,11 @@
   img.d-block{
     height: 500px;
     
+  }
+  h3.carousel{
+    color: white;
+    background-color: #adadad8a;
+    backdrop-filter: blur(2px);
   }
   
  
